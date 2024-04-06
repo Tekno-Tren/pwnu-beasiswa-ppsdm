@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Validation\ValidationException;
 use Livewire\Attributes\Layout;
 use Livewire\Volt\Component;
+use Illuminate\Support\Facades\Auth;
 
 new #[Layout('layouts.guest')] class extends Component
 {
@@ -29,7 +30,13 @@ new #[Layout('layouts.guest')] class extends Component
 
         session(['auth.password_confirmed_at' => time()]);
 
-        $this->redirectIntended(default: route('dashboard', absolute: false), navigate: true);
+        $routeAuthenticated = match (Auth::user()->role) {
+            0 => route('peserta.dashboard', absolute: false),
+            1 => route('admin.dashboard', absolute: false),
+            default => route('welcome', absolute: false),
+        };
+
+        $this->redirectIntended(default: $routeAuthenticated, navigate: true);
     }
 }; ?>
 

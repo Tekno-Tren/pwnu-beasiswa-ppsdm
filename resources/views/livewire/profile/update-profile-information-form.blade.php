@@ -51,7 +51,13 @@ new class extends Component
         $user = Auth::user();
 
         if ($user->hasVerifiedEmail()) {
-            $this->redirectIntended(default: route('dashboard', absolute: false));
+            $routeAuthenticated = match (Auth::user()->role) {
+                0 => route('peserta.dashboard', absolute: false),
+                1 => route('admin.dashboard', absolute: false),
+                default => route('welcome', absolute: false),
+            };
+
+            $this->redirectIntended(default: $routeAuthenticated, navigate: true);
 
             return;
         }
