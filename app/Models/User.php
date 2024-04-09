@@ -3,11 +3,16 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Filament\Panel;
+use App\Models\Pondok;
+use App\Models\Sekolah;
+use App\Models\ClusterBeasiswa;
+use Illuminate\Notifications\Notifiable;
+use Filament\Models\Contracts\FilamentUser;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
-use Illuminate\Notifications\Notifiable;
 
-class User extends Authenticatable
+class User extends Authenticatable implements FilamentUser
 {
     use HasFactory, Notifiable;
 
@@ -17,9 +22,20 @@ class User extends Authenticatable
      * @var array<int, string>
      */
     protected $fillable = [
-        'name',
+        'nama',
         'email',
         'password',
+
+        'tempat_lahir',
+        'tanggal_lahir',
+        'jenis_kelamin',
+        'alamat',
+        'no_hp',
+        'jalur_prestasi',
+
+        'sekolah_id',
+        'pondok_id',
+        'cluster_id'
     ];
 
     /**
@@ -43,5 +59,32 @@ class User extends Authenticatable
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
         ];
+    }
+    
+    public function isAdmin(): bool
+    {
+        return $this->email === 'admin@example.com';
+    }
+    
+    public function canAccessPanel(Panel $panel): bool
+    {
+        if ($panel->getId() === 'admin') {
+            return $this->isAdmin();
+        }
+ 
+        return true;
+    }
+    
+    public function pondok()
+    {
+        return $this->belongsTo(Pondok::class);
+    }
+    public function sekolah()
+    {
+        return $this->belongsTo(Sekolah::class);
+    }
+    public function cluster()
+    {
+        return $this->belongsTo(ClusterBeasiswa::class);
     }
 }
