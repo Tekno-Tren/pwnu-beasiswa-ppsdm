@@ -5,7 +5,7 @@
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
 
-  <title>SIM Beasiswa PWNU | @yield('title')</title>
+  <title>SIM Beasiswa PWNU | @yield('Pendaftaran Beasiswa')</title>
   <meta content="" name="description">
   <meta content="" name="keywords">
 
@@ -37,14 +37,35 @@
 
 <body>
 
-  @include('layouts.header')
+  {{-- @include('layouts.header') --}}
 
   @yield('content')
   <div class="col-md-9 text-center mx-auto">
-    @yield('form')        
+    @yield('form')  
+    <div class="my-5">
+        <form action="{{ route('beasiswa.daftar.store') }}" method="POST" enctype="multipart/form-data">
+            @csrf
+            <div class="form-group row">
+                <label for="jalur_prestasi" class="col-sm-4 col-form-label">Jalur Prestasi</label>
+                <div class="col-sm-8">
+                    {{-- <input type="text" class="form-control" id="jalurprestasi" name="jalurprestasi" placeholder="Masukan Jalur Prestasi"> --}}
+                    <select name="jalur_prestasi" id="jalur_prestasi">
+                        @foreach ($jalurprestasi as $jalurpres)
+                            <option value="{{ $jalurpres->id }}">{{ $jalurpres->nama }}</option>                            
+                        @endforeach
+                    </select>
+                </div>
+            </div>
+            <p>
+            <div class="modal-footer">
+                <a href="/" class="btn btn-primary">Tutup</a>
+                <button type="submit" name="beasiswa" class="btn btn-success">Tambah</button>
+            </div>
+        </form>
+    </div>      
   </div>
   
-  @include('layouts.footer')
+  {{-- @include('layouts.footer') --}}
 
   <!-- Vendor JS Files -->
   <script src="assets/vendor/aos/aos.js"></script>

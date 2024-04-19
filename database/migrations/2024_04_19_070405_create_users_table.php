@@ -18,18 +18,20 @@ return new class extends Migration
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->rememberToken();
+
             $table->string('tempat_lahir')->nullable();
             $table->date('tanggal_lahir')->nullable();
             $table->string('jenis_kelamin')->nullable();
             $table->string('alamat')->nullable();
             $table->string('no_hp')->nullable();
-            $table->string('jalur_prestasi')->nullable();
-
+            
+            $table->unsignedBigInteger('jalur_prestasi_id')->nullable();
             $table->unsignedBigInteger('sekolah_id')->nullable();
             $table->unsignedBigInteger('pondok_id')->nullable();
             $table->unsignedBigInteger('cluster_id')->nullable();
             $table->timestamps();
 
+            $table->foreign('jalur_prestasi_id')->references('id')->on('jalur_prestasis')->onDelete('set null');
             $table->foreign('sekolah_id')->references('id')->on('sekolahs')->onDelete('set null');
             $table->foreign('pondok_id')->references('id')->on('pondoks')->onDelete('set null');
             $table->foreign('cluster_id')->references('id')->on('cluster_beasiswas')->onDelete('set null');

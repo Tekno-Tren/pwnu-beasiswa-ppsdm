@@ -30,4 +30,9 @@ class Jurusan extends Model
     {
         return $this->belongsTo(ClusterBeasiswa::class, 'cluster_id');
     }
+    public function beasiswa()
+    {
+        return $this->hasMany(Beasiswa::class);
+    }
 }
+
