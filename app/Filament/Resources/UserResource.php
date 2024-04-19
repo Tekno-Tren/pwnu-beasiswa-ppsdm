@@ -50,7 +50,7 @@ class UserResource extends Resource
                     ->maxLength(255),
                 Forms\Components\TextInput::make('no_hp')
                     ->maxLength(255),
-                    Forms\Components\Select::make('jalur_prestasi')
+                Forms\Components\Select::make('jalur_prestasi')
                     ->options([
                         'Tahfidzul Quran' => 'Tahfidzul Quran',
                         'Musabaqoh Tilawatil Qur\'an' => 'Musabaqoh Tilawatil Qur\'an',

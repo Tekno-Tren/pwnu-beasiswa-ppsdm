@@ -47,6 +47,11 @@ class KampusResource extends Resource
                     ->label('No HP Kampus')
                     ->placeholder('Masukkan No HP Kampus')
                     ->maxLength(255),
+                Forms\Components\Select::make('cluster_id')
+                    ->label('Cluster Beasiswa')
+                    ->relationship('cluster', 'nama')
+                    ->placeholder('Pilih Cluster Beasiswa')
+                    ->required(),
             ]);
     }
 
@@ -65,6 +70,9 @@ class KampusResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('no_hp')
                     ->label('No HP Kampus')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('cluster.nama')
+                    ->label('Cluster Beasiswa')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
