@@ -28,7 +28,7 @@ class AppPanelProvider extends PanelProvider
             ->path('profile')
             ->login()
             ->registration()
-            // ->passwordReset()
+            ->passwordReset()
             ->emailVerification()
             ->profile()
             ->userMenuItems([

@@ -25,5 +25,13 @@ class Kampus extends Model
     {
         return $this->hasMany(Jurusan::class);
     }
+    public function beasiswa()
+    {
+        return $this->hasMany(Beasiswa::class);
+    }
+    public function cluster()
+    {
+        return $this->belongsTo(ClusterBeasiswa::class, 'cluster_id');
+    }
 }
 

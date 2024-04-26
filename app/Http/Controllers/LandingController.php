@@ -20,6 +20,6 @@ class LandingController extends Controller
                 $userAdmin = false;
             }
         }
-        return view('landing', compact('userAdmin'));
+        return view('dashboard', compact('userAdmin'));
     }
 }

@@ -24,5 +24,14 @@ class ClusterBeasiswa extends Model
     {
         return $this->hasMany(Jurusan::class);
     }
+    public function kampuses()
+    {
+        return $this->hasMany(Jurusan::class);
+    }
+
+    public function beasiswas()
+    {
+        return $this->hasMany(Beasiswa::class);
+    }
 
 }

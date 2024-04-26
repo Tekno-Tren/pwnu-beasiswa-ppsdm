@@ -6,6 +6,7 @@ namespace App\Models;
 use Filament\Panel;
 use App\Models\Pondok;
 use App\Models\Sekolah;
+use App\Models\JalurPrestasi;
 use App\Models\ClusterBeasiswa;
 use Illuminate\Notifications\Notifiable;
 use Filament\Models\Contracts\FilamentUser;
@@ -31,8 +32,8 @@ class User extends Authenticatable implements FilamentUser
         'jenis_kelamin',
         'alamat',
         'no_hp',
-        'jalur_prestasi',
 
+        'jalur_prestasi_id',
         'sekolah_id',
         'pondok_id',
         'cluster_id'
@@ -74,7 +75,11 @@ class User extends Authenticatable implements FilamentUser
  
         return true;
     }
-    
+
+    public function jalurprestasi()
+    {
+        return $this->belongsTo(JalurPrestasi::class);
+    }
     public function pondok()
     {
         return $this->belongsTo(Pondok::class);
@@ -86,5 +91,9 @@ class User extends Authenticatable implements FilamentUser
     public function cluster()
     {
         return $this->belongsTo(ClusterBeasiswa::class);
+    }
+    public function beasiswa()
+    {
+        return $this->hasOne(Beasiswa::class);
     }
 }
