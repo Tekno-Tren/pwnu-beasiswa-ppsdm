@@ -6,12 +6,12 @@
         <div class="row">
 
           <div class="col-lg-3 col-md-6 footer-contact">
-            <h3>Company</h3>
+            <h3>Alamat</h3>
             <p>
-              A108 Adam Street <br>
-              New York, NY 535022<br>
-              United States <br><br>
-              <strong>Phone:</strong> +1 5589 55488 55<br>
+              Kantor PWNU Jawa Timur <br>
+              Jalan Masjid Al-Akbar Timur No. 9<br>
+              Surabaya <br><br>
+              <strong>Phone:</strong> 082338899646<br>
               <strong>Email:</strong> info@example.com<br>
             </p>
           </div>
@@ -28,13 +28,11 @@
           </div>
 
           <div class="col-lg-3 col-md-6 footer-links">
-            <h4>Our Services</h4>
+            <h4>Social Media</h4>
             <ul>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Design</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Web Development</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Product Management</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Marketing</a></li>
-              <li><i class="bx bx-chevron-right"></i> <a href="#">Graphic Design</a></li>
+              <li><i class="bi bi-instagram mr-2"></i> <a href="#">pwnujatim</a></li>
+              <li><i class="bi bi-twitter-x mr-2"></i> <a href="#">pwnujatim</a></li>
+              <li><i class="bi bi-facebook mr-2"></i> <a href="#">pwnujatim</a></li>
             </ul>
           </div>
 
@@ -50,7 +48,7 @@
       </div>
     </div>
 
-    <div class="container d-md-flex py-4">
+    <div class="container pt-3 pb-3">
 
       <div class="me-md-auto text-center text-md-start">
         <div class="copyright">
@@ -64,12 +62,12 @@
           Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
         </div>
       </div>
-      <div class="social-links text-center text-md-right pt-3 pt-md-0">
+      {{-- <div class="social-links text-center text-md-right pt-3 pt-md-0">
         <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
         <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
         <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
         <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
         <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
-      </div>
+      </div> --}}
     </div>
   </footer><!-- End Footer -->
