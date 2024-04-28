@@ -1,8 +1,7 @@
-@extends('welcome')
+@extends('layouts.base')
 @section('title', 'Daftar Beasiswa')
 
-{{-- @section('content')
-  <main id="main">
+@section('content')
     <div class="my-5">
         <form name="formbukutambah" id="formbukutambah" action="/tambah" method="post" enctype="multipart/form-data">
             @csrf
@@ -44,5 +43,4 @@
             </div>
         </form>
     </div>
-  </main>
-@endsection --}}
+@endsection

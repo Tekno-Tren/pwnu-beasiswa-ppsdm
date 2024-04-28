@@ -15,10 +15,10 @@ class BeasiswaController extends Controller
 {
     public function index()
     {
-        $user = User::findOrFail(Auth::id());
+        // $user = User::findOrFail(Auth::id());
         $jalurprestasi = JalurPrestasi::all();
         // dd($user);
-        return view('beasiswa.daftar2', compact('jalurprestasi'));
+        return view('beasiswa.daftar', compact('jalurprestasi'));
     }
 
     public function index_cluster()
@@ -178,7 +178,7 @@ class BeasiswaController extends Controller
     //             ->with([
     //                 'error' => 'Some problem occured, Please try again'
     //             ]);
-    //     }        
+    //     }
     // }
 
     // public function destroy($id)
