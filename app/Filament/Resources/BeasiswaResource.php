@@ -38,6 +38,7 @@ class BeasiswaResource extends Resource
                 Forms\Components\Select::make('jurusan_id')
                     ->required()
                     ->relationship('jurusan', 'nama'),
+
             ]);
     }
 
