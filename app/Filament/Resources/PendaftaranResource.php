@@ -2,8 +2,8 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\BeasiswaResource\Pages;
-use App\Filament\Resources\BeasiswaResource\RelationManagers;
+use App\Filament\Resources\PendaftaranResource\Pages;
+use App\Filament\Resources\PendaftaranResource\RelationManagers;
 use App\Models\Beasiswa;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -13,11 +13,15 @@ use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
-class BeasiswaResource extends Resource
+class PendaftaranResource extends Resource
 {
     protected static ?string $model = Beasiswa::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'heroicon-o-document-duplicate',
+        $navigationLabel = 'Pendaftaran',
+        $navigationGroup = 'Beasiswa';
+
+    protected static ?int $navigationSort = 1;
 
     public static function form(Form $form): Form
     {
@@ -91,9 +95,9 @@ class BeasiswaResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListBeasiswas::route('/'),
-            'create' => Pages\CreateBeasiswa::route('/create'),
-            'edit' => Pages\EditBeasiswa::route('/{record}/edit'),
+            'index' => Pages\ListPendaftarans::route('/'),
+            'create' => Pages\CreatePendaftaran::route('/create'),
+            'edit' => Pages\EditPendaftaran::route('/{record}/edit'),
         ];
     }
 }

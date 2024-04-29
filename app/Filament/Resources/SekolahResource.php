@@ -22,8 +22,8 @@ class SekolahResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-building-office',
         $navigationLabel = 'Sekolah',
-        $navigationGroup = 'Data Master';
-    protected static ?int $navigationSort = 2;
+        $navigationGroup = 'Administrasi';
+    protected static ?int $navigationSort = 3;
 
     public static function form(Form $form): Form
     {

@@ -22,8 +22,8 @@ class PondokResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-building-library',
         $navigationLabel = 'Pondok',
-        $navigationGroup = 'Data Master';
-    protected static ?int $navigationSort = 1;
+        $navigationGroup = 'Administrasi';
+    protected static ?int $navigationSort = 4;
 
     public static function form(Form $form): Form
     {

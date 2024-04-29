@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Filament\Resources\BeasiswaResource\Pages;
+namespace App\Filament\Resources\EvaluasiResource\Pages;
 
-use App\Filament\Resources\BeasiswaResource;
+use App\Filament\Resources\EvaluasiResource;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
 
-class ListBeasiswas extends ListRecords
+class ListEvaluasis extends ListRecords
 {
-    protected static string $resource = BeasiswaResource::class;
+    protected static string $resource = EvaluasiResource::class;
 
     protected function getHeaderActions(): array
     {

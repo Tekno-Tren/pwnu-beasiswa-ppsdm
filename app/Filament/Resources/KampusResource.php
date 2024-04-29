@@ -20,8 +20,8 @@ class KampusResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-home-modern',
         $navigationLabel = 'Kampus',
-        $navigationGroup = 'Data Master';
-    protected static ?int $navigationSort = 3;
+        $navigationGroup = 'Administrasi';
+    protected static ?int $navigationSort = 5;
 
     public static function form(Form $form): Form
     {

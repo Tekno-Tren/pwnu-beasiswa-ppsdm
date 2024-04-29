@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Filament\Resources\BeasiswaResource\Pages;
+namespace App\Filament\App\Resources\AlumniResource\Pages;
 
-use App\Filament\Resources\BeasiswaResource;
+use App\Filament\App\Resources\AlumniResource;
 use Filament\Actions;
 use Filament\Resources\Pages\EditRecord;
 
-class EditBeasiswa extends EditRecord
+class EditAlumni extends EditRecord
 {
-    protected static string $resource = BeasiswaResource::class;
+    protected static string $resource = AlumniResource::class;
 
     protected function getHeaderActions(): array
     {

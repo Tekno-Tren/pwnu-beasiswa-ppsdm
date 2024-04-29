@@ -22,8 +22,8 @@ class ClusterBeasiswaResource extends Resource
 
     protected static ?string $navigationIcon = 'heroicon-o-inbox-stack',
         $navigationLabel = 'Cluster Beasiswa',
-        $navigationGroup = 'Data Master';
-    protected static ?int $navigationSort = 6;
+        $navigationGroup = 'Administrasi';
+    protected static ?int $navigationSort = 1;
 
     public static function form(Form $form): Form
     {
