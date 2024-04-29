@@ -39,7 +39,7 @@
 
   @include('layouts.header')
 
-    <div class="main min-vh-100">
+    <div class="main min-vh-100 pt-5">
         @yield('content')
 
     </div>
@@ -57,6 +57,9 @@
 
   <!-- Template Custom JS File -->
   <script src="{{ asset('assets/js/main.js') }}"></script>
+
+
+  @yield('custom-script')
 
 </body>
 
