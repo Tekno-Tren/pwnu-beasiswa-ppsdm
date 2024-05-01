@@ -312,49 +312,49 @@
 
           <div class="col-lg-3 col-md-4 col-6">
             <div class="client-logo">
-              <img src="assets/img/clients/client-1.png" class="img-fluid" alt="">
+              <img src="assets/img/Logo Universitas Mitra/Unisma.png" class="img-fluid" style="width: 40%; height: auto;" alt="">
             </div>
           </div>
 
           <div class="col-lg-3 col-md-4 col-6">
             <div class="client-logo">
-              <img src="assets/img/clients/client-2.png" class="img-fluid" alt="">
+              <img src="assets/img/Logo Universitas Mitra/Unusa.png" class="img-fluid" style="width: 25%; height: auto;" alt="">
             </div>
           </div>
 
           <div class="col-lg-3 col-md-4 col-6">
             <div class="client-logo">
-              <img src="assets/img/clients/client-3.png" class="img-fluid" alt="">
+              <img src="assets/img/Logo Universitas Mitra/UPN-Veteran.png" class="img-fluid" style="width: 25%; height: auto;" alt="">
             </div>
           </div>
 
           <div class="col-lg-3 col-md-4 col-6">
             <div class="client-logo">
-              <img src="assets/img/clients/client-4.png" class="img-fluid" alt="">
+              <img src="assets/img/Logo Universitas Mitra/UTM.png" class="img-fluid" style="width: 25%; height: auto;" alt="">
             </div>
           </div>
 
           <div class="col-lg-3 col-md-4 col-6">
             <div class="client-logo">
-              <img src="assets/img/clients/client-5.png" class="img-fluid" alt="">
+              <img src="assets/img/Logo Universitas Mitra/Unesa.png" class="img-fluid" style="width: 25%; height: auto;" alt="">
             </div>
           </div>
 
           <div class="col-lg-3 col-md-4 col-6">
             <div class="client-logo">
-              <img src="assets/img/clients/client-6.png" class="img-fluid" alt="">
+              <img src="assets/img/Logo Universitas Mitra/UB.png" class="img-fluid w" style="width: 25%; height: auto;" alt="">
             </div>
           </div>
 
           <div class="col-lg-3 col-md-4 col-6">
             <div class="client-logo">
-              <img src="assets/img/clients/client-7.png" class="img-fluid" alt="">
+              <img src="assets/img/Logo Universitas Mitra/UM.png" class="img-fluid" style="width: 25%; height: auto;" alt="">
             </div>
           </div>
 
           <div class="col-lg-3 col-md-4 col-6">
             <div class="client-logo">
-              <img src="assets/img/clients/client-8.png" class="img-fluid" alt="">
+              <img src="assets/img/Logo Universitas Mitra/UIN-Malang.png" class="img-fluid" style="width: 28%; height: auto;" alt="">
             </div>
           </div>
 
