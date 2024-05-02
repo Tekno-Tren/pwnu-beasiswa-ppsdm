@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Model;
 
 class Sekolah extends Model
@@ -17,8 +18,8 @@ class Sekolah extends Model
         'no_hp',
     ];
 
-    public function users()
+    public function users() : HasMany
     {
-        return $this->hasMany(User::class);
+        return $this->hasMany(User::class, 'sekolah_id', 'id');
     }
 }

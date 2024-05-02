@@ -13,8 +13,11 @@ return new class extends Migration
     {
         Schema::create('beasiswas', function (Blueprint $table) {
             $table->id();
-            $table->string('no_registrasi');
-            // $table->string('jalur_prestasi');
+            $table->string('no_registrasi_1');
+            $table->foreign('no_registrasi_1')->references('no_registrasi')->on('penilaian')->onDelete('cascade');
+
+            $table->string('no_registrasi_2');
+            $table->foreign('no_registrasi_2')->references('no_registrasi')->on('penilaian')->onDelete('cascade');
 
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
@@ -22,11 +25,23 @@ return new class extends Migration
             $table->unsignedBigInteger('cluster_id')->nullable();
             $table->foreign('cluster_id')->references('id')->on('cluster_beasiswas')->onDelete('cascade');
 
-            $table->unsignedBigInteger('kampus_id')->nullable();
-            $table->foreign('kampus_id')->references('id')->on('kampuses')->onDelete('cascade');
+            $table->unsignedBigInteger('kampus_1')->nullable();
+            $table->foreign('kampus_1')->references('id')->on('kampuses')->onDelete('cascade');
 
-            $table->unsignedBigInteger('jurusan_id')->nullable();
-            $table->foreign('jurusan_id')->references('id')->on('jurusans')->onDelete('cascade');
+            $table->unsignedBigInteger('kampus_2')->nullable();
+            $table->foreign('kampus_2')->references('id')->on('kampuses')->onDelete('cascade');
+
+            $table->unsignedBigInteger('jurusan_1')->nullable();
+            $table->foreign('jurusan_1')->references('id')->on('jurusans')->onDelete('cascade');
+
+            $table->unsignedBigInteger('jurusan_2')->nullable();
+            $table->foreign('jurusan_2')->references('id')->on('jurusans')->onDelete('cascade');
+
+            $table->string('berkas_1')->nullable();
+            $table->string('berkas_2')->nullable();
+
+            $table->boolean('verified_kampus_reg')->default(false);
+            $table->boolean('verified_test_reg')->default(false);
 
             $table->timestamps();
         });

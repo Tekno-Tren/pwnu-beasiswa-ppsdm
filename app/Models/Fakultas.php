@@ -17,11 +17,11 @@ class Fakultas extends Model
         'kampus_id',
     ];
 
-    public function jurusans()
+    public function jurusans() : HasMany
     {
         return $this->hasMany(Jurusan::class);
     }
-    public function kampus()
+    public function kampus() : BelongsTo
     {
         return $this->belongsTo(Kampus::class, 'kampus_id');
     }

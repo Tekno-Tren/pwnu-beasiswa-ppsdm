@@ -17,21 +17,25 @@ class Kampus extends Model
         'no_hp',
     ];
 
-    public function fakultas()
+    public function fakultas() : HasMany
     {
-        return $this->hasMany(Fakultas::class);
+        return $this->hasMany(Fakultas::class, 'kampus_id', 'id');
     }
-    public function jurusan()
+    public function jurusan() : HasMany
     {
-        return $this->hasMany(Jurusan::class);
+        return $this->hasMany(Jurusan::class, 'kampus_id', 'id');
     }
-    public function beasiswa()
+    public function beasiswa1() : HasMany
     {
-        return $this->hasMany(Beasiswa::class);
+        return $this->hasMany(Beasiswa::class, 'kampus_1', 'id');
     }
-    public function cluster()
+    public function beasiswa2() : HasMany
     {
-        return $this->belongsTo(ClusterBeasiswa::class, 'cluster_id');
+        return $this->hasMany(Beasiswa::class, 'kampus_2', 'id');
+    }
+    public function cluster() : BelongsTo
+    {
+        return $this->belongsTo(ClusterBeasiswa::class, 'id', 'cluster_id');
     }
 }
 

@@ -15,21 +15,17 @@ class ClusterBeasiswa extends Model
         'deskripsi',
     ];
 
-    public function users()
-    {
-        return $this->hasMany(User::class);
-    }
-
-    public function jurusans()
-    {
-        return $this->hasMany(Jurusan::class);
-    }
-    public function kampuses()
+    public function jurusans() : HasMany
     {
         return $this->hasMany(Jurusan::class);
     }
 
-    public function beasiswas()
+    public function kampuses() : HasMany
+    {
+        return $this->hasMany(Jurusan::class);
+    }
+
+    public function beasiswas() : HasMany
     {
         return $this->hasMany(Beasiswa::class);
     }

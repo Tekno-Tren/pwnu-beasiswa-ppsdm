@@ -7,7 +7,6 @@ use Filament\Panel;
 use App\Models\Pondok;
 use App\Models\Sekolah;
 use App\Models\JalurPrestasi;
-use App\Models\ClusterBeasiswa;
 use Illuminate\Notifications\Notifiable;
 use Filament\Models\Contracts\FilamentUser;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -37,7 +36,7 @@ class User extends Authenticatable implements FilamentUser
         'jalur_prestasi_id',
         'sekolah_id',
         'pondok_id',
-        'cluster_id'
+        'cluster_id',
     ];
 
     /**
@@ -77,24 +76,24 @@ class User extends Authenticatable implements FilamentUser
         return true;
     }
 
-    public function jalurprestasi()
+    public function jalurprestasi() : HasMany
     {
-        return $this->belongsTo(JalurPrestasi::class);
+        return $this->belongsTo(JalurPrestasi::class, 'id', 'jalur_prestasi_id');
     }
-    public function pondok()
+
+    public function pondok(): BelongsTo
     {
-        return $this->belongsTo(Pondok::class);
+        return $this->belongsTo(Pondok::class, 'id', 'pondok_id');
     }
+
     public function sekolah()
     {
-        return $this->belongsTo(Sekolah::class);
+        return $this->belongsTo(Sekolah::class, 'id', 'sekolah_id');
     }
+
     public function cluster()
     {
-        return $this->belongsTo(ClusterBeasiswa::class);
+        return $this->belongsTo(ClusterBeasiswa::class, 'id', 'cluster_id');
     }
-    public function beasiswa()
-    {
-        return $this->hasOne(Beasiswa::class);
-    }
+
 }

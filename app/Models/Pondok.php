@@ -3,12 +3,13 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Model;
 
 class Pondok extends Model
 {
     use HasFactory;
-    
+
     protected $table = 'pondoks';
     protected $fillable = [
         'nspp',
@@ -17,8 +18,8 @@ class Pondok extends Model
         'no_hp',
     ];
 
-    public function users()
+    public function users() : HasMany
     {
-        return $this->hasMany(User::class);
+        return $this->hasMany(User::class, 'pondok_id', 'id');
     }
 }
