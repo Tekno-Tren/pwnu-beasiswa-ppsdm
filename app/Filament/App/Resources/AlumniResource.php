@@ -4,7 +4,7 @@ namespace App\Filament\App\Resources;
 
 use App\Filament\App\Resources\AlumniResource\Pages;
 use App\Filament\App\Resources\AlumniResource\RelationManagers;
-use App\Models\Alumni;
+use App\Models\Beasiswa;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -15,7 +15,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class AlumniResource extends Resource
 {
-    protected static ?string $model = Alumni::class;
+    protected static ?string $model = Beasiswa::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-document-duplicate',
         $navigationLabel = 'Alumni',

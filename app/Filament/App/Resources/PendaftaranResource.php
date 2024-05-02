@@ -2,114 +2,135 @@
 
 namespace App\Filament\App\Resources;
 
-use App\Filament\Resources\PendaftaranResource\Pages;
-use App\Filament\Resources\PendaftaranResource\RelationManagers;
-use App\Models\Beasiswa;
+use App\Filament\App\Resources\PendaftaranResource\Pages;
+use App\Filament\App\Resources\PendaftaranResource\RelationManagers;
+
 use App\Models\User;
+use App\Models\Kampus;
+use App\Models\Pondok;
+use App\Models\Sekolah;
+use App\Models\Jurusan;
+use App\Models\Beasiswa;
+use App\Models\JalurPrestasi;
+use App\Models\ClusterBeasiswa;
+
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Forms\Components\Wizard;
+
 use Filament\Resources\Resource;
+
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
+use Filament\Forms\Get;
+use Filament\Forms\Set;
+use Filament\Forms\Components\Select;
+use Illuminate\Support\Collection;
+
 class PendaftaranResource extends Resource
 {
-    protected static ?string $beasiswa = Beasiswa::class;
-    // protected static ?string $user = User::class;
+    protected static ?string $user = User::class;
+    protected static ?string $kampus = Kampus::class;
+    protected static ?string $jurusan = Jurusan::class;
+    protected static ?string $model = Beasiswa::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-document-duplicate',
-        $navigationLabel = 'Pendaftaran',
-        $navigationGroup = 'Beasiswa';
-
-    protected static ?int $navigationSort = 1;
+    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                // Wizard::make([
-                //     Wizard\Step::make('Profil')
-                //         ->schema([
-                //             Forms\Components\TextInput::make('Nama')
-                //                 ->required()
-                //                 ->relationship('user', 'name'),
-                //             Forms\Components\TextInput::make('Tempat Lahir')
-                //                 ->required()
-                //                 ->relationship('user', 'tempat_lahir'),
-                //             Forms\Components\DatePicker::make('tanggal_lahir')
-                //                 ->required()
-                //                 ->relationship('user', 'tanggal_lahir'),
-                //             Forms\Components\TextInput::make('No Handphone')
-                //                 ->required()
-                //                 ->relationship('user', 'no_hp_1'),
-                //             Forms\Components\TextInput::make('No Handphone yang dapat dihubungi')
-                //                 ->required()
-                //                 ->relationship('user', 'no_hp_2'),
-                //             Forms\Components\Select::make('jurusan_id')
-                //                 ->required()
-                //                 ->relationship('jurusan', 'nama'),
-                //         ]),
-                //     Wizard\Step::make('Pendaftaran')
-                //         ->schema([
-                //             Forms\Components\Select::make('cluster_id')
-                //                 ->required()
-                //                 ->relationship('cluster', 'nama'),
-                //             Forms\Components\Select::make('kampus_id')
-                //                 ->required()
-                //                 ->relationship('kampus', 'nama'),
-                //             Forms\Components\Select::make('jurusan_id')
-                //                 ->required()
-                //                 ->relationship('jurusan', 'nama'),
-                //             Forms\Components\Select::make('user_id')
-                //                 ->required()
-                //                 ->relationship('user', 'name'),
-                //             Forms\Components\TextInput::make('no_registrasi')
-                //                 ->required()
-                //                 ->maxLength(255),
-                //         ]),
-                // ]),
-                // use Filament\Forms\Components\Wizard;
-
                 Wizard::make([
                     Wizard\Step::make('Profil')
                         ->schema([
                             Forms\Components\TextInput::make('Nama')
-                                ->required(),
+                                ->required()
+                                ->maxLength(255),
                             Forms\Components\TextInput::make('Tempat Lahir')
-                                ->required(),
-                            Forms\Components\DatePicker::make('tanggal_lahir')
+                                ->required()
+                                ->maxLength(255),
+                                Forms\Components\DatePicker::make('tanggal_lahir')
                                 ->required(),
                             Forms\Components\TextInput::make('No Handphone')
-                                ->required(),
-                            Forms\Components\TextInput::make('No Handphone yang dapat dihubungi')
-                                ->required(),
-                            Forms\Components\Select::make('jurusan_id')
                                 ->required()
-                                ->relationship('jurusan', 'nama'),
+                                ->maxLength(255),
+                            Forms\Components\TextInput::make('No Handphone yang dapat dihubungi')
+                                ->required()
+                                ->maxLength(255),
+                            Forms\Components\Select::make('asal_sekolah')
+                                ->required()
+                                ->options(Sekolah::all()->pluck('nama', 'id')),
+                            Forms\Components\Select::make('pondok')
+                                ->required()
+                                ->options(Pondok::all()->pluck('nama', 'id')),
+
                         ]),
                     Wizard\Step::make('Pendaftaran')
                         ->schema([
+                            Forms\Components\Select::make('Jalur Prestasi')
+                            ->options(JalurPrestasi::all()->pluck('nama', 'id')),
                             Forms\Components\Select::make('cluster_id')
+                                ->relationship(name:'cluster', titleAttribute:'nama')
+                                ->options(function (): array {
+                                    return ClusterBeasiswa::all()->pluck('nama', 'id')->toArray();})
+                                ->searchable()
+                                ->live()
+                                ->afterStateUpdated(
+                                    function (Set $set) {
+                                        $set('kampus_pilihan_1', null);
+                                        $set('kampus_pilihan_2', null);
+                                    }
+                                )
+                                ->required(),
+                            Forms\Components\Select::make('kampus_pilihan_1')
                                 ->required()
-                                ->relationship('cluster', 'nama'),
-                            Forms\Components\Select::make('kampus_id')
+                                ->options(fn (Get $get): Collection => Kampus::query()
+                                    ->where('cluster_id', $get('cluster_id'))
+                                    ->pluck('nama', 'id'))
+                                ->searchable()
+                                ->preload()
+                                ->live()
+                                ->afterStateUpdated(
+                                    function (Set $set) {
+                                        $set('jurusan_kampus_1', null);
+                                    }
+                                )
+                                ,
+                            Forms\Components\Select::make('kampus_pilihan_2')
                                 ->required()
-                                ->relationship('kampus', 'nama'),
-                            Forms\Components\Select::make('jurusan_id')
+                                ->options(fn (Get $get): Collection => Kampus::query()
+                                    ->where('cluster_id', $get('cluster_id'))
+                                    ->pluck('nama', 'id'))
+                                ->searchable()
+                                ->preload()
+                                ->live()
+                                ->afterStateUpdated(
+                                    function (Set $set) {
+                                        $set('jurusan_kampus_2', null);
+                                    }
+                                ),
+                            Forms\Components\Select::make('jurusan_kampus_1')
                                 ->required()
-                                ->relationship('jurusan', 'nama'),
-                            Forms\Components\Select::make('user_id')
+                                ->options(fn (Get $get): Collection => Jurusan::query()
+                                    ->where('kampus_id', $get('kampus_pilihan_1'))
+                                    ->pluck('nama', 'id'))
+                                ->preload(),
+                            Forms\Components\Select::make('jurusan_kampus_2')
                                 ->required()
-                                ->relationship('user', 'name'),
-                            Forms\Components\TextInput::make('no_registrasi')
-                                ->required()
-                                ->maxLength(255),
+                                ->options(fn (Get $get): Collection => Jurusan::query()
+                                    ->where('kampus_id', $get('kampus_pilihan_2'))
+                                    ->pluck('nama', 'id'))
+                                ->preload(),
+                            Forms\Components\FileUpload::make('berkas_1')
+                                ->acceptedFileTypes(['pdf']),
+                            Forms\Components\FileUpload::make('berkas_2')
+                                ->acceptedFileTypes(['pdf']),
                         ]),
-                ]),
-            ]);
+                ])
+        ]);
     }
 
 
@@ -135,8 +156,6 @@ class PendaftaranResource extends Resource
     public static function getRelations(): array
     {
         return [
-
-
 
         ];
     }
