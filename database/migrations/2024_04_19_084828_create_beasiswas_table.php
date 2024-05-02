@@ -14,10 +14,10 @@ return new class extends Migration
         Schema::create('beasiswas', function (Blueprint $table) {
             $table->id();
             $table->string('no_registrasi_1');
-            $table->foreign('no_registrasi_1')->references('no_registrasi')->on('penilaian')->onDelete('cascade');
+            $table->foreign('no_registrasi_1')->references('no_registrasi')->on('penilaians')->onDelete('cascade');
 
             $table->string('no_registrasi_2');
-            $table->foreign('no_registrasi_2')->references('no_registrasi')->on('penilaian')->onDelete('cascade');
+            $table->foreign('no_registrasi_2')->references('no_registrasi')->on('penilaians')->onDelete('cascade');
 
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');

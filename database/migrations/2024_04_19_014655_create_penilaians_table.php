@@ -11,12 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pondoks', function (Blueprint $table) {
+        Schema::create('penilaians', function (Blueprint $table) {
             $table->id();
-            $table->string('nspp')->unique();
-            $table->string('nama');
-            $table->string('alamat');
-            $table->string('no_hp');
+            $table->string('no_registrasi')->unique();
+            $table->string('tes_tulis')->nullable();
+            $table->string('tes_praktek')->nullable();
             $table->timestamps();
         });
     }
@@ -26,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pondoks');
+        Schema::dropIfExists('penilaians');
     }
 };
