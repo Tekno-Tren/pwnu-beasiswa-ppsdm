@@ -13,9 +13,10 @@ class Jurusan extends Model
 {
     use HasFactory;
 
+    protected $table = 'jurusans';
     protected $fillable = [
         'nama',
-
+        'kampus_id',
         'fakultas_id',
         'cluster_id'
     ];

@@ -5,6 +5,12 @@ namespace Database\Seeders;
 use App\Models\User;
 use App\Models\Pondok;
 use App\Models\Sekolah;
+use App\Models\JalurPrestasi;
+use App\Models\ClusterBeasiswa;
+use App\Models\Beasiswa;
+use App\Models\Kampus;
+use App\Models\Fakultas;
+use App\Models\Jurusan;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -23,7 +29,6 @@ class DatabaseSeeder extends Seeder
             'name' => 'Admin PPSDM',
             'email' => 'admin@example.com',
         ]);
-        User::factory(10)->create();
 
         DB::table('sekolahs')->insert([
             [

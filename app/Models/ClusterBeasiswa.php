@@ -10,6 +10,7 @@ class ClusterBeasiswa extends Model
 {
     use HasFactory;
 
+    protected $table = 'cluster_beasiswas';
     protected $fillable = [
         'nama',
         'deskripsi',
