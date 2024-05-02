@@ -23,8 +23,9 @@ return new class extends Migration
             $table->date('tanggal_lahir')->nullable();
             $table->string('jenis_kelamin')->nullable();
             $table->string('alamat')->nullable();
-            $table->string('no_hp')->nullable();
-            
+            $table->string('no_hp_1')->nullable();
+            $table->string('no_hp_2')->nullable();
+
             $table->unsignedBigInteger('jalur_prestasi_id')->nullable();
             $table->unsignedBigInteger('sekolah_id')->nullable();
             $table->unsignedBigInteger('pondok_id')->nullable();

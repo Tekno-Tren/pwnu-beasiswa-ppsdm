@@ -32,6 +32,7 @@ class User extends Authenticatable implements FilamentUser
         'jenis_kelamin',
         'alamat',
         'no_hp',
+        'no_hp_secondary',
 
         'jalur_prestasi_id',
         'sekolah_id',
@@ -61,18 +62,18 @@ class User extends Authenticatable implements FilamentUser
             'password' => 'hashed',
         ];
     }
-    
+
     public function isAdmin(): bool
     {
         return $this->email === 'admin@example.com';
     }
-    
+
     public function canAccessPanel(Panel $panel): bool
     {
         if ($panel->getId() === 'admin') {
             return $this->isAdmin();
         }
- 
+
         return true;
     }
 

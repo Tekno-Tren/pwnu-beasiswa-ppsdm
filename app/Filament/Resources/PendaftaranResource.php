@@ -5,8 +5,10 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\PendaftaranResource\Pages;
 use App\Filament\Resources\PendaftaranResource\RelationManagers;
 use App\Models\Beasiswa;
+use App\Models\User;
 use Filament\Forms;
 use Filament\Forms\Form;
+use Filament\Forms\Components\Wizard;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -15,7 +17,8 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class PendaftaranResource extends Resource
 {
-    protected static ?string $model = Beasiswa::class;
+    protected static ?string $beasiswa = Beasiswa::class;
+    protected static ?string $user = User::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-document-duplicate',
         $navigationLabel = 'Pendaftaran',
@@ -42,6 +45,8 @@ class PendaftaranResource extends Resource
                 Forms\Components\Select::make('jurusan_id')
                     ->required()
                     ->relationship('jurusan', 'nama'),
+
+
 
             ]);
     }
