@@ -19,6 +19,8 @@ use Filament\Http\Middleware\DispatchServingFilamentEvent;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 
+use App\Filament\App\Pages\EditProfile;
+
 class AppPanelProvider extends PanelProvider
 {
     public function panel(Panel $panel): Panel
@@ -41,6 +43,7 @@ class AppPanelProvider extends PanelProvider
                     ->label('Dashboard')
                     ->icon('heroicon-o-home')
                     ->url('/'),
+                'profile' => MenuItem::make()->url(fn (): string => EditProfile::getUrl())
             ])
             ->colors([
                 'primary' => Color::Amber,

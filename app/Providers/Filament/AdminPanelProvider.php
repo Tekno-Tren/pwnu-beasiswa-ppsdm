@@ -2,14 +2,12 @@
 
 namespace App\Providers\Filament;
 
-use App\Filament\Pages\EditRegister;
 use Filament\Navigation\MenuItem;
 use Filament\Pages;
 use Filament\Panel;
 use Filament\Widgets;
 use Filament\PanelProvider;
 use Filament\Support\Colors\Color;
-use App\Filament\Pages\EditProfile;
 use Filament\Http\Middleware\Authenticate;
 use Illuminate\Session\Middleware\StartSession;
 use Illuminate\Cookie\Middleware\EncryptCookies;
@@ -22,6 +20,7 @@ use Filament\Navigation\NavigationGroup;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 
+use App\Filament\Pages\EditProfile;
 class AdminPanelProvider extends PanelProvider
 {
     public function panel(Panel $panel): Panel
@@ -37,9 +36,14 @@ class AdminPanelProvider extends PanelProvider
             ->profile()
             ->userMenuItems([
                 MenuItem::make()
-                ->label('Dashboard User')
-                ->icon('heroicon-o-cog-6-tooth')
-                ->url('/dashboard')
+                    ->label('Dashboard User')
+                    ->icon('heroicon-o-cog-6-tooth')
+                    ->url('/dashboard'),
+                'profile' => MenuItem::make()
+                    ->url(
+                        fn (): string => EditProfile::getUrl()
+                        // '/dashboard/edit-profile'
+                        )
             ])
             ->colors([
                 'danger' => Color::Rose,

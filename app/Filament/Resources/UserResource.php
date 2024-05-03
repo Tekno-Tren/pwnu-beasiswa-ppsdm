@@ -110,7 +110,8 @@ class UserResource extends Resource
                 TextColumn::make('alamat')
                     ->searchable()
                     ->toggleable(isToggledHiddenByDefault: true),
-                TextColumn::make('no_hp')
+                TextColumn::make('no_hp_1')
+                    ->label('No. Handphone')
                     ->searchable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('jalur_prestasi')
@@ -166,8 +167,8 @@ class UserResource extends Resource
             'edit' => Pages\EditUser::route('/{record}/edit'),
         ];
     }
-    public static function getEloquentQuery(): Builder
-    {
-        return parent::getEloquentQuery()->where('email', '!=', 'admin@example.com');
-    }
+    // public static function getEloquentQuery(): Builder
+    // {
+    //     return parent::getEloquentQuery()->where('email', '!=', 'admin@example.com');
+    // }
 }

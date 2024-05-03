@@ -18,6 +18,11 @@ class ClusterBeasiswa extends Model
         'deskripsi',
     ];
 
+    public function user(): HasMany
+    {
+        return $this->hasMany(User::class, 'cluster_id', 'id');
+    }
+
     public function jurusan(): HasMany
     {
         return $this->hasMany(Jurusan::class);

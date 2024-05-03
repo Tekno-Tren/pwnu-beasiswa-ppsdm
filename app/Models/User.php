@@ -32,8 +32,8 @@ class User extends Authenticatable implements FilamentUser
         'tanggal_lahir',
         'jenis_kelamin',
         'alamat',
-        'no_hp',
-        'no_hp_secondary',
+        'no_hp_1',
+        'no_hp_2',
 
         'jalur_prestasi_id',
         'sekolah_id',
@@ -85,16 +85,16 @@ class User extends Authenticatable implements FilamentUser
 
     public function pondok(): BelongsTo
     {
-        return $this->belongsTo(Pondok::class, 'id', 'pondok_id');
+        return $this->belongsTo(Pondok::class, 'pondok_id', 'id');
     }
 
     public function sekolah(): BelongsTo
     {
-        return $this->belongsTo(Sekolah::class, 'id', 'sekolah_id');
+        return $this->belongsTo(Sekolah::class, 'sekolah_id', 'id');
     }
 
     public function cluster(): BelongsTo
     {
-        return $this->belongsTo(ClusterBeasiswa::class, 'id', 'cluster_id');
+        return $this->belongsTo(ClusterBeasiswa::class, 'cluster_id', 'id');
     }
 }
