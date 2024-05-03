@@ -11,10 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('cluster_beasiswas', function (Blueprint $table) {
+        Schema::create('penilaian', function (Blueprint $table) {
             $table->id();
-            $table->string('nama');
-            $table->string('deskripsi');
+            $table->string('no_registrasi')->unique();
+            $table->string('tes_tulis')->nullable();
+            $table->string('tes_praktek')->nullable();
             $table->timestamps();
         });
     }
@@ -24,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('cluster_beasiswas');
+        Schema::dropIfExists('penilaian');
     }
 };

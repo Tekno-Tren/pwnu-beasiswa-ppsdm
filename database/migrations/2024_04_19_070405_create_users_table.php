@@ -32,10 +32,10 @@ return new class extends Migration
             $table->unsignedBigInteger('cluster_id')->nullable();
             $table->timestamps();
 
-            $table->foreign('jalur_prestasi_id')->references('id')->on('jalur_prestasis')->onDelete('set null');
-            $table->foreign('sekolah_id')->references('id')->on('sekolahs')->onDelete('set null');
-            $table->foreign('pondok_id')->references('id')->on('pondoks')->onDelete('set null');
-            $table->foreign('cluster_id')->references('id')->on('cluster_beasiswas')->onDelete('set null');
+            $table->foreign('jalur_prestasi_id')->references('id')->on('jalur_prestasi')->onDelete('set null');
+            $table->foreign('sekolah_id')->references('id')->on('sekolah')->onDelete('set null');
+            $table->foreign('pondok_id')->references('id')->on('pondok')->onDelete('set null');
+            $table->foreign('cluster_id')->references('id')->on('cluster_beasiswa')->onDelete('set null');
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {

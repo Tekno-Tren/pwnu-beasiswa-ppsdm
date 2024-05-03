@@ -12,7 +12,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('jurusans', function (Blueprint $table) {
+        Schema::create('jurusan', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
 
@@ -21,9 +21,9 @@ return new class extends Migration
             $table->unsignedBigInteger('cluster_id')->nullable();
             $table->timestamps();
 
-            $table->foreign('kampus_id')->references('id')->on('kampuses')->onDelete('set null');
+            $table->foreign('kampus_id')->references('id')->on('kampus')->onDelete('set null');
             $table->foreign('fakultas_id')->references('id')->on('fakultas')->onDelete('set null');
-            $table->foreign('cluster_id')->references('id')->on('cluster_beasiswas')->onDelete('set null');
+            $table->foreign('cluster_id')->references('id')->on('cluster_beasiswa')->onDelete('set null');
         });
     }
 
@@ -32,6 +32,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('jurusans');
+        Schema::dropIfExists('jurusan');
     }
 };

@@ -2,33 +2,34 @@
 
 namespace App\Models;
 
-use App\Models\User;
 use Illuminate\Database\Eloquent\Model;
+
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class ClusterBeasiswa extends Model
 {
     use HasFactory;
 
-    protected $table = 'cluster_beasiswas';
+    protected $table = 'cluster_beasiswa';
+
     protected $fillable = [
         'nama',
         'deskripsi',
     ];
 
-    public function jurusans() : HasMany
+    public function jurusan(): HasMany
     {
         return $this->hasMany(Jurusan::class);
     }
 
-    public function kampuses() : HasMany
+    public function kampus(): HasMany
     {
         return $this->hasMany(Jurusan::class);
     }
 
-    public function beasiswas() : HasMany
+    public function beasiswa(): HasMany
     {
         return $this->hasMany(Beasiswa::class);
     }
-
 }

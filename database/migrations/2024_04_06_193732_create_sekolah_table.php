@@ -11,17 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('kampuses', function (Blueprint $table) {
+        Schema::create('sekolah', function (Blueprint $table) {
             $table->id();
-            $table->string('no_kode')->unique();
+            $table->string('npsn')->unique();
             $table->string('nama');
             $table->string('alamat');
             $table->string('no_hp');
-            $table->unsignedBigInteger('cluster_id')->nullable();
-
             $table->timestamps();
-            $table->foreign('cluster_id')->references('id')->on('cluster_beasiswas')->onDelete('set null');
-
         });
     }
 
@@ -30,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('kampuses');
+        Schema::dropIfExists('sekolah');
     }
 };

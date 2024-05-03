@@ -10,7 +10,8 @@ class Pondok extends Model
 {
     use HasFactory;
 
-    protected $table = 'pondoks';
+    protected $table = 'pondok';
+
     protected $fillable = [
         'nspp',
         'nama',
@@ -18,7 +19,7 @@ class Pondok extends Model
         'no_hp',
     ];
 
-    public function users() : HasMany
+    public function users(): HasMany
     {
         return $this->hasMany(User::class, 'pondok_id', 'id');
     }

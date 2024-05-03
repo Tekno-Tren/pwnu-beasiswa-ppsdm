@@ -2,14 +2,15 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Penilaian extends Model
 {
     use HasFactory;
 
-    protected $table = 'penilaians';
+    protected $table = 'penilaian';
 
     protected $fillable = [
         'jalur_prestasi_id',
@@ -17,12 +18,12 @@ class Penilaian extends Model
         'tes_praktek',
     ];
 
-    public function prestasi1() : BelongsTo
+    public function prestasi_1(): BelongsTo
     {
         return $this->belongsTo(JalurPrestasi::class, 'jalur_prestasi_1', 'jalur_prestasi_id');
     }
 
-    public function prestasi2() : BelongsTo
+    public function prestasi_2(): BelongsTo
     {
         return $this->belongsTo(JalurPrestasi::class, 'jalur_prestasi_2', 'jalur_prestasi_id');
     }

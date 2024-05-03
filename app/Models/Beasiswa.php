@@ -8,12 +8,13 @@ use App\Models\Jurusan;
 use App\Models\ClusterBeasiswa;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relationships\HasMany;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Beasiswa extends Model
 {
     use HasFactory;
+
+    protected $table = 'beasiswa';
 
     protected $fillable = [
         'user_id',
@@ -30,27 +31,32 @@ class Beasiswa extends Model
         "verified_test_reg",
     ];
 
-    public function user() : BelongsTo
+    public function user(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id');
     }
-    public function cluster() : BelongsTo
+
+    public function cluster(): BelongsTo
     {
         return $this->belongsTo(ClusterBeasiswa::class, 'cluster_id');
     }
-    public function kampus1() : BelongsTo
+
+    public function kampus_1(): BelongsTo
     {
         return $this->belongsTo(Kampus::class, 'id', 'kampus_1');
     }
-    public function jurusan1() : BelongsTo
+
+    public function jurusan_1(): BelongsTo
     {
-        return $this->belongsTo(Jurusan::class,'id', 'jurusan_1');
+        return $this->belongsTo(Jurusan::class, 'id', 'jurusan_1');
     }
-    public function kampus2() : BelongsTo
+
+    public function kampus_2(): BelongsTo
     {
         return $this->belongsTo(Kampus::class, 'id', 'kampus_2');
     }
-    public function jurusan2() : BelongsTo
+
+    public function jurusan_2(): BelongsTo
     {
         return $this->belongsTo(Jurusan::class, 'id', 'jurusan_2');
     }

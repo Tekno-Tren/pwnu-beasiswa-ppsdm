@@ -11,7 +11,7 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('pondoks', function (Blueprint $table) {
+        Schema::create('pondok', function (Blueprint $table) {
             $table->id();
             $table->string('nspp')->unique();
             $table->string('nama');
@@ -26,6 +26,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('pondoks');
+        Schema::dropIfExists('pondok');
     }
 };

@@ -9,6 +9,8 @@ use App\Models\Sekolah;
 use App\Models\JalurPrestasi;
 use Illuminate\Notifications\Notifiable;
 use Filament\Models\Contracts\FilamentUser;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
@@ -76,9 +78,9 @@ class User extends Authenticatable implements FilamentUser
         return true;
     }
 
-    public function jalurprestasi() : HasMany
+    public function jalurprestasi(): HasMany
     {
-        return $this->belongsTo(JalurPrestasi::class, 'id', 'jalur_prestasi_id');
+        return $this->hasMany(JalurPrestasi::class, 'id', 'jalur_prestasi_id');
     }
 
     public function pondok(): BelongsTo
@@ -86,14 +88,13 @@ class User extends Authenticatable implements FilamentUser
         return $this->belongsTo(Pondok::class, 'id', 'pondok_id');
     }
 
-    public function sekolah()
+    public function sekolah(): BelongsTo
     {
         return $this->belongsTo(Sekolah::class, 'id', 'sekolah_id');
     }
 
-    public function cluster()
+    public function cluster(): BelongsTo
     {
         return $this->belongsTo(ClusterBeasiswa::class, 'id', 'cluster_id');
     }
-
 }

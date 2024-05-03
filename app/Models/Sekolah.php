@@ -10,7 +10,7 @@ class Sekolah extends Model
 {
     use HasFactory;
 
-    protected $table = 'sekolahs';
+    protected $table = 'sekolah';
     protected $fillable = [
         'npsn',
         'nama',
@@ -18,7 +18,7 @@ class Sekolah extends Model
         'no_hp',
     ];
 
-    public function users() : HasMany
+    public function users(): HasMany
     {
         return $this->hasMany(User::class, 'sekolah_id', 'id');
     }

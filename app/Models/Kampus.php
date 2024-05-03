@@ -4,13 +4,16 @@ namespace App\Models;
 
 use App\Models\Fakultas;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Kampus extends Model
 {
     use HasFactory;
 
-    protected $table = 'kampuses';
+    protected $table = 'kampus';
+
     protected $fillable = [
         'no_kode',
         'nama',
@@ -18,25 +21,28 @@ class Kampus extends Model
         'no_hp',
     ];
 
-    public function fakultas() : HasMany
+    public function fakultas(): HasMany
     {
         return $this->hasMany(Fakultas::class, 'kampus_id', 'id');
     }
-    public function jurusan() : HasMany
+
+    public function jurusan(): HasMany
     {
         return $this->hasMany(Jurusan::class, 'kampus_id', 'id');
     }
-    public function beasiswa1() : HasMany
+
+    public function beasiswa_1(): HasMany
     {
         return $this->hasMany(Beasiswa::class, 'kampus_1', 'id');
     }
-    public function beasiswa2() : HasMany
+
+    public function beasiswa_2(): HasMany
     {
         return $this->hasMany(Beasiswa::class, 'kampus_2', 'id');
     }
-    public function cluster() : BelongsTo
+
+    public function cluster(): BelongsTo
     {
         return $this->belongsTo(ClusterBeasiswa::class, 'id', 'cluster_id');
     }
 }
-
