@@ -17,10 +17,9 @@ class PenilaianResource extends Resource
 {
     protected static ?string $model = Beasiswa::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-document-text',
-        $navigationLabel = 'Penilaian',
-        $navigationGroup = 'Beasiswa';
-
+    protected static ?string $navigationIcon = 'heroicon-o-document-text';
+    protected static ?string $navigationLabel = 'Penilaian';
+    protected static ?string $navigationGroup = 'Beasiswa';
     protected static ?int $navigationSort = 3;
 
     public static function form(Form $form): Form

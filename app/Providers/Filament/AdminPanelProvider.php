@@ -18,6 +18,7 @@ use Illuminate\Session\Middleware\AuthenticateSession;
 use Illuminate\View\Middleware\ShareErrorsFromSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
+use Filament\Navigation\NavigationGroup;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 
@@ -38,7 +39,7 @@ class AdminPanelProvider extends PanelProvider
                 MenuItem::make()
                 ->label('Dashboard User')
                 ->icon('heroicon-o-cog-6-tooth')
-                ->url('/profile')
+                ->url('/dashboard')
             ])
             ->colors([
                 'danger' => Color::Rose,
@@ -75,6 +76,12 @@ class AdminPanelProvider extends PanelProvider
             ])
             ->authMiddleware([
                 Authenticate::class,
+            ])
+            ->navigationGroups([
+                NavigationGroup::make()
+                    ->label('Beasiswa'),
+                NavigationGroup::make()
+                    ->label('Administrasi'),
             ]);
     }
 }

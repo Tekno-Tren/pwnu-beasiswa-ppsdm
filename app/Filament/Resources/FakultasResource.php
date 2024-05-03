@@ -18,9 +18,9 @@ class FakultasResource extends Resource
 {
     protected static ?string $model = Fakultas::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-home-modern',
-        $navigationLabel = 'Fakultas',
-        $navigationGroup = 'Data Master';
+    protected static ?string $navigationIcon = 'heroicon-o-home-modern';
+    protected static ?string $navigationLabel = 'Fakultas';
+    protected static ?string $navigationGroup = 'Administrasi';
     protected static ?int $navigationSort = 4;
 
     public static function form(Form $form): Form

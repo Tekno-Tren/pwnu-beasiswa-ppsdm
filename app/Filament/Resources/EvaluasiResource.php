@@ -17,10 +17,9 @@ class EvaluasiResource extends Resource
 {
     protected static ?string $model = Beasiswa::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-document-magnifying-glass',
-        $navigationLabel = 'Evaluasi',
-        $navigationGroup = 'Beasiswa';
-
+    protected static ?string $navigationIcon = 'heroicon-o-document-magnifying-glass';
+    protected static ?string $navigationLabel = 'Evaluasi';
+    protected static ?string $navigationGroup = 'Beasiswa';
     protected static ?int $navigationSort = 4;
 
     public static function form(Form $form): Form

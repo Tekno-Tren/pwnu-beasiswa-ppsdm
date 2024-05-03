@@ -18,9 +18,9 @@ class KampusResource extends Resource
 {
     protected static ?string $model = Kampus::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-home-modern',
-        $navigationLabel = 'Kampus',
-        $navigationGroup = 'Administrasi';
+    protected static ?string $navigationIcon = 'heroicon-o-home-modern';
+    protected static ?string $navigationLabel = 'Kampus';
+    protected static ?string $navigationGroup = 'Administrasi';
     protected static ?int $navigationSort = 5;
 
     public static function form(Form $form): Form

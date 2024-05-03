@@ -17,10 +17,9 @@ class VerifikasiResource extends Resource
 {
     protected static ?string $model = Beasiswa::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-document-check',
-        $navigationLabel = 'Verifikasi',
-        $navigationGroup = 'Beasiswa';
-
+    protected static ?string $navigationIcon = 'heroicon-o-document-check';
+    protected static ?string $navigationLabel = 'Verifikasi';
+    protected static ?string $navigationGroup = 'Beasiswa';
     protected static ?int $navigationSort = 2;
 
     public static function form(Form $form): Form

@@ -20,10 +20,9 @@ class PendaftaranResource extends Resource
     protected static ?string $beasiswa = Beasiswa::class;
     protected static ?string $user = User::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-document-duplicate',
-        $navigationLabel = 'Pendaftaran',
-        $navigationGroup = 'Beasiswa';
-
+    protected static ?string $navigationIcon = 'heroicon-o-document-duplicate';
+    protected static ?string $navigationLabel = 'Pendaftaran';
+    protected static ?string $navigationGroup = 'Beasiswa';
     protected static ?int $navigationSort = 1;
 
     public static function form(Form $form): Form

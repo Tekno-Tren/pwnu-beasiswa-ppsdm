@@ -20,9 +20,9 @@ class PondokResource extends Resource
 {
     protected static ?string $model = Pondok::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-building-library',
-        $navigationLabel = 'Pondok',
-        $navigationGroup = 'Administrasi';
+    protected static ?string $navigationIcon = 'heroicon-o-building-library';
+    protected static ?string $navigationLabel = 'Pondok';
+    protected static ?string $navigationGroup = 'Administrasi';
     protected static ?int $navigationSort = 4;
 
     public static function form(Form $form): Form

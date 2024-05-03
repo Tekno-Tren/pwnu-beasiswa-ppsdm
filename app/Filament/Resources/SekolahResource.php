@@ -20,9 +20,9 @@ class SekolahResource extends Resource
 {
     protected static ?string $model = Sekolah::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-building-office',
-        $navigationLabel = 'Sekolah',
-        $navigationGroup = 'Administrasi';
+    protected static ?string $navigationIcon = 'heroicon-o-building-office';
+    protected static ?string $navigationLabel = 'Sekolah';
+    protected static ?string $navigationGroup = 'Administrasi';
     protected static ?int $navigationSort = 3;
 
     public static function form(Form $form): Form

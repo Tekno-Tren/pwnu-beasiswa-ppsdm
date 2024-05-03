@@ -20,9 +20,9 @@ class ClusterBeasiswaResource extends Resource
 {
     protected static ?string $model = ClusterBeasiswa::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-inbox-stack',
-        $navigationLabel = 'Cluster Beasiswa',
-        $navigationGroup = 'Administrasi';
+    protected static ?string $navigationIcon = 'heroicon-o-inbox-stack';
+    protected static ?string $navigationLabel = 'Cluster Beasiswa';
+    protected static ?string $navigationGroup = 'Administrasi';
     protected static ?int $navigationSort = 1;
 
     public static function form(Form $form): Form
