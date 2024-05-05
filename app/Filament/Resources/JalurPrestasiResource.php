@@ -7,12 +7,17 @@ use App\Filament\Resources\JalurPrestasiResource\RelationManagers;
 use App\Models\JalurPrestasi;
 use App\Models\ClusterBeasiswa;
 use App\Models\Jurusan;
+use App\Models\Fakultas;
+use App\Models\Kampus;
 use Filament\Forms;
 use Filament\Forms\Form;
+use Filament\Forms\Get;
+use Filament\Forms\Set;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Support\Collection;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class JalurPrestasiResource extends Resource
@@ -34,10 +39,30 @@ class JalurPrestasiResource extends Resource
                 Forms\Components\Select::make('cluster_id')
                     ->required()
                     ->options(ClusterBeasiswa::all()->pluck('nama', 'id')),
-                Forms\Components\Select::make('jurusan_id')
-                    ->required()
+                Forms\Components\Select::make('kampus_id')
+                    ->relationship(name:'kampus', titleAttribute: 'nama')
                     ->searchable()
-                    ->options(Jurusan::all()->pluck('nama', 'id')),
+                    ->live()
+                    ->afterStateUpdated(function (Set $set) {
+                        $set('fakultas_id', null);
+                        $set('jurusan_id', null);
+                    })
+                    ->required(),
+                Forms\Components\Select::make('fakultas_id')
+                    ->options(fn (Get $get): Collection => Fakultas::query()
+                        ->where('kampus_id', $get('kampus_id'))
+                        ->pluck('nama', 'id'))
+                    ->searchable()
+                    ->live()
+                    ->afterStateUpdated(fn (Set $set) => $set('jurusan_id', null))
+                    ->required(),
+                Forms\Components\Select::make('jurusan_id')
+                    ->options(fn (Get $get): Collection => Jurusan::query()
+                        ->where('fakultas_id', $get('fakultas_id'))
+                        ->pluck('nama', 'id'))
+                    ->searchable()
+                    ->live()
+                    ->required(),
             ]);
     }
 
