@@ -5,7 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\JalurPrestasiResource\Pages;
 use App\Filament\Resources\JalurPrestasiResource\RelationManagers;
 use App\Models\JalurPrestasi;
-use App\Models\ClusterBeasiswa;
+use App\Models\ClusterKampus;
 use App\Models\Jurusan;
 use App\Models\Fakultas;
 use App\Models\Kampus;
@@ -36,29 +36,29 @@ class JalurPrestasiResource extends Resource
                 Forms\Components\TextInput::make('nama')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\Select::make('cluster_id')
+                Forms\Components\Select::make('id_cluster_kampus')
                     ->required()
-                    ->options(ClusterBeasiswa::all()->pluck('nama', 'id')),
-                Forms\Components\Select::make('kampus_id')
+                    ->options(ClusterKampus::all()->pluck('nama', 'id')),
+                Forms\Components\Select::make('id_kampus')
                     ->relationship(name:'kampus', titleAttribute: 'nama')
                     ->searchable()
                     ->live()
                     ->afterStateUpdated(function (Set $set) {
-                        $set('fakultas_id', null);
-                        $set('jurusan_id', null);
+                        $set('id_fakultas', null);
+                        $set('id_jurusan', null);
                     })
                     ->required(),
-                Forms\Components\Select::make('fakultas_id')
+                Forms\Components\Select::make('id_fakultas')
                     ->options(fn (Get $get): Collection => Fakultas::query()
-                        ->where('kampus_id', $get('kampus_id'))
+                        ->where('id_kampus', $get('id_kampus'))
                         ->pluck('nama', 'id'))
                     ->searchable()
                     ->live()
-                    ->afterStateUpdated(fn (Set $set) => $set('jurusan_id', null))
+                    ->afterStateUpdated(fn (Set $set) => $set('id_jurusan', null))
                     ->required(),
-                Forms\Components\Select::make('jurusan_id')
+                Forms\Components\Select::make('id_jurusan')
                     ->options(fn (Get $get): Collection => Jurusan::query()
-                        ->where('fakultas_id', $get('fakultas_id'))
+                        ->where('id_fakultas', $get('id_fakultas'))
                         ->pluck('nama', 'id'))
                     ->searchable()
                     ->live()

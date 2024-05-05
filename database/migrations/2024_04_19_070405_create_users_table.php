@@ -26,16 +26,14 @@ return new class extends Migration
             $table->string('no_hp_1')->nullable();
             $table->string('no_hp_2')->nullable();
 
-            $table->unsignedBigInteger('jalur_prestasi_id')->nullable();
-            $table->unsignedBigInteger('sekolah_id')->nullable();
-            $table->unsignedBigInteger('pondok_id')->nullable();
-            $table->unsignedBigInteger('cluster_id')->nullable();
+            $table->unsignedBigInteger('id_pendaftaran')->nullable();
+            $table->unsignedBigInteger('id_sekolah')->nullable();
+            $table->unsignedBigInteger('id_pondok')->nullable();
             $table->timestamps();
 
-            $table->foreign('jalur_prestasi_id')->references('id')->on('jalur_prestasi')->onDelete('set null');
-            $table->foreign('sekolah_id')->references('id')->on('sekolah')->onDelete('set null');
-            $table->foreign('pondok_id')->references('id')->on('pondok')->onDelete('set null');
-            $table->foreign('cluster_id')->references('id')->on('cluster_beasiswa')->onDelete('set null');
+            $table->foreign('id_pendaftaran')->references('id')->on('pendaftaran')->onDelete('set null');
+            $table->foreign('id_sekolah')->references('id')->on('sekolah')->onDelete('set null');
+            $table->foreign('id_pondok')->references('id')->on('pondok')->onDelete('set null');
         });
 
         Schema::create('password_reset_tokens', function (Blueprint $table) {

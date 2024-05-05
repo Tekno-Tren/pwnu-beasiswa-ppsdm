@@ -31,7 +31,7 @@ class FakultasResource extends Resource
                     ->required()
                     ->label('Nama Fakultas')
                     ->maxLength(255),
-                Forms\Components\Select::make('kampus_id')
+                Forms\Components\Select::make('id_kampus')
                     ->required()
                     ->relationship('kampus', 'nama')
                     ->label('Nama Kampus')

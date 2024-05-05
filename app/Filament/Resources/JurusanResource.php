@@ -31,12 +31,12 @@ class JurusanResource extends Resource
                     ->required()
                     ->label('Nama Jurusan')
                     ->maxLength(255),
-                Forms\Components\Select::make('fakultas_id')
+                Forms\Components\Select::make('id_fakultas')
                     ->required()
                     ->label('Nama Fakultas')
                     ->relationship('fakultas', 'nama')
                     ->preload(),
-                Forms\Components\Select::make('kampus_id')
+                Forms\Components\Select::make('id_kampus')
                     ->required()
                     ->label('Nama Kampus')
                     ->relationship('kampus', 'nama')

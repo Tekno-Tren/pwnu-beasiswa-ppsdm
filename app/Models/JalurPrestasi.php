@@ -16,22 +16,21 @@ class JalurPrestasi extends Model
 
     protected $fillable = [
         'nama',
-        'cluster_id',
-        'jurusan_id'
+        'deskripsi',
     ];
 
     public function users(): HasMany
     {
-        return $this->hasMany(User::class, 'jalur_prestasi_id', 'id');
+        return $this->hasMany(User::class, 'id_jalur_prestasi', 'id');
     }
 
     public function cluster(): BelongsTo
     {
-        return $this->belongsTo(ClusterBeasiswa::class, 'cluster_id');
+        return $this->belongsTo(ClusterKampus::class, 'id_cluster_kampus');
     }
 
     public function jurusan(): BelongsTo
     {
-        return $this->belongsTo(Jurusan::class, 'jurusan_id');
+        return $this->belongsTo(Jurusan::class, 'id_jurusan');
     }
 }

@@ -2,9 +2,9 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Pondok extends Model
 {
@@ -25,6 +25,6 @@ class Pondok extends Model
 
     public function users(): HasMany
     {
-        return $this->hasMany(User::class, 'pondok_id', 'id');
+        return $this->hasMany(User::class, 'id_pondok', 'id');
     }
 }

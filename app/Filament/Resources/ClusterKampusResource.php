@@ -2,9 +2,9 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\ClusterBeasiswaResource\Pages;
-use App\Filament\Resources\ClusterBeasiswaResource\RelationManagers;
-use App\Models\ClusterBeasiswa;
+use App\Filament\Resources\ClusterKampusResource\Pages;
+use App\Filament\Resources\ClusterKampusResource\RelationManagers;
+use App\Models\ClusterKampus;
 use Filament\Forms;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
@@ -16,9 +16,9 @@ use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Filament\Tables\Actions\EditAction;
 
-class ClusterBeasiswaResource extends Resource
+class ClusterKampusResource extends Resource
 {
-    protected static ?string $model = ClusterBeasiswa::class;
+    protected static ?string $model = ClusterKampus::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-inbox-stack';
     protected static ?string $navigationLabel = 'Cluster Beasiswa';
@@ -75,9 +75,9 @@ class ClusterBeasiswaResource extends Resource
     public static function getPages(): array
     {
         return [
-            'index' => Pages\ListClusterBeasiswas::route('/'),
-            'create' => Pages\CreateClusterBeasiswa::route('/create'),
-            'edit' => Pages\EditClusterBeasiswa::route('/{record}/edit'),
+            'index' => Pages\ListClusterKampuses::route('/'),
+            'create' => Pages\CreateClusterKampus::route('/create'),
+            'edit' => Pages\EditClusterKampus::route('/{record}/edit'),
         ];
     }
 }

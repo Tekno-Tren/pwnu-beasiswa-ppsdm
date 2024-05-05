@@ -68,15 +68,15 @@ class UserResource extends Resource
                         'Kitab Kuning' => 'Kitab Kuning',
                         'Jalur Kemitraan' => 'Jalur Kemitraan'
                     ]),
-                Select::make('sekolah_id')
+                Select::make('id_sekolah')
                     ->label('Nama Sekolah')
                     ->relationship('sekolah', 'nama')
                     ->preload(),
-                Select::make('pondok_id')
+                Select::make('id_pondok')
                     ->label('Nama Pondok')
                     ->relationship('pondok', 'nama')
                     ->preload(),
-                Select::make('cluster_id')
+                Select::make('id_cluster_kampus')
                     ->label('Cluster')
                     ->relationship('cluster', 'nama')
                     ->preload(),

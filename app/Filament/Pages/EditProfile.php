@@ -94,7 +94,7 @@ class EditProfile extends Page implements HasForms
                                 Tabs\Tab::make('school')
                                     ->label('Informasi Sekolah')
                                     ->schema([
-                                        Forms\Components\Select::make('sekolah_id')
+                                        Forms\Components\Select::make('id_sekolah')
                                             ->label('Asal Sekolah')
                                             ->relationship('sekolah', 'nama')
                                             ->preload()
@@ -104,7 +104,7 @@ class EditProfile extends Page implements HasForms
                                 Tabs\Tab::make('pondok')
                                     ->label('Informasi Pondok')
                                     ->schema([
-                                        Forms\Components\Select::make('pondok_id')
+                                        Forms\Components\Select::make('id_pondok')
                                             ->label('Asal Pondok')
                                             ->relationship('pondok', 'nama')
                                             ->preload()

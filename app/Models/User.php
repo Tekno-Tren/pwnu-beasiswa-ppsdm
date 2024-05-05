@@ -6,10 +6,8 @@ namespace App\Models;
 use Filament\Panel;
 use App\Models\Pondok;
 use App\Models\Sekolah;
-use App\Models\JalurPrestasi;
 use Illuminate\Notifications\Notifiable;
 use Filament\Models\Contracts\FilamentUser;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -35,10 +33,9 @@ class User extends Authenticatable implements FilamentUser
         'no_hp_1',
         'no_hp_2',
 
-        'jalur_prestasi_id',
-        'sekolah_id',
-        'pondok_id',
-        'cluster_id',
+        'id_pendaftaran',
+        'id_sekolah',
+        'id_pondok',
     ];
 
     /**
@@ -78,23 +75,18 @@ class User extends Authenticatable implements FilamentUser
         return true;
     }
 
-    public function jalurprestasi(): HasMany
+    public function pendaftaran(): BelongsTo
     {
-        return $this->hasMany(JalurPrestasi::class, 'id', 'jalur_prestasi_id');
-    }
-
-    public function pondok(): BelongsTo
-    {
-        return $this->belongsTo(Pondok::class, 'pondok_id', 'id');
+        return $this->belongsTo(Pendaftaran::class, 'id_pendaftaran', 'id');
     }
 
     public function sekolah(): BelongsTo
     {
-        return $this->belongsTo(Sekolah::class, 'sekolah_id', 'id');
+        return $this->belongsTo(Sekolah::class, 'id_sekolah', 'id');
     }
 
-    public function cluster(): BelongsTo
+    public function pondok(): BelongsTo
     {
-        return $this->belongsTo(ClusterBeasiswa::class, 'cluster_id', 'id');
+        return $this->belongsTo(Pondok::class, 'id_pondok', 'id');
     }
 }

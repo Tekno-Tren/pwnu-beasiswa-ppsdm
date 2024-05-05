@@ -4,7 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\PendaftaranResource\Pages;
 use App\Filament\Resources\PendaftaranResource\RelationManagers;
-use App\Models\Beasiswa;
+use App\Models\Pendaftaran;
 use App\Models\User;
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -17,7 +17,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class PendaftaranResource extends Resource
 {
-    protected static ?string $beasiswa = Beasiswa::class;
+    protected static ?string $pendaftaran = Pendaftaran::class;
     protected static ?string $user = User::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-document-duplicate';
@@ -32,21 +32,18 @@ class PendaftaranResource extends Resource
                 Forms\Components\TextInput::make('no_registrasi')
                     ->required()
                     ->maxLength(255),
-                Forms\Components\Select::make('user_id')
+                Forms\Components\Select::make('id_user')
                     ->required()
                     ->relationship('user', 'name'),
-                Forms\Components\Select::make('cluster_id')
+                Forms\Components\Select::make('id_cluster_kampus')
                     ->required()
                     ->relationship('cluster', 'nama'),
-                Forms\Components\Select::make('kampus_id')
+                Forms\Components\Select::make('id_kampus')
                     ->required()
                     ->relationship('kampus', 'nama'),
-                Forms\Components\Select::make('jurusan_id')
+                Forms\Components\Select::make('id_jurusan')
                     ->required()
                     ->relationship('jurusan', 'nama'),
-
-
-
             ]);
     }
 

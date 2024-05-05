@@ -4,7 +4,7 @@ namespace App\Filament\App\Resources;
 
 use App\Filament\App\Resources\MahasiswaResource\Pages;
 use App\Filament\App\Resources\MahasiswaResource\RelationManagers;
-use App\Models\Beasiswa;
+use App\Models\Pendaftaran;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -15,7 +15,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class MahasiswaResource extends Resource
 {
-    protected static ?string $model = Beasiswa::class;
+    protected static ?string $model = Pendaftaran::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-document-duplicate',
         $navigationLabel = 'Mahasiswa',

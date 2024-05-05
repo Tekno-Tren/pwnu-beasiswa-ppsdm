@@ -10,9 +10,9 @@ use App\Models\Kampus;
 use App\Models\Pondok;
 use App\Models\Sekolah;
 use App\Models\Jurusan;
-use App\Models\Beasiswa;
+use App\Models\Pendaftaran;
 use App\Models\JalurPrestasi;
-use App\Models\ClusterBeasiswa;
+use App\Models\ClusterKampus;
 
 use Filament\Forms;
 use Filament\Forms\Form;
@@ -35,7 +35,7 @@ class PendaftaranResource extends Resource
     protected static ?string $user = User::class;
     protected static ?string $kampus = Kampus::class;
     protected static ?string $jurusan = Jurusan::class;
-    protected static ?string $model = Beasiswa::class;
+    protected static ?string $model = Pendaftaran::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
     protected static ?string $navigationLabel = 'Pendaftaran';
@@ -55,7 +55,7 @@ class PendaftaranResource extends Resource
                             Forms\Components\TextInput::make('Tempat Lahir')
                                 ->required()
                                 ->maxLength(255),
-                                Forms\Components\DatePicker::make('tanggal_lahir')
+                            Forms\Components\DatePicker::make('tanggal_lahir')
                                 ->required(),
                             Forms\Components\TextInput::make('No Handphone')
                                 ->required()
@@ -75,10 +75,10 @@ class PendaftaranResource extends Resource
                         ->schema([
                             Forms\Components\Select::make('Jalur Prestasi')
                             ->options(JalurPrestasi::all()->pluck('nama', 'id')),
-                            Forms\Components\Select::make('cluster_id')
+                            Forms\Components\Select::make('id_cluster_kampus')
                                 ->relationship(name:'cluster', titleAttribute:'nama')
                                 ->options(function (): array {
-                                    return ClusterBeasiswa::all()->pluck('nama', 'id')->toArray();})
+                                    return ClusterKampus::all()->pluck('nama', 'id')->toArray();})
                                 ->searchable()
                                 ->live()
                                 ->afterStateUpdated(
@@ -91,7 +91,7 @@ class PendaftaranResource extends Resource
                             Forms\Components\Select::make('kampus_pilihan_1')
                                 ->required()
                                 ->options(fn (Get $get): Collection => Kampus::query()
-                                    ->where('cluster_id', $get('cluster_id'))
+                                    ->where('id_cluster_kampus', $get('id_cluster_kampus'))
                                     ->pluck('nama', 'id'))
                                 ->searchable()
                                 ->preload()
@@ -105,7 +105,7 @@ class PendaftaranResource extends Resource
                             Forms\Components\Select::make('kampus_pilihan_2')
                                 ->required()
                                 ->options(fn (Get $get): Collection => Kampus::query()
-                                    ->where('cluster_id', $get('cluster_id'))
+                                    ->where('id_cluster_kampus', $get('id_cluster_kampus'))
                                     ->pluck('nama', 'id'))
                                 ->searchable()
                                 ->preload()
@@ -118,13 +118,13 @@ class PendaftaranResource extends Resource
                             Forms\Components\Select::make('jurusan_kampus_1')
                                 ->required()
                                 ->options(fn (Get $get): Collection => Jurusan::query()
-                                    ->where('kampus_id', $get('kampus_pilihan_1'))
+                                    ->where('id_kampus', $get('kampus_pilihan_1'))
                                     ->pluck('nama', 'id'))
                                 ->preload(),
                             Forms\Components\Select::make('jurusan_kampus_2')
                                 ->required()
                                 ->options(fn (Get $get): Collection => Jurusan::query()
-                                    ->where('kampus_id', $get('kampus_pilihan_2'))
+                                    ->where('id_kampus', $get('kampus_pilihan_2'))
                                     ->pluck('nama', 'id'))
                                 ->preload(),
                             Forms\Components\FileUpload::make('berkas_1')

@@ -4,7 +4,7 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\EvaluasiResource\Pages;
 use App\Filament\Resources\EvaluasiResource\RelationManagers;
-use App\Models\Beasiswa;
+use App\Models\Pendaftaran;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -15,7 +15,7 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class EvaluasiResource extends Resource
 {
-    protected static ?string $model = Beasiswa::class;
+    protected static ?string $model = Pendaftaran::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-document-magnifying-glass';
     protected static ?string $navigationLabel = 'Evaluasi';

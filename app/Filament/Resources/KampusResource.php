@@ -47,7 +47,7 @@ class KampusResource extends Resource
                     ->label('No HP Kampus')
                     ->placeholder('Masukkan No HP Kampus')
                     ->maxLength(255),
-                Forms\Components\Select::make('cluster_id')
+                Forms\Components\Select::make('id_cluster_kampus')
                     ->label('Cluster Beasiswa')
                     ->relationship('cluster', 'nama')
                     ->placeholder('Pilih Cluster Beasiswa')

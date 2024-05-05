@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Filament\Resources\ClusterBeasiswaResource\Pages;
+namespace App\Filament\Resources\ClusterKampusResource\Pages;
 
-use App\Filament\Resources\ClusterBeasiswaResource;
+use App\Filament\Resources\ClusterKampusResource;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
 
-class ListClusterBeasiswas extends ListRecords
+class ListClusterKampuses extends ListRecords
 {
-    protected static string $resource = ClusterBeasiswaResource::class;
+    protected static string $resource = ClusterKampusResource::class;
     protected static ?string $title = 'Cluster Beasiswa';
 
     protected function getHeaderActions(): array

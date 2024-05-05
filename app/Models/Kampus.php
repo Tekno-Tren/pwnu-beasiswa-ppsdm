@@ -17,32 +17,16 @@ class Kampus extends Model
     protected $fillable = [
         'no_kode',
         'nama',
-        'alamat',
-        'no_hp',
+        'id_cluster_kampus',
     ];
 
     public function fakultas(): HasMany
     {
-        return $this->hasMany(Fakultas::class, 'kampus_id', 'id');
-    }
-
-    public function jurusan(): HasMany
-    {
-        return $this->hasMany(Jurusan::class, 'kampus_id', 'id');
-    }
-
-    public function beasiswa_1(): HasMany
-    {
-        return $this->hasMany(Beasiswa::class, 'kampus_1', 'id');
-    }
-
-    public function beasiswa_2(): HasMany
-    {
-        return $this->hasMany(Beasiswa::class, 'kampus_2', 'id');
+        return $this->hasMany(Fakultas::class, 'id_kampus', 'id');
     }
 
     public function cluster(): BelongsTo
     {
-        return $this->belongsTo(ClusterBeasiswa::class, 'id', 'cluster_id');
+        return $this->belongsTo(ClusterKampus::class, 'id', 'id_cluster_kampus');
     }
 }

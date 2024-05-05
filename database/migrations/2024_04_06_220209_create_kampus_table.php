@@ -15,12 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('no_kode')->unique();
             $table->string('nama');
-            $table->string('alamat');
-            $table->string('no_hp');
-            $table->unsignedBigInteger('cluster_id')->nullable();
+            $table->unsignedBigInteger('id_cluster_kampus')->nullable();
 
             $table->timestamps();
-            $table->foreign('cluster_id')->references('id')->on('cluster_beasiswa')->onDelete('set null');
+            $table->foreign('id_cluster_kampus')->references('id')->on('cluster_kampus')->onDelete('set null');
 
         });
     }

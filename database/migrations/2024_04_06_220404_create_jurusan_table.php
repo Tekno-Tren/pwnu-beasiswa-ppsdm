@@ -16,14 +16,10 @@ return new class extends Migration
             $table->id();
             $table->string('nama');
 
-            $table->unsignedBigInteger('kampus_id')->nullable();
-            $table->unsignedBigInteger('fakultas_id')->nullable();
-            $table->unsignedBigInteger('cluster_id')->nullable();
+            $table->unsignedBigInteger('id_fakultas')->nullable();
             $table->timestamps();
 
-            $table->foreign('kampus_id')->references('id')->on('kampus')->onDelete('set null');
-            $table->foreign('fakultas_id')->references('id')->on('fakultas')->onDelete('set null');
-            $table->foreign('cluster_id')->references('id')->on('cluster_beasiswa')->onDelete('set null');
+            $table->foreign('id_fakultas')->references('id')->on('fakultas')->onDelete('set null');
         });
     }
 

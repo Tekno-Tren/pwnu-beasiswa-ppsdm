@@ -17,15 +17,15 @@ class Fakultas extends Model
 
     protected $fillable = [
         'nama',
-        'kampus_id',
+        'id_kampus',
     ];
 
     public function jurusan(): HasMany
     {
-        return $this->hasMany(Jurusan::class);
+        return $this->hasMany(Jurusan::class, 'id_fakultas', 'id');
     }
     public function kampus(): BelongsTo
     {
-        return $this->belongsTo(Kampus::class, 'kampus_id');
+        return $this->belongsTo(Kampus::class, 'id_kampus');
     }
 }
