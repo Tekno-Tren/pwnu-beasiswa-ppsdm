@@ -21,7 +21,7 @@ class KampusResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-o-home-modern';
     protected static ?string $navigationLabel = 'Kampus';
     protected static ?string $navigationGroup = 'Administrasi';
-    protected static ?int $navigationSort = 5;
+    protected static ?int $navigationSort = 7;
 
     public static function form(Form $form): Form
     {
