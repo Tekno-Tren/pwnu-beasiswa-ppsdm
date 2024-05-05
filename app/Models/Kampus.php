@@ -25,8 +25,8 @@ class Kampus extends Model
         return $this->hasMany(Fakultas::class, 'id_kampus', 'id');
     }
 
-    public function cluster(): BelongsTo
+    public function cluster_kampus(): BelongsTo
     {
-        return $this->belongsTo(ClusterKampus::class, 'id', 'id_cluster_kampus');
+        return $this->belongsTo(ClusterKampus::class, 'id_cluster_kampus', 'id');
     }
 }

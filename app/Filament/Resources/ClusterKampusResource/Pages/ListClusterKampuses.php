@@ -9,7 +9,7 @@ use Filament\Resources\Pages\ListRecords;
 class ListClusterKampuses extends ListRecords
 {
     protected static string $resource = ClusterKampusResource::class;
-    protected static ?string $title = 'Cluster Beasiswa';
+    protected static ?string $title = 'Cluster Kampus';
 
     protected function getHeaderActions(): array
     {

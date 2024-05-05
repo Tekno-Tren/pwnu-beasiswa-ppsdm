@@ -17,7 +17,7 @@ class Pendaftaran extends Model
 
     protected $fillable = [
         'no_pendaftaran_tes',
-        'no_registrasi_pwnu',
+        'no_pendaftaran_pwnu',
         'status_tes',
         'status_pwnu',
         'bukti_prestasi',

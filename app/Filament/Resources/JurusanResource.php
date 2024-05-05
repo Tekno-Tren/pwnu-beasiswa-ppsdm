@@ -32,14 +32,10 @@ class JurusanResource extends Resource
                     ->label('Nama Jurusan')
                     ->maxLength(255),
                 Forms\Components\Select::make('id_fakultas')
-                    ->required()
                     ->label('Nama Fakultas')
-                    ->relationship('fakultas', 'nama')
-                    ->preload(),
-                Forms\Components\Select::make('id_kampus')
+                    ->searchable()
                     ->required()
-                    ->label('Nama Kampus')
-                    ->relationship('kampus', 'nama')
+                    ->relationship('fakultas', 'nama')
                     ->preload(),
             ]);
     }
@@ -54,14 +50,13 @@ class JurusanResource extends Resource
                 Tables\Columns\TextColumn::make('fakultas.nama')
                     ->label('Nama Fakultas')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('kampus.nama')
-                    ->label('Nama Kampus')
-                    ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
+                    ->label('Dibuat')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('updated_at')
+                    ->label('Diperbarui')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
@@ -71,6 +66,7 @@ class JurusanResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

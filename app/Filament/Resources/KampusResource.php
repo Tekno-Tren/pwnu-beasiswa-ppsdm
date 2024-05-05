@@ -37,20 +37,10 @@ class KampusResource extends Resource
                     ->label('Nama Kampus')
                     ->placeholder('Masukkan Nama Kampus')
                     ->maxLength(255),
-                Forms\Components\TextInput::make('alamat')
-                    ->required()
-                    ->label('Alamat Kampus')
-                    ->placeholder('Masukkan Alamat Kampus')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('no_hp')
-                    ->required()
-                    ->label('No HP Kampus')
-                    ->placeholder('Masukkan No HP Kampus')
-                    ->maxLength(255),
                 Forms\Components\Select::make('id_cluster_kampus')
-                    ->label('Cluster Beasiswa')
-                    ->relationship('cluster', 'nama')
-                    ->placeholder('Pilih Cluster Beasiswa')
+                    ->label('Cluster Kampus')
+                    ->relationship('cluster_kampus', 'nama')
+                    ->placeholder('Pilih Cluster Kampus')
                     ->required(),
             ]);
     }
@@ -60,25 +50,21 @@ class KampusResource extends Resource
         return $table
             ->columns([
                 Tables\Columns\TextColumn::make('no_kode')
-                    ->label('No Kode Perguruan Tinggi')
+                    ->label('No Kode')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('nama')
                     ->label('Nama Kampus')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('alamat')
-                    ->label('Alamat Kampus')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('no_hp')
-                    ->label('No HP Kampus')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('cluster.nama')
-                    ->label('Cluster Beasiswa')
+                Tables\Columns\TextColumn::make('cluster_kampus.nama')
+                    ->label('Cluster Kampus')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
+                    ->label('Dibuat')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: false),
                 Tables\Columns\TextColumn::make('updated_at')
+                    ->label('Diperbarui')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
@@ -88,6 +74,7 @@ class KampusResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

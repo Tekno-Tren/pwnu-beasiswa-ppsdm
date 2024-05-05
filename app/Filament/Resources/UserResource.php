@@ -44,10 +44,10 @@ class UserResource extends Resource
                     ->maxLength(255),
                 DateTimePicker::make('email_verified_at'),
                 TextInput::make('password')
-                ->password()
-                ->dehydrateStateUsing(fn (string $state): string => Hash::make($state))
-                ->dehydrated(fn (?string $state): bool => filled($state))
-                ->required(fn (string $operation): bool => $operation === 'create'),
+                    ->password()
+                    ->dehydrateStateUsing(fn (string $state): string => Hash::make($state))
+                    ->dehydrated(fn (?string $state): bool => filled($state))
+                    ->required(fn (string $operation): bool => $operation === 'create'),
                 TextInput::make('tempat_lahir')
                     ->maxLength(255),
                 DatePicker::make('tanggal_lahir'),
@@ -61,13 +61,10 @@ class UserResource extends Resource
                     ->maxLength(255),
                 TextInput::make('no_hp')
                     ->maxLength(255),
-                Select::make('jalur_prestasi')
-                    ->options([
-                        'Tahfidzul Quran' => 'Tahfidzul Quran',
-                        'Musabaqoh Tilawatil Qur\'an' => 'Musabaqoh Tilawatil Qur\'an',
-                        'Kitab Kuning' => 'Kitab Kuning',
-                        'Jalur Kemitraan' => 'Jalur Kemitraan'
-                    ]),
+                Select::make('id_pendaftaran')
+                    ->label('Pendaftaran')
+                    ->relationship('pendaftaran', 'no_pendaftaran_pwnu')
+                    ->preload(),
                 Select::make('id_sekolah')
                     ->label('Nama Sekolah')
                     ->relationship('sekolah', 'nama')
@@ -76,13 +73,8 @@ class UserResource extends Resource
                     ->label('Nama Pondok')
                     ->relationship('pondok', 'nama')
                     ->preload(),
-                Select::make('id_cluster_kampus')
-                    ->label('Cluster')
-                    ->relationship('cluster', 'nama')
-                    ->preload(),
             ])
             ->columns(3);
-
     }
 
     public static function table(Table $table): Table
@@ -90,42 +82,48 @@ class UserResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('name')
+                    ->label('Nama')
                     ->searchable(),
                 TextColumn::make('email')
+                    ->label('Email')
                     ->searchable(),
                 TextColumn::make('email_verified_at')
+                    ->label('Email Verified At')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('tempat_lahir')
+                    ->label('Tempat Lahir')
                     ->searchable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('tanggal_lahir')
+                    ->label('Tanggal Lahir')
                     ->date()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('jenis_kelamin')
+                    ->label('Jenis Kelamin')
                     ->searchable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('alamat')
+                    ->label('Alamat')
                     ->searchable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('no_hp_1')
                     ->label('No. Handphone')
                     ->searchable()
                     ->toggleable(isToggledHiddenByDefault: true),
-                TextColumn::make('jalur_prestasi')
+                TextColumn::make('no_hp_2')
+                    ->label('No. Handphone 2')
                     ->searchable()
-                    ->toggleable(isToggledHiddenByDefault: false),
-                TextColumn::make('cluster.nama')
-                    ->label('Cluster')
-                    ->searchable()
-                    ->toggleable(isToggledHiddenByDefault: false),
+                    ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('created_at')
+                    ->label('Dibuat')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('updated_at')
+                    ->label('Diperbarui')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),

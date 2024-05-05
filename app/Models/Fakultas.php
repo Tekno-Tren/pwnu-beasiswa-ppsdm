@@ -24,6 +24,7 @@ class Fakultas extends Model
     {
         return $this->hasMany(Jurusan::class, 'id_fakultas', 'id');
     }
+
     public function kampus(): BelongsTo
     {
         return $this->belongsTo(Kampus::class, 'id_kampus');

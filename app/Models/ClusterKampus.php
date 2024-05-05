@@ -18,11 +18,6 @@ class ClusterKampus extends Model
         'deskripsi',
     ];
 
-    public function user(): HasMany
-    {
-        return $this->hasMany(User::class, 'id_cluster_kampus', 'id');
-    }
-
     public function kampus(): HasMany
     {
         return $this->hasMany(Kampus::class, 'id_kampus', 'id');

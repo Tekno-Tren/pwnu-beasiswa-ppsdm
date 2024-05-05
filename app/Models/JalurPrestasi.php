@@ -19,18 +19,8 @@ class JalurPrestasi extends Model
         'deskripsi',
     ];
 
-    public function users(): HasMany
+    public function pendaftaran(): HasMany
     {
-        return $this->hasMany(User::class, 'id_jalur_prestasi', 'id');
-    }
-
-    public function cluster(): BelongsTo
-    {
-        return $this->belongsTo(ClusterKampus::class, 'id_cluster_kampus');
-    }
-
-    public function jurusan(): BelongsTo
-    {
-        return $this->belongsTo(Jurusan::class, 'id_jurusan');
+        return $this->hasMany(Pendaftaran::class, 'id_jalur_prestasi', 'id');
     }
 }

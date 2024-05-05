@@ -28,13 +28,14 @@ class FakultasResource extends Resource
         return $form
             ->schema([
                 Forms\Components\TextInput::make('nama')
-                    ->required()
                     ->label('Nama Fakultas')
+                    ->required()
                     ->maxLength(255),
                 Forms\Components\Select::make('id_kampus')
-                    ->required()
-                    ->relationship('kampus', 'nama')
                     ->label('Nama Kampus')
+                    ->required()
+                    ->searchable()
+                    ->relationship('kampus', 'nama')
                     ->preload(),
             ]);
     }
@@ -50,10 +51,12 @@ class FakultasResource extends Resource
                     ->label('Nama Kampus')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
+                    ->label('Dibuat')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: false),
                 Tables\Columns\TextColumn::make('updated_at')
+                    ->label('Diperbarui')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
@@ -63,6 +66,7 @@ class FakultasResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
