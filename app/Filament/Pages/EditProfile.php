@@ -14,9 +14,6 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Validation\Rules\Password;
 use Illuminate\Contracts\Auth\Authenticatable;
 
-use App\Models\User;
-use App\Models\Sekolah;
-use App\Models\Pondok;
 use Filament\Forms\Components\Tabs;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Forms\Concerns\InteractsWithForms;
@@ -97,9 +94,23 @@ class EditProfile extends Page implements HasForms
                                         Forms\Components\Select::make('id_sekolah')
                                             ->label('Asal Sekolah')
                                             ->relationship('sekolah', 'nama')
+                                            ->searchable()
                                             ->preload()
-                                            ->required()
-                                            // ->options(Sekolah::all()->pluck('nama', 'id')),
+                                            ->createOptionForm([
+                                                Forms\Components\TextInput::make('npsn')
+                                                    ->label('NPSN'),
+                                                Forms\Components\TextInput::make('nama')
+                                                    ->label('Nama Sekolah')
+                                                    ->required(),
+                                                Forms\Components\TextInput::make('alamat')
+                                                    ->label('Alamat Sekolah')
+                                                    ->required(),
+                                                Forms\Components\TextInput::make('no_hp')
+                                                    ->label('No. Handphone')
+                                                    ->required()
+                                                    ->rule(['numeric']),
+                                            ])
+                                            ->required(),
                                     ]),
                                 Tabs\Tab::make('pondok')
                                     ->label('Informasi Pondok')
@@ -107,9 +118,36 @@ class EditProfile extends Page implements HasForms
                                         Forms\Components\Select::make('id_pondok')
                                             ->label('Asal Pondok')
                                             ->relationship('pondok', 'nama')
+                                            ->getOptionLabelFromRecordUsing(fn ($record) => $record->nama . ' - ' . $record->kelurahan . ', ' . $record->kecamatan . ', ' . $record->kabupaten_kota . ', ' . $record->provinsi)
+                                            ->searchable(['nama', 'alamat', 'kelurahan', 'kecamatan', 'kabupaten_kota', 'provinsi'])
                                             ->preload()
-                                            ->required()
-                                            // ->options(Pondok::all()->pluck('nama', 'id')),
+                                            ->createOptionForm([
+                                                Forms\Components\TextInput::make('nspp')
+                                                    ->label('NSPP'),
+                                                Forms\Components\TextInput::make('nama')
+                                                    ->label('Nama Pondok')
+                                                    ->required(),
+                                                Forms\Components\TextInput::make('alamat')
+                                                    ->label('Alamat Pondok')
+                                                    ->required(),
+                                                Forms\Components\TextInput::make('kelurahan')
+                                                    ->label('Kelurahan')
+                                                    ->required(),
+                                                Forms\Components\TextInput::make('kecamatan')
+                                                    ->label('Kecamatan')
+                                                    ->required(),
+                                                Forms\Components\TextInput::make('kabupaten_kota')
+                                                    ->label('Kabupaten/Kota')
+                                                    ->required(),
+                                                Forms\Components\TextInput::make('provinsi')
+                                                    ->label('Provinsi')
+                                                    ->required(),
+                                                Forms\Components\TextInput::make('no_hp')
+                                                    ->label('No. Handphone')
+                                                    ->required()
+                                                    ->rule(['numeric']),
+                                            ])
+                                            ->required(),
                                     ]),
                             ]),
                     ]),
