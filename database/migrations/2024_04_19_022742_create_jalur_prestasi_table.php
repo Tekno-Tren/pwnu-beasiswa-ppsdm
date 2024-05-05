@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('jalur_prestasi', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
+            $table->foreignId('cluster_id')->constrained('cluster_beasiswa')->onDelete('cascade');
+            $table->foreignId('jurusan_id')->constrained('jurusan')->onDelete('cascade');
             $table->timestamps();
         });
     }

@@ -16,6 +16,10 @@ class Pondok extends Model
         'nspp',
         'nama',
         'alamat',
+        'kelurahan',
+        'kecamatan',
+        'kabupaten_kota',
+        'provinsi',
         'no_hp',
     ];
 

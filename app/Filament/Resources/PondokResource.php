@@ -62,6 +62,18 @@ class PondokResource extends Resource
                 TextColumn::make('alamat')
                     ->searchable()
                     ->label('Alamat'),
+                TextColumn::make('kelurahan')
+                    ->searchable()
+                    ->label('Kelurahan'),
+                TextColumn::make('kecamatan')
+                    ->searchable()
+                    ->label('Kecamatan'),
+                TextColumn::make('kabupaten_kota')
+                    ->searchable()
+                    ->label('Kabupaten/Kota'),
+                TextColumn::make('provinsi')
+                    ->searchable()
+                    ->label('Provinsi'),
                 TextColumn::make('no_hp')
                     ->searchable()
                     ->label('Nomor Telepon'),

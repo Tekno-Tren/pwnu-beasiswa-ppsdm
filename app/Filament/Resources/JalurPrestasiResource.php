@@ -5,6 +5,8 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\JalurPrestasiResource\Pages;
 use App\Filament\Resources\JalurPrestasiResource\RelationManagers;
 use App\Models\JalurPrestasi;
+use App\Models\ClusterBeasiswa;
+use App\Models\Jurusan;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
@@ -29,6 +31,13 @@ class JalurPrestasiResource extends Resource
                 Forms\Components\TextInput::make('nama')
                     ->required()
                     ->maxLength(255),
+                Forms\Components\Select::make('cluster_id')
+                    ->required()
+                    ->options(ClusterBeasiswa::all()->pluck('nama', 'id')),
+                Forms\Components\Select::make('jurusan_id')
+                    ->required()
+                    ->searchable()
+                    ->options(Jurusan::all()->pluck('nama', 'id')),
             ]);
     }
 

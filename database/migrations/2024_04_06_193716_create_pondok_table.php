@@ -15,8 +15,12 @@ return new class extends Migration
             $table->id();
             $table->string('nspp')->unique();
             $table->string('nama');
-            $table->string('alamat');
-            $table->string('no_hp');
+            $table->string('alamat')->nullable();
+            $table->string('kelurahan')->nullable();
+            $table->string('kecamatan')->nullable();
+            $table->string('kabupaten_kota')->nullable();
+            $table->string('provinsi')->nullable();
+            $table->string('no_hp')->nullable();
             $table->timestamps();
         });
     }
