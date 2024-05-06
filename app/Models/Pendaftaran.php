@@ -24,15 +24,17 @@ class Pendaftaran extends Model
         'bukti_pendaftaran_kampus',
         'surat_rekom_pondok',
         'surat_rekom_pcnu',
+        'id_user',
         'id_kampus_prestasi',
         'id_kampus_mandiri',
         'id_kampus_ptnu',
         'id_jalur_prestasi',
+        'id_jalur_tes',
     ];
 
     public function user(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'id_user', 'id');
+        return $this->belongsTo(User::class, 'id', 'id_user');
     }
 
     public function kampus_prestasi(): BelongsTo
@@ -53,5 +55,10 @@ class Pendaftaran extends Model
     public function jalur_prestasi(): BelongsTo
     {
         return $this->belongsTo(JalurPrestasi::class, 'id_jalur_prestasi');
+    }
+
+    public function jalur_tes(): BelongsTo
+    {
+        return $this->belongsTo(JalurTes::class, 'id_jalur_tes');
     }
 }
