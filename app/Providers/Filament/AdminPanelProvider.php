@@ -34,6 +34,7 @@ class AdminPanelProvider extends PanelProvider
             ->passwordReset()
             ->emailVerification()
             ->profile()
+            ->brandName('PPSDM PWNU')
             ->userMenuItems([
                 MenuItem::make()
                     ->label('Dashboard User')
