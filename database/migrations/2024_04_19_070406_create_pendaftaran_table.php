@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('pendaftaran', function (Blueprint $table) {
             $table->id();
-            $table->string('no_pendaftaran_tes');
+            $table->string('no_pendaftaran_tes')->nullable();
             $table->string('no_pendaftaran_pwnu')->nullable();
             $table->string('status_tes')->nullable();
             $table->string('status_pwnu')->nullable();
@@ -24,14 +24,18 @@ return new class extends Migration
             $table->string('surat_rekom_pondok')->nullable();
             $table->string('surat_rekom_pcnu')->nullable();
 
+            $table->unsignedBigInteger('id_user');
             $table->unsignedBigInteger('id_kampus_prestasi')->nullable();
             $table->unsignedBigInteger('id_kampus_mandiri')->nullable();
             $table->unsignedBigInteger('id_kampus_ptnu')->nullable();
             $table->unsignedBigInteger('id_jalur_prestasi')->nullable();
+            $table->unsignedBigInteger('id_jalur_tes')->nullable();
+            $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('id_kampus_prestasi')->references('id')->on('kampus')->onDelete('set null');
             $table->foreign('id_kampus_mandiri')->references('id')->on('kampus')->onDelete('set null');
             $table->foreign('id_kampus_ptnu')->references('id')->on('kampus')->onDelete('set null');
             $table->foreign('id_jalur_prestasi')->references('id')->on('jalur_prestasi')->onDelete('set null');
+            $table->foreign('id_jalur_tes')->references('id')->on('jalur_tes')->onDelete('set null');
 
             $table->timestamps();
         });

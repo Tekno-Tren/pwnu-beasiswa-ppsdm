@@ -26,12 +26,10 @@ return new class extends Migration
             $table->string('no_hp_1')->nullable();
             $table->string('no_hp_2')->nullable();
 
-            $table->unsignedBigInteger('id_pendaftaran')->nullable();
             $table->unsignedBigInteger('id_sekolah')->nullable();
             $table->unsignedBigInteger('id_pondok')->nullable();
             $table->timestamps();
 
-            $table->foreign('id_pendaftaran')->references('id')->on('pendaftaran')->onDelete('set null');
             $table->foreign('id_sekolah')->references('id')->on('sekolah')->onDelete('set null');
             $table->foreign('id_pondok')->references('id')->on('pondok')->onDelete('set null');
         });

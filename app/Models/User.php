@@ -8,6 +8,7 @@ use App\Models\Pondok;
 use App\Models\Sekolah;
 use Illuminate\Notifications\Notifiable;
 use Filament\Models\Contracts\FilamentUser;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
@@ -77,9 +78,9 @@ class User extends Authenticatable implements FilamentUser
         return true;
     }
 
-    public function pendaftaran(): BelongsTo
+    public function pendaftaran(): HasOne
     {
-        return $this->belongsTo(Pendaftaran::class, 'id_pendaftaran', 'id');
+        return $this->hasOne(Pendaftaran::class, 'id_user', 'id');
     }
 
     public function sekolah(): BelongsTo
