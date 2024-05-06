@@ -8,45 +8,30 @@
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
-          <li><a href=#>Home</a></li>
+          <li><a href="route('landing')">Beranda</a></li>
 
-          <li class="dropdown"><a href="#"><span>About</span> <i class="bi bi-chevron-down"></i></a>
+          <li class="dropdown"><a href="#"><span>Tentang</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="#">About Us</a></li>
-              <li><a href="#">Team</a></li>
-              <li><a href="#">Testimonials</a></li>
-              <li class="dropdown"><a href="#"><span>Deep Drop Down</span> <i class="bi bi-chevron-right"></i></a>
-                <ul>
-                  <li><a href="#">Deep Drop Down 1</a></li>
-                  <li><a href="#">Deep Drop Down 2</a></li>
-                  <li><a href="#">Deep Drop Down 3</a></li>
-                  <li><a href="#">Deep Drop Down 4</a></li>
-                  <li><a href="#">Deep Drop Down 5</a></li>
-                </ul>
-              </li>
+              <li><a href="#">Tentang Kami</a></li>
+              <li><a href="#">Galeri</a></li>
+              <li><a href="#">Testimoni</a></li>
             </ul>
           </li>
 
-          <li><a href={{ route('beasiswa.daftar') }}>Form Beasiswa</a></li>
-
-          {{-- <li><a href="services.html">Services</a></li>
-          <li><a href="portfolio.html">Portfolio</a></li>
-          <li><a href="pricing.html">Pricing</a></li>
-          <li><a href="blog.html">Blog</a></li> --}}
-          <li><a href={{ route('filament.app.pages.dashboard') }}>Profile</a></li>
-          {{-- @if ($userAdmin)
-            <li><a href={{ route('filament.admin.pages.dashboard') }}>Admin</a></li>
-          @endif --}}
-
+          @if (Auth::check())
+            <li><a href={{ route('filament.app.pages.dashboard') }}>Dashboard</a></li>
+            <li><a href={{ route('filament.app.auth.logout') }}>Logout</a></li>
+          @else
+            <li><a href={{ route('filament.app.auth.login') }}>Login</a></li>
+          @endif
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
 
       <div class="header-social-links d-flex">
-        <a href="#" class="twitter"><i class="bu bi-twitter"></i></a>
-        <a href="#" class="facebook"><i class="bu bi-facebook"></i></a>
-        <a href="#" class="instagram"><i class="bu bi-instagram"></i></a>
-        <a href="#" class="linkedin"><i class="bu bi-linkedin"></i></i></a>
+        <a href="https://twitter.com/pwnujatim" class="twitter"><i class="bu bi-twitter"></i></a>
+        <a href="https://www.instagram.com/pwnujatim/" class="instagram"><i class="bu bi-instagram"></i></a>
+        <a href="https://www.youtube.com/@PWNUJatim" class="youtube"><i class="bu bi-youtube"></i></a>
       </div>
 
     </div>
