@@ -29,7 +29,7 @@ class UserResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-o-user-group';
     protected static ?string $navigationLabel = 'User';
     protected static ?string $navigationGroup = 'Administrasi';
-    protected static ?int $navigationSort = 8;
+    protected static ?int $navigationSort = 9;
 
     public static function form(Form $form): Form
     {
@@ -61,10 +61,6 @@ class UserResource extends Resource
                     ->maxLength(255),
                 TextInput::make('no_hp')
                     ->maxLength(255),
-                Select::make('id_pendaftaran')
-                    ->label('Pendaftaran')
-                    ->relationship('pendaftaran', 'no_pendaftaran_pwnu')
-                    ->preload(),
                 Select::make('id_sekolah')
                     ->label('Nama Sekolah')
                     ->relationship('sekolah', 'nama')

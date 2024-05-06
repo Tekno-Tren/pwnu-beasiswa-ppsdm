@@ -21,7 +21,7 @@ class JurusanResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-o-home-modern';
     protected static ?string $navigationLabel = 'Jurusan';
     protected static ?string $navigationGroup = 'Administrasi';
-    protected static ?int $navigationSort = 5;
+    protected static ?int $navigationSort = 6;
 
     public static function form(Form $form): Form
     {
