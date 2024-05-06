@@ -19,13 +19,15 @@ use Filament\Http\Middleware\DispatchServingFilamentEvent;
 use Illuminate\Foundation\Http\Middleware\VerifyCsrfToken;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 
+use App\Filament\App\Pages\EditProfile;
+
 class AppPanelProvider extends PanelProvider
 {
     public function panel(Panel $panel): Panel
     {
         return $panel
             ->id('app')
-            ->path('profile')
+            ->path('dashboard')
             ->login()
             ->registration()
             ->passwordReset()
@@ -41,6 +43,7 @@ class AppPanelProvider extends PanelProvider
                     ->label('Dashboard')
                     ->icon('heroicon-o-home')
                     ->url('/'),
+                'profile' => MenuItem::make()->url(fn (): string => EditProfile::getUrl())
             ])
             ->colors([
                 'primary' => Color::Amber,
@@ -50,11 +53,7 @@ class AppPanelProvider extends PanelProvider
             ->pages([
                 Pages\Dashboard::class,
             ])
-            ->discoverWidgets(in: app_path('Filament/App/Widgets'), for: 'App\\Filament\\App\\Widgets')
-            ->widgets([
-                Widgets\AccountWidget::class,
-                // Widgets\FilamentInfoWidget::class,
-            ])
+
             ->middleware([
                 EncryptCookies::class,
                 AddQueuedCookiesToResponse::class,

@@ -3,8 +3,6 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-use App\Models\Pondok;
-use App\Models\Sekolah;
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
@@ -23,7 +21,6 @@ class DatabaseSeeder extends Seeder
             'name' => 'Admin PPSDM',
             'email' => 'admin@example.com',
         ]);
-        User::factory(10)->create();
 
         DB::table('sekolahs')->insert([
             [

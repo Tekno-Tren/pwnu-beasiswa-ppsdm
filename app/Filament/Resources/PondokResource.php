@@ -20,10 +20,10 @@ class PondokResource extends Resource
 {
     protected static ?string $model = Pondok::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-building-library',
-        $navigationLabel = 'Pondok',
-        $navigationGroup = 'Data Master';
-    protected static ?int $navigationSort = 1;
+    protected static ?string $navigationIcon = 'heroicon-o-building-library';
+    protected static ?string $navigationLabel = 'Pondok';
+    protected static ?string $navigationGroup = 'Administrasi';
+    protected static ?int $navigationSort = 5;
 
     public static function form(Form $form): Form
     {
@@ -62,6 +62,18 @@ class PondokResource extends Resource
                 TextColumn::make('alamat')
                     ->searchable()
                     ->label('Alamat'),
+                TextColumn::make('kelurahan')
+                    ->searchable()
+                    ->label('Kelurahan'),
+                TextColumn::make('kecamatan')
+                    ->searchable()
+                    ->label('Kecamatan'),
+                TextColumn::make('kabupaten_kota')
+                    ->searchable()
+                    ->label('Kabupaten/Kota'),
+                TextColumn::make('provinsi')
+                    ->searchable()
+                    ->label('Provinsi'),
                 TextColumn::make('no_hp')
                     ->searchable()
                     ->label('Nomor Telepon'),

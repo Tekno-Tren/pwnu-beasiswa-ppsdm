@@ -18,10 +18,10 @@ class JurusanResource extends Resource
 {
     protected static ?string $model = Jurusan::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-home-modern',
-        $navigationLabel = 'Jurusan',
-        $navigationGroup = 'Data Master';
-    protected static ?int $navigationSort = 5;
+    protected static ?string $navigationIcon = 'heroicon-o-home-modern';
+    protected static ?string $navigationLabel = 'Jurusan';
+    protected static ?string $navigationGroup = 'Administrasi';
+    protected static ?int $navigationSort = 6;
 
     public static function form(Form $form): Form
     {
@@ -31,15 +31,11 @@ class JurusanResource extends Resource
                     ->required()
                     ->label('Nama Jurusan')
                     ->maxLength(255),
-                Forms\Components\Select::make('fakultas_id')
-                    ->required()
+                Forms\Components\Select::make('id_fakultas')
                     ->label('Nama Fakultas')
-                    ->relationship('fakultas', 'nama')
-                    ->preload(),
-                Forms\Components\Select::make('kampus_id')
+                    ->searchable()
                     ->required()
-                    ->label('Nama Kampus')
-                    ->relationship('kampus', 'nama')
+                    ->relationship('fakultas', 'nama')
                     ->preload(),
             ]);
     }
@@ -54,14 +50,13 @@ class JurusanResource extends Resource
                 Tables\Columns\TextColumn::make('fakultas.nama')
                     ->label('Nama Fakultas')
                     ->searchable(),
-                Tables\Columns\TextColumn::make('kampus.nama')
-                    ->label('Nama Kampus')
-                    ->searchable(),
                 Tables\Columns\TextColumn::make('created_at')
+                    ->label('Dibuat')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('updated_at')
+                    ->label('Diperbarui')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
@@ -71,6 +66,7 @@ class JurusanResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

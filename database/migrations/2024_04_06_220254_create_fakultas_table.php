@@ -15,10 +15,10 @@ return new class extends Migration
             $table->id();
             $table->string('nama');
 
-            $table->unsignedBigInteger('kampus_id')->nullable();
+            $table->unsignedBigInteger('id_kampus')->nullable();
             $table->timestamps();
 
-            $table->foreign('kampus_id')->references('id')->on('kampuses')->onDelete('set null');
+            $table->foreign('id_kampus')->references('id')->on('kampus')->onDelete('set null');
         });
     }
 

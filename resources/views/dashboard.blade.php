@@ -1,4 +1,4 @@
-@extends('welcome')
+@extends('layouts.base')
 @section('title', 'Dashboard')
 
 @section('content')
@@ -18,29 +18,6 @@
             </div>
           </div>
         </div>
-
-        {{-- <!-- Slide 2 -->
-        <div class="carousel-item" style="background-image: url(assets/img/slide/slide-2.jpg);">
-          <div class="carousel-container">
-            <div class="carousel-content animate__animated animate__fadeInUp">
-              <h2>Lorem Ipsum Dolor</h2>
-              <p>Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
-              <div class="text-center"><a href="" class="btn-get-started">Read More</a></div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Slide 3 -->
-        <div class="carousel-item" style="background-image: url(assets/img/slide/slide-3.jpg);">
-          <div class="carousel-container">
-            <div class="carousel-content animate__animated animate__fadeInUp">
-              <h2>Sequi ea ut et est quaerat</h2>
-              <p>Ut velit est quam dolor ad a aliquid qui aliquid. Sequi ea ut et est quaerat sequi nihil ut aliquam. Occaecati alias dolorem mollitia ut. Similique ea voluptatem. Esse doloremque accusamus repellendus deleniti vel. Minus et tempore modi architecto.</p>
-              <div class="text-center"><a href="" class="btn-get-started">Read More</a></div>
-            </div>
-          </div>
-        </div> --}}
-
       </div>
 
       <a class="carousel-control-prev" href="#heroCarousel" role="button" data-bs-slide="prev">
@@ -161,20 +138,6 @@
               <p>2023-2024</p>
             </div>
           </div>
-
-          {{-- <div class="col-lg-4 col-md-6 d-flex align-items-stretch p-0 mt-4" data-aos="zoom-in" data-aos-delay="300">
-            <div class="m-3 icon-box iconbox-teal w-100">
-              <div class="icon">
-                <svg width="100" height="100" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
-                  <path stroke="none" stroke-width="0" fill="#f5f5f5" d="M300,566.797414625762C385.7384707136149,576.1784315230908,478.7894351017131,552.8928747891023,531.9192734346935,484.94944893311C584.6109503024035,417.5663521118492,582.489472248146,322.67544863468447,553.9536738515405,242.03673114598146C529.1557734026468,171.96086150256528,465.24506316201064,127.66468636344209,395.9583748389544,100.7403814666027C334.2173773831606,76.7482773500951,269.4350130405921,84.62216499799875,207.1952322260088,107.2889140133804C132.92018162631612,134.33871894543012,41.79353780512637,160.00259165414826,22.644507872594943,236.69541883565114C3.319112789854554,314.0945973066697,72.72355303640163,379.243833228382,124.04198916343866,440.3218312028393C172.9286146004772,498.5055451809895,224.45579914871206,558.5317968840102,300,566.797414625762"></path>
-                </svg>
-                <i class="bx bx-arch"></i>
-              </div>
-              <h4><a href="">Divera Don</a></h4>
-              <p>Modi nostrum vel laborum. Porro fugit error sit minus sapiente sit aspernatur</p>
-            </div>
-          </div> --}}
-
         </div>
 
       </div>
@@ -183,17 +146,6 @@
     <!-- ======= Portfolio Section ======= -->
     <section id="portfolio" class="portfolio">
       <div class="container">
-
-        {{-- <div class="row" data-aos="fade-up">
-          <div class="col-lg-12 d-flex justify-content-center">
-            <ul id="portfolio-flters">
-              <li data-filter="*" class="filter-active">All</li>
-              <li data-filter=".filter-app">App</li>
-              <li data-filter=".filter-card">Card</li>
-              <li data-filter=".filter-web">Web</li>
-            </ul>
-          </div>
-        </div> --}}
 
         <div class="row" data-aos="fade-up">
           <div class="col-lg-12 d-flex justify-content-center">
@@ -285,16 +237,6 @@
             </div>
           </div>
 
-          {{-- <div class="col-lg-4 col-md-6 portfolio-item filter-web">
-            <img src="assets/img/portfolio/portfolio-9.jpg" class="img-fluid" alt="">
-            <div class="portfolio-info">
-              <h4>Web 3</h4>
-              <p>Web</p>
-              <a href="assets/img/portfolio/portfolio-9.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Web 3"><i class="bx bx-plus"></i></a>
-              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
-            </div>
-          </div> --}}
-
         </div>
 
       </div>
@@ -312,49 +254,49 @@
 
           <div class="col-lg-3 col-md-4 col-6">
             <div class="client-logo">
-              <img src="assets/img/Logo Universitas Mitra/Unisma.png" class="img-fluid" style="width: 40%; height: auto;" alt="">
+              <img src="assets/img/logo-univ-mitra/Unisma.png" class="img-fluid" style="width: 40%; height: auto;" alt="">
             </div>
           </div>
 
           <div class="col-lg-3 col-md-4 col-6">
             <div class="client-logo">
-              <img src="assets/img/Logo Universitas Mitra/Unusa.png" class="img-fluid" style="width: 25%; height: auto;" alt="">
+              <img src="assets/img/logo-univ-mitra/Unusa.png" class="img-fluid" style="width: 25%; height: auto;" alt="">
             </div>
           </div>
 
           <div class="col-lg-3 col-md-4 col-6">
             <div class="client-logo">
-              <img src="assets/img/Logo Universitas Mitra/UPN-Veteran.png" class="img-fluid" style="width: 25%; height: auto;" alt="">
+              <img src="assets/img/logo-univ-mitra/UPN-Veteran.png" class="img-fluid" style="width: 25%; height: auto;" alt="">
             </div>
           </div>
 
           <div class="col-lg-3 col-md-4 col-6">
             <div class="client-logo">
-              <img src="assets/img/Logo Universitas Mitra/UTM.png" class="img-fluid" style="width: 25%; height: auto;" alt="">
+              <img src="assets/img/logo-univ-mitra/UTM.png" class="img-fluid" style="width: 25%; height: auto;" alt="">
             </div>
           </div>
 
           <div class="col-lg-3 col-md-4 col-6">
             <div class="client-logo">
-              <img src="assets/img/Logo Universitas Mitra/Unesa.png" class="img-fluid" style="width: 25%; height: auto;" alt="">
+              <img src="assets/img/logo-univ-mitra/Unesa.png" class="img-fluid" style="width: 25%; height: auto;" alt="">
             </div>
           </div>
 
           <div class="col-lg-3 col-md-4 col-6">
             <div class="client-logo">
-              <img src="assets/img/Logo Universitas Mitra/UB.png" class="img-fluid w" style="width: 25%; height: auto;" alt="">
+              <img src="assets/img/logo-univ-mitra/UB.png" class="img-fluid w" style="width: 25%; height: auto;" alt="">
             </div>
           </div>
 
           <div class="col-lg-3 col-md-4 col-6">
             <div class="client-logo">
-              <img src="assets/img/Logo Universitas Mitra/UM.png" class="img-fluid" style="width: 25%; height: auto;" alt="">
+              <img src="assets/img/logo-univ-mitra/UM.png" class="img-fluid" style="width: 25%; height: auto;" alt="">
             </div>
           </div>
 
           <div class="col-lg-3 col-md-4 col-6">
             <div class="client-logo">
-              <img src="assets/img/Logo Universitas Mitra/UIN-Malang.png" class="img-fluid" style="width: 28%; height: auto;" alt="">
+              <img src="assets/img/logo-univ-mitra/UIN-Malang.png" class="img-fluid" style="width: 28%; height: auto;" alt="">
             </div>
           </div>
 
@@ -364,6 +306,6 @@
     </section><!-- End Our Clients Section -->
 
   </main><!-- End #main -->
-  
+
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
 @endsection

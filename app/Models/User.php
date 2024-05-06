@@ -6,16 +6,18 @@ namespace App\Models;
 use Filament\Panel;
 use App\Models\Pondok;
 use App\Models\Sekolah;
-use App\Models\JalurPrestasi;
-use App\Models\ClusterBeasiswa;
 use Illuminate\Notifications\Notifiable;
 use Filament\Models\Contracts\FilamentUser;
+use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class User extends Authenticatable implements FilamentUser
 {
     use HasFactory, Notifiable;
+
+    protected $table = 'users';
 
     /**
      * The attributes that are mass assignable.
@@ -31,12 +33,12 @@ class User extends Authenticatable implements FilamentUser
         'tanggal_lahir',
         'jenis_kelamin',
         'alamat',
-        'no_hp',
+        'no_hp_1',
+        'no_hp_2',
 
-        'jalur_prestasi_id',
-        'sekolah_id',
-        'pondok_id',
-        'cluster_id'
+        'id_pendaftaran',
+        'id_sekolah',
+        'id_pondok',
     ];
 
     /**
@@ -61,39 +63,33 @@ class User extends Authenticatable implements FilamentUser
             'password' => 'hashed',
         ];
     }
-    
+
     public function isAdmin(): bool
     {
         return $this->email === 'admin@example.com';
     }
-    
+
     public function canAccessPanel(Panel $panel): bool
     {
         if ($panel->getId() === 'admin') {
             return $this->isAdmin();
         }
- 
+
         return true;
     }
 
-    public function jalurprestasi()
+    public function pendaftaran(): HasOne
     {
-        return $this->belongsTo(JalurPrestasi::class);
+        return $this->hasOne(Pendaftaran::class, 'id_user', 'id');
     }
-    public function pondok()
+
+    public function sekolah(): BelongsTo
     {
-        return $this->belongsTo(Pondok::class);
+        return $this->belongsTo(Sekolah::class, 'id_sekolah', 'id');
     }
-    public function sekolah()
+
+    public function pondok(): BelongsTo
     {
-        return $this->belongsTo(Sekolah::class);
-    }
-    public function cluster()
-    {
-        return $this->belongsTo(ClusterBeasiswa::class);
-    }
-    public function beasiswa()
-    {
-        return $this->hasOne(Beasiswa::class);
+        return $this->belongsTo(Pondok::class, 'id_pondok', 'id');
     }
 }

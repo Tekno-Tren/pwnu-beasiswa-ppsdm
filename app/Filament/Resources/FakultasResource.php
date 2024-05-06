@@ -18,23 +18,24 @@ class FakultasResource extends Resource
 {
     protected static ?string $model = Fakultas::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-home-modern',
-        $navigationLabel = 'Fakultas',
-        $navigationGroup = 'Data Master';
-    protected static ?int $navigationSort = 4;
+    protected static ?string $navigationIcon = 'heroicon-o-home-modern';
+    protected static ?string $navigationLabel = 'Fakultas';
+    protected static ?string $navigationGroup = 'Administrasi';
+    protected static ?int $navigationSort = 7;
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
                 Forms\Components\TextInput::make('nama')
-                    ->required()
                     ->label('Nama Fakultas')
-                    ->maxLength(255),
-                Forms\Components\Select::make('kampus_id')
                     ->required()
-                    ->relationship('kampus', 'nama')
+                    ->maxLength(255),
+                Forms\Components\Select::make('id_kampus')
                     ->label('Nama Kampus')
+                    ->required()
+                    ->searchable()
+                    ->relationship('kampus', 'nama')
                     ->preload(),
             ]);
     }
@@ -50,10 +51,12 @@ class FakultasResource extends Resource
                     ->label('Nama Kampus')
                     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
+                    ->label('Dibuat')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: false),
                 Tables\Columns\TextColumn::make('updated_at')
+                    ->label('Diperbarui')
                     ->dateTime()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
@@ -63,6 +66,7 @@ class FakultasResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

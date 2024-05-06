@@ -20,10 +20,10 @@ class SekolahResource extends Resource
 {
     protected static ?string $model = Sekolah::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-building-office',
-        $navigationLabel = 'Sekolah',
-        $navigationGroup = 'Data Master';
-    protected static ?int $navigationSort = 2;
+    protected static ?string $navigationIcon = 'heroicon-o-building-office';
+    protected static ?string $navigationLabel = 'Sekolah';
+    protected static ?string $navigationGroup = 'Administrasi';
+    protected static ?int $navigationSort = 4;
 
     public static function form(Form $form): Form
     {
@@ -71,6 +71,7 @@ class SekolahResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
