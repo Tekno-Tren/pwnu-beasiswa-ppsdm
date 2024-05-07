@@ -66,6 +66,20 @@ class Register extends BaseRegister
                                             ->relationship('sekolah', 'nama')
                                             ->searchable()
                                             ->preload()
+                                            ->createOptionForm([
+                                                Forms\Components\TextInput::make('npsn')
+                                                    ->label('NPSN'),
+                                                Forms\Components\TextInput::make('nama')
+                                                    ->label('Nama Sekolah')
+                                                    ->required(),
+                                                Forms\Components\TextInput::make('alamat')
+                                                    ->label('Alamat Sekolah')
+                                                    ->required(),
+                                                Forms\Components\TextInput::make('no_hp')
+                                                    ->label('No. Handphone')
+                                                    ->required()
+                                                    ->rule(['numeric']),
+                                            ])
                                             ->required()
                                 ]),
                                 Tabs\Tab::make('pondok')
