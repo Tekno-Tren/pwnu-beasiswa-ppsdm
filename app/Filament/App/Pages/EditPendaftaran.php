@@ -167,8 +167,10 @@ class EditPendaftaran extends Page implements HasForms
 
             if (! auth()->user()->pendaftaran) {
                 Pendaftaran::create($data + ['id_user' => auth()->id()]);
+                redirect()->to('/dashboard');
             } else {
                 auth()->user()->pendaftaran->update($data);
+                redirect()->to('/dashboard');
             }
         } catch (Halt $exception) {
             return;
