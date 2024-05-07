@@ -35,9 +35,6 @@ class PendaftaranResource extends Resource
                 Forms\Components\Select::make('id_user')
                     ->required()
                     ->relationship('user', 'name'),
-                Forms\Components\Select::make('id_cluster_kampus')
-                    ->required()
-                    ->relationship('cluster', 'nama'),
                 Forms\Components\Select::make('id_kampus')
                     ->required()
                     ->relationship('kampus', 'nama'),
@@ -55,8 +52,6 @@ class PendaftaranResource extends Resource
                     ->searchable(),
                 Tables\Columns\TextColumn::make('user.name')
                     ->label('User')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('cluster.nama')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('kampus.nama')
                     ->numeric()

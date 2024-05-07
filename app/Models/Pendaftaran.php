@@ -33,7 +33,7 @@ class Pendaftaran extends Model
 
     public function user(): BelongsTo
     {
-        return $this->belongsTo(User::class, 'id', 'id_user');
+        return $this->belongsTo(User::class, 'id_user', 'id');
     }
 
     public function jurusan(): BelongsTo
