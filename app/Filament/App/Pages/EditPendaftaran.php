@@ -120,13 +120,7 @@ class EditPendaftaran extends Page implements HasForms
                         ->schema([
                             Forms\Components\Select::make('id_jalur_tes')
                                 ->label('Pilih Jalur Tes')
-                                ->options(
-                                    fn () => JalurTes::all()->pluck('nama', 'id')
-                                    // [
-                                    // "Tes UTBK - SNBT" => "Tes UTBK - SNBT",
-                                    // "Tidak mengikuti UTBK" => "Tidak mengikuti UTBK",
-                                    // ]
-                                    )
+                                ->options(fn () => JalurTes::all()->pluck('nama', 'id'))
                                 ->placeholder('Pilih jalur')
                                 ->afterStateUpdated(function (Set $set) {
                                     $set('no_pendaftaran_tes', null);
