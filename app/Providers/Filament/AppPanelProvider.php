@@ -2,6 +2,7 @@
 
 namespace App\Providers\Filament;
 
+use App\Filament\App\Pages\Auth\Register;
 use Filament\Pages;
 use Filament\Panel;
 use Filament\Widgets;
@@ -29,7 +30,7 @@ class AppPanelProvider extends PanelProvider
             ->id('app')
             ->path('dashboard')
             ->login()
-            ->registration()
+            ->registration(Register::class)
             ->passwordReset()
             ->emailVerification()
             ->profile()
