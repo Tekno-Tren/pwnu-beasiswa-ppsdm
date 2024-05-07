@@ -2,8 +2,6 @@
 
 namespace App\Models;
 
-use App\Models\User;
-use App\Models\Kampus;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -16,6 +14,7 @@ class Pendaftaran extends Model
 
     protected $fillable = [
         'no_pendaftaran_tes',
+        'no_pendaftaran_kampus',
         'no_pendaftaran_pwnu',
         'status_tes',
         'status_pwnu',
@@ -25,9 +24,9 @@ class Pendaftaran extends Model
         'surat_rekom_pondok',
         'surat_rekom_pcnu',
         'id_user',
-        'id_kampus_prestasi',
-        'id_kampus_mandiri',
-        'id_kampus_ptnu',
+        'id_jurusan',
+        'id_fakultas',
+        'id_kampus',
         'id_jalur_prestasi',
         'id_jalur_tes',
     ];
@@ -37,19 +36,19 @@ class Pendaftaran extends Model
         return $this->belongsTo(User::class, 'id', 'id_user');
     }
 
-    public function kampus_prestasi(): BelongsTo
+    public function jurusan(): BelongsTo
     {
-        return $this->belongsTo(Kampus::class, 'id_kampus_prestasi');
+        return $this->belongsTo(Jurusan::class, 'id_jurusan');
     }
 
-    public function kampus_mandiri(): BelongsTo
+    public function fakultas(): BelongsTo
     {
-        return $this->belongsTo(Kampus::class, 'id_kampus_mandiri');
+        return $this->belongsTo(Fakultas::class, 'id_fakultas');
     }
 
-    public function kampus_PTNU(): BelongsTo
+    public function kampus(): BelongsTo
     {
-        return $this->belongsTo(Kampus::class, 'id_kampus_ptnu');
+        return $this->belongsTo(Kampus::class, 'id_kampus');
     }
 
     public function jalur_prestasi(): BelongsTo

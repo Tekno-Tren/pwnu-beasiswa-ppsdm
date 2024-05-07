@@ -3,6 +3,9 @@
 namespace App\Filament\App\Pages;
 
 use App\Models\Kampus;
+use App\Models\Fakultas;
+use App\Models\Jurusan;
+use App\Models\ClusterKampus;
 use App\Models\JalurTes;
 use App\Models\JalurPrestasi;
 use App\Models\Pendaftaran;
@@ -13,12 +16,15 @@ use Filament\Actions\Action;
 use Filament\Support\Exceptions\Halt;
 use Filament\Notifications\Notification;
 use Filament\Forms;
+use Filament\Forms\Get;
+use Filament\Forms\Set;
 use Filament\Forms\Components\Wizard;
 use Filament\Forms\Components\TextInput;
 
 use Filament\Forms\Contracts\HasForms;
 use Filament\Forms\Concerns\InteractsWithForms;
 
+use Illuminate\Support\Collection;
 use Illuminate\Support\HtmlString;
 use Illuminate\Support\Facades\Blade;
 
@@ -52,27 +58,51 @@ class EditPendaftaran extends Page implements HasForms
                 Wizard::make([
                     Wizard\Step::make('Jalur Kampus dan Prestasi')
                         ->schema([
-                            Forms\Components\Select::make('id_kampus_prestasi')
-                                ->label('Pilih Kampus Tujuan Kluster Prestasi Keagamaan')
-                                ->options(fn () => Kampus::where('id_cluster_kampus', 1)->pluck('nama', 'id'))
-                                ->placeholder('Pilih kampus')
-                                ->searchable()
-                                ->preload()
+                            Forms\Components\Select::make('id_cluster_kampus')
+                                ->label('Pilih Cluster Kampus')
+                                ->options(ClusterKampus::all()->pluck('nama', 'id'))
+                                ->live()
+                                ->afterStateUpdated(function (Set $set) {
+                                    $set('id_kampus', null);
+                                    $set('id_fakultas', null);
+                                    $set('id_jurusan', null);
+                                })
                                 ->required(),
-                            Forms\Components\Select::make('id_kampus_mandiri')
-                                ->label('Pilih Kampus Tujuan Kluster Mandiri')
-                                ->options(fn () => Kampus::where('id_cluster_kampus', 2)->pluck('nama', 'id'))
-                                ->placeholder('Pilih kampus')
+                            Forms\Components\Select::make('id_kampus')
+                                ->label('Pilih Kampus')
+                                ->options(fn (Get $get): Collection => Kampus::query()
+                                    ->where('id_cluster_kampus', $get('id_cluster_kampus'))
+                                    ->pluck('nama', 'id'))
                                 ->searchable()
-                                ->preload()
+                                ->live()
+                                ->afterStateUpdated(function (Set $set) {
+                                    $set('id_fakultas', null);
+                                    $set('id_jurusan', null);
+                                })
                                 ->required(),
-                            Forms\Components\Select::make('id_kampus_ptnu')
-                                ->label('Pilih Kampus Tujuan Kluster PTNU')
-                                ->options(fn () => Kampus::where('id_cluster_kampus', 3)->pluck('nama', 'id'))
-                                ->placeholder('Pilih kampus')
+                            Forms\Components\Select::make('id_fakultas')
+                                ->label('Pilih Fakultas')
+                                ->options(fn (Get $get): Collection => Fakultas::query()
+                                    ->where('id_kampus', $get('id_kampus'))
+                                    ->pluck('nama', 'id'))
                                 ->searchable()
-                                ->preload()
+                                ->live()
+                                ->afterStateUpdated(fn (Set $set) => $set('id_jurusan', null))
                                 ->required(),
+                            Forms\Components\Select::make('id_jurusan')
+                                ->label('Pilih Jurusan')
+                                ->options(fn (Get $get): Collection => Jurusan::query()
+                                    ->where('id_fakultas', $get('id_fakultas'))
+                                    ->pluck('nama', 'id'))
+                                ->searchable()
+                                ->live()
+                                ->required(),
+                            Forms\Components\TextInput::make('no_pendaftaran_kampus')
+                                ->label('Nomor Pendaftaran Kampus'),
+                            Forms\Components\FileUpload::make('bukti_pendaftaran_kampus')
+                                ->label('Bukti Pendaftaran Kampus')
+                                ->acceptedFileTypes(['application/pdf', 'image/*'])
+                                ->downloadable(),
                             Forms\Components\Select::make('id_jalur_prestasi')
                                 ->label('Pilih Jalur Prestasi')
                                 ->options(fn () => JalurPrestasi::all()->pluck('nama', 'id'))
@@ -91,16 +121,17 @@ class EditPendaftaran extends Page implements HasForms
                                 ->label('Pilih Jalur Tes')
                                 ->options(fn () => JalurTes::all()->pluck('nama', 'id'))
                                 ->placeholder('Pilih jalur')
+                                ->afterStateUpdated(function (Set $set) {
+                                    $set('no_pendaftaran_tes', null);
+                                })
                                 ->required(),
                             Forms\Components\TextInput::make('no_pendaftaran_tes')
-                                ->label('Nomor Pendaftaran Tes')
-                                ->required(),
+                                ->label('Nomor Pendaftaran Tes'),
                             Forms\Components\FileUpload::make('bukti_pendaftaran_tes')
                                 ->label('Bukti Pendaftaran Tes')
                                 ->acceptedFileTypes(['application/pdf'])
                                 ->downloadable()
-                                ->openable()
-                                ->required(),
+                                ->openable(),
                         ]),
                     Wizard\Step::make('Rekomendasi')
                         ->schema([
@@ -108,14 +139,12 @@ class EditPendaftaran extends Page implements HasForms
                                 ->label('Surat Rekomendasi Pondok')
                                 ->acceptedFileTypes(['application/pdf'])
                                 ->downloadable()
-                                ->openable()
-                                ->required(),
+                                ->openable(),
                             Forms\Components\FileUpload::make('surat_rekom_pcnu')
                                 ->label('Surat Rekomendasi PCNU')
                                 ->acceptedFileTypes(['application/pdf'])
                                 ->downloadable()
-                                ->openable()
-                                ->required(),
+                                ->openable(),
                         ]),
                 ])
                 ->submitAction(new HtmlString(Blade::render(<<<BLADE
