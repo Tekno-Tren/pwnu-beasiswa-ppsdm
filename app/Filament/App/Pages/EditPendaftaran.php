@@ -98,7 +98,8 @@ class EditPendaftaran extends Page implements HasForms
                                 ->live()
                                 ->required(),
                             Forms\Components\TextInput::make('no_pendaftaran_kampus')
-                                ->label('Nomor Pendaftaran Kampus'),
+                                ->label('Nomor Pendaftaran Kampus')
+                                ->required(),
                             Forms\Components\FileUpload::make('bukti_pendaftaran_kampus')
                                 ->label('Bukti Pendaftaran Kampus')
                                 ->acceptedFileTypes(['application/pdf', 'image/*'])
@@ -119,7 +120,13 @@ class EditPendaftaran extends Page implements HasForms
                         ->schema([
                             Forms\Components\Select::make('id_jalur_tes')
                                 ->label('Pilih Jalur Tes')
-                                ->options(fn () => JalurTes::all()->pluck('nama', 'id'))
+                                ->options(
+                                    fn () => JalurTes::all()->pluck('nama', 'id')
+                                    // [
+                                    // "Tes UTBK - SNBT" => "Tes UTBK - SNBT",
+                                    // "Tidak mengikuti UTBK" => "Tidak mengikuti UTBK",
+                                    // ]
+                                    )
                                 ->placeholder('Pilih jalur')
                                 ->afterStateUpdated(function (Set $set) {
                                     $set('no_pendaftaran_tes', null);
