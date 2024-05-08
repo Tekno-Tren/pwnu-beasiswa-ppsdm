@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('pondok', function (Blueprint $table) {
             $table->id();
-            $table->string('nspp')->unique();
+            $table->string('nspp')->unique()->nullable();
             $table->string('nama');
             $table->string('alamat')->nullable();
             $table->string('kelurahan')->nullable();
