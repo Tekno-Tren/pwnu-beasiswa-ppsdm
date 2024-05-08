@@ -66,6 +66,8 @@ class EditPendaftaran extends Page implements HasForms
                                     $set('id_kampus', null);
                                     $set('id_fakultas', null);
                                     $set('id_jurusan', null);
+                                    $set('id_jalur_prestasi', null);
+                                    $set('bukti_prestasi', null);
                                 })
                                 ->required(),
                             Forms\Components\Select::make('id_kampus')
@@ -109,11 +111,12 @@ class EditPendaftaran extends Page implements HasForms
                                 ->options(fn () => JalurPrestasi::all()->pluck('nama', 'id'))
                                 ->placeholder('Pilih jalur')
                                 ->preload()
-                                ->required(),
+                                ->visible(fn (Get $get): bool => $get('id_cluster_kampus') == 1),
                             Forms\Components\FileUpload::make('bukti_prestasi')
                                 ->label('Bukti Prestasi')
                                 ->acceptedFileTypes(['application/pdf', 'image/*'])
                                 ->downloadable()
+                                ->visible(fn (Get $get): bool => $get('id_cluster_kampus') == 1)
                                 ->openable(),
                         ]),
                     Wizard\Step::make('Jalur Tes yang Diikuti')
