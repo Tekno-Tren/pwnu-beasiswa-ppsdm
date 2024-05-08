@@ -34,7 +34,9 @@ class AppPanelProvider extends PanelProvider
             ->passwordReset()
             ->emailVerification()
             ->profile()
-            ->brandName('PPSDM PWNU')
+            ->brandName('Sistem Informasi Beasiswa - PPSDM PWNU')
+            ->brandLogo(fn () => view('filament.logo'))
+            ->favicon(asset('assets/img/favicon.png'))
             ->userMenuItems([
                 MenuItem::make()
                     ->label('Admin')
@@ -48,7 +50,12 @@ class AppPanelProvider extends PanelProvider
                 'profile' => MenuItem::make()->url(fn (): string => EditProfile::getUrl())
             ])
             ->colors([
-                'primary' => Color::Amber,
+                'danger' => Color::Rose,
+                'gray' => Color::Gray,
+                'info' => Color::Blue,
+                'primary' => Color::Green,
+                'success' => Color::Emerald,
+                'warning' => Color::Orange,
             ])
             ->discoverResources(in: app_path('Filament/App/Resources'), for: 'App\\Filament\\App\\Resources')
             ->discoverPages(in: app_path('Filament/App/Pages'), for: 'App\\Filament\\App\\Pages')

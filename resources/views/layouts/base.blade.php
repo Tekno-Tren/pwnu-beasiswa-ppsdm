@@ -10,16 +10,18 @@
   <meta content="" name="keywords">
 
   <!-- Favicons -->
-  <link href="assets/img/favicon.png" rel="icon">
-  <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+  <link href="assets/img/favicon-32x32.png" type="image/png" sizes="32x32" rel="icon">
+  <link href="assets/img/favicon-16x16.png" type="image/png" sizes="16x16" rel="icon">
+  <link href="assets/img/apple-touch-icon.png" sizes="180x180" rel="apple-touch-icon">
+  <link href="assets/site.webmanifest" rel="manifest">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Roboto:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i" rel="stylesheet">
 
   <!-- Template Main JS & CSS File -->
-<link rel="stylesheet" type="text/css" href="{{ asset('assets/vendor/bootstrap/css/bootstrap.css') }}">
-<link rel="stylesheet" type="text/css" href="{{ asset('assets/vendor/bootstrap/js/bootstrap.js') }}">
-<script type="text/javascript" src="{{ asset('assets') }}/js/jquery-3.3.1.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendor/bootstrap/css/bootstrap.css') }}">
+  <link rel="stylesheet" type="text/css" href="{{ asset('assets/vendor/bootstrap/js/bootstrap.js') }}">
+  <script type="text/javascript" src="{{ asset('assets') }}/js/jquery-3.3.1.min.js"></script>
 
   <!-- Vendor CSS Files -->
   <link href="{{ asset('assets/vendor/animate.css/animate.css') }}" rel="stylesheet">

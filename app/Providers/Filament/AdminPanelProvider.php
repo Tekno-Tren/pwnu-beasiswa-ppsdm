@@ -34,7 +34,9 @@ class AdminPanelProvider extends PanelProvider
             ->passwordReset()
             ->emailVerification()
             ->profile()
-            ->brandName('PPSDM PWNU')
+            ->brandName('Admin PPSDM PWNU')
+            ->brandLogo(fn () => view('filament.logo'))
+            ->favicon(asset('assets/img/favicon.png'))
             ->userMenuItems([
                 MenuItem::make()
                     ->label('Dashboard User')
@@ -47,17 +49,9 @@ class AdminPanelProvider extends PanelProvider
                         )
             ])
             ->colors([
-                'danger' => Color::Rose,
-                'gray' => Color::Gray,
-                'info' => Color::Blue,
-                'primary' => Color::Green,
-                'success' => Color::Emerald,
-                'warning' => Color::Orange,
+                'primary' => Color::Amber,
             ])
             ->font('Montserrat')
-            ->brandName('Sistem Informasi Beasiswa')
-            ->brandLogo(asset('assets/img/favicon.png'))
-            ->favicon(asset('assets/img/favicon.png'))
             ->discoverResources(in: app_path('Filament/Resources'), for: 'App\\Filament\\Resources')
             ->discoverPages(in: app_path('Filament/Pages'), for: 'App\\Filament\\Pages')
             ->pages([
