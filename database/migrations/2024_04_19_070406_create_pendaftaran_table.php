@@ -29,12 +29,14 @@ return new class extends Migration
             $table->unsignedBigInteger('id_jurusan')->nullable();
             $table->unsignedBigInteger('id_fakultas')->nullable();
             $table->unsignedBigInteger('id_kampus')->nullable();
+            $table->unsignedBigInteger('id_cluster_kampus')->nullable();
             $table->unsignedBigInteger('id_jalur_prestasi')->nullable();
             $table->unsignedBigInteger('id_jalur_tes')->nullable();
             $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('id_jurusan')->references('id')->on('jurusan')->onDelete('set null');
             $table->foreign('id_fakultas')->references('id')->on('fakultas')->onDelete('set null');
             $table->foreign('id_kampus')->references('id')->on('kampus')->onDelete('set null');
+            $table->foreign('id_cluster_kampus')->references('id')->on('cluster_kampus')->onDelete('set null');
             $table->foreign('id_jalur_prestasi')->references('id')->on('jalur_prestasi')->onDelete('set null');
             $table->foreign('id_jalur_tes')->references('id')->on('jalur_tes')->onDelete('set null');
 

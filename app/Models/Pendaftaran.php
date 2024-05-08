@@ -27,6 +27,7 @@ class Pendaftaran extends Model
         'id_jurusan',
         'id_fakultas',
         'id_kampus',
+        'id_cluster_kampus',
         'id_jalur_prestasi',
         'id_jalur_tes',
     ];
