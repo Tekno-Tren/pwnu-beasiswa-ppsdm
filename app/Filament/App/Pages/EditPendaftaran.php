@@ -145,7 +145,7 @@ class EditPendaftaran extends Page implements HasForms
                                 ->downloadable()
                                 ->openable(),
                             Forms\Components\FileUpload::make('surat_rekom_pcnu')
-                                ->label('Surat Rekomendasi PCNU')
+                                ->label('Surat Rekomendasi PCNU atau Lembaga Banom NU Jawa Timur')
                                 ->acceptedFileTypes(['application/pdf'])
                                 ->downloadable()
                                 ->openable(),
