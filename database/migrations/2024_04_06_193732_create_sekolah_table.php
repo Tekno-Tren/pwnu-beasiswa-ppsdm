@@ -16,6 +16,10 @@ return new class extends Migration
             $table->string('npsn')->unique()->nullable();
             $table->string('nama');
             $table->string('alamat')->nullable();
+            $table->string('kelurahan')->nullable();
+            $table->string('kecamatan')->nullable();
+            $table->string('kabupaten_kota')->nullable();
+            $table->string('provinsi')->nullable();
             $table->string('no_hp')->nullable();
             $table->timestamps();
         });

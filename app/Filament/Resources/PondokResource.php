@@ -42,6 +42,22 @@ class PondokResource extends Resource
                         ->label('Alamat')
                         ->required()
                         ->placeholder('Masukkan alamat pondok'),
+                    TextInput::make('kelurahan')
+                        ->label('Kelurahan')
+                        ->required()
+                        ->placeholder('Masukkan kelurahan pondok'),
+                    TextInput::make('kecamatan')
+                        ->label('Kecamatan')
+                        ->required()
+                        ->placeholder('Masukkan kecamatan pondok'),
+                    TextInput::make('kabupaten_kota')
+                        ->label('Kabupaten/Kota')
+                        ->required()
+                        ->placeholder('Masukkan kabupaten/kota pondok'),
+                    TextInput::make('provinsi')
+                        ->label('Provinsi')
+                        ->required()
+                        ->placeholder('Masukkan provinsi pondok'),
                     TextInput::make('no_hp')
                         ->label('Nomor Telepon')
                         ->required()

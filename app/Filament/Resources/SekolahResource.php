@@ -42,6 +42,22 @@ class SekolahResource extends Resource
                         ->label('Alamat')
                         ->required()
                         ->placeholder('Masukkan alamat sekolah'),
+                    TextInput::make('kelurahan')
+                        ->label('Kelurahan')
+                        ->required()
+                        ->placeholder('Masukkan kelurahan sekolah'),
+                    TextInput::make('kecamatan')
+                        ->label('Kecamatan')
+                        ->required()
+                        ->placeholder('Masukkan kecamatan sekolah'),
+                    TextInput::make('kabupaten_kota')
+                        ->label('Kabupaten/Kota')
+                        ->required()
+                        ->placeholder('Masukkan kabupaten/kota sekolah'),
+                    TextInput::make('provinsi')
+                        ->label('Provinsi')
+                        ->required()
+                        ->placeholder('Masukkan provinsi sekolah'),
                     TextInput::make('no_hp')
                         ->label('Nomor Telepon')
                         ->required()
@@ -62,6 +78,18 @@ class SekolahResource extends Resource
                 TextColumn::make('alamat')
                     ->searchable()
                     ->label('Alamat'),
+                TextColumn::make('kelurahan')
+                    ->searchable()
+                    ->label('Kelurahan'),
+                TextColumn::make('kecamatan')
+                    ->searchable()
+                    ->label('Kecamatan'),
+                TextColumn::make('kabupaten_kota')
+                    ->searchable()
+                    ->label('Kabupaten/Kota'),
+                TextColumn::make('provinsi')
+                    ->searchable()
+                    ->label('Provinsi'),
                 TextColumn::make('no_hp')
                     ->searchable()
                     ->label('Nomor Telepon'),

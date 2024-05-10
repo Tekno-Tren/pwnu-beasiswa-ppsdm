@@ -16,6 +16,10 @@ class Sekolah extends Model
         'npsn',
         'nama',
         'alamat',
+        'kelurahan',
+        'kecamatan',
+        'kabupaten_kota',
+        'provinsi',
         'no_hp',
     ];
 
