@@ -26,17 +26,25 @@ return new class extends Migration
             $table->string('surat_rekom_pcnu')->nullable();
 
             $table->unsignedBigInteger('id_user');
-            $table->unsignedBigInteger('id_jurusan')->nullable();
-            $table->unsignedBigInteger('id_fakultas')->nullable();
-            $table->unsignedBigInteger('id_kampus')->nullable();
-            $table->unsignedBigInteger('id_cluster_kampus')->nullable();
+            $table->unsignedBigInteger('id_jurusan_1')->nullable();
+            $table->unsignedBigInteger('id_fakultas_1')->nullable();
+            $table->unsignedBigInteger('id_kampus_1')->nullable();
+            $table->unsignedBigInteger('id_cluster_kampus_1')->nullable();
+            $table->unsignedBigInteger('id_jurusan_2')->nullable();
+            $table->unsignedBigInteger('id_fakultas_2')->nullable();
+            $table->unsignedBigInteger('id_kampus_2')->nullable();
+            $table->unsignedBigInteger('id_cluster_kampus_2')->nullable();
             $table->unsignedBigInteger('id_jalur_prestasi')->nullable();
             $table->unsignedBigInteger('id_jalur_tes')->nullable();
             $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
-            $table->foreign('id_jurusan')->references('id')->on('jurusan')->onDelete('set null');
-            $table->foreign('id_fakultas')->references('id')->on('fakultas')->onDelete('set null');
-            $table->foreign('id_kampus')->references('id')->on('kampus')->onDelete('set null');
-            $table->foreign('id_cluster_kampus')->references('id')->on('cluster_kampus')->onDelete('set null');
+            $table->foreign('id_jurusan_1')->references('id')->on('jurusan')->onDelete('set null');
+            $table->foreign('id_fakultas_1')->references('id')->on('fakultas')->onDelete('set null');
+            $table->foreign('id_kampus_1')->references('id')->on('kampus')->onDelete('set null');
+            $table->foreign('id_cluster_kampus_1')->references('id')->on('cluster_kampus')->onDelete('set null');
+            $table->foreign('id_jurusan_2')->references('id')->on('jurusan')->onDelete('set null');
+            $table->foreign('id_fakultas_2')->references('id')->on('fakultas')->onDelete('set null');
+            $table->foreign('id_kampus_2')->references('id')->on('kampus')->onDelete('set null');
+            $table->foreign('id_cluster_kampus_2')->references('id')->on('cluster_kampus')->onDelete('set null');
             $table->foreign('id_jalur_prestasi')->references('id')->on('jalur_prestasi')->onDelete('set null');
             $table->foreign('id_jalur_tes')->references('id')->on('jalur_tes')->onDelete('set null');
 
