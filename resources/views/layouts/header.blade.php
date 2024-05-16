@@ -20,7 +20,32 @@
 
           @if (Auth::check())
             <li><a href={{ route('filament.app.pages.dashboard') }}>Dashboard</a></li>
-            <li><a href={{ route('filament.app.auth.logout') }}>Logout</a></li>
+            <li>
+                <form action="{{ route('filament.app.auth.logout') }}" method="POST">
+                    @csrf
+                    <button type="submit" style="display: flex;
+                    align-items: center;
+                    justify-content: space-between;
+                    padding: 10px 0 10px 30px;
+                    padding-top: 10px;
+                    padding-right: 0px;
+                    padding-bottom: 10px;
+                    padding-left: 30px;
+                    font-family: 'Roboto', sans-serif;
+                    font-size: 13px;
+                    font-weight: 600;
+                    color: #111;
+                    white-space: nowrap;
+                    text-transform: uppercase;
+                    transition: 0.3s;
+                    transition-duration: 0.3s;
+                    transition-timing-function: ease;
+                    transition-delay: 0s;
+                    transition-property: all;
+                    background: none; border: none;">Logout</button>
+                </form>
+            </li>
+          
           @else
             <li><a href={{ route('filament.app.auth.login') }}>Login</a></li>
           @endif
