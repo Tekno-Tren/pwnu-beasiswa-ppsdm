@@ -213,10 +213,10 @@ class EditPendaftaran extends Page implements HasForms
 
             if (! auth()->user()->pendaftaran) {
                 Pendaftaran::create($data + ['id_user' => auth()->id()]);
-                redirect()->to('/dashboard');
+                redirect();
             } else {
                 auth()->user()->pendaftaran->update($data);
-                redirect()->to('/dashboard');
+                redirect();
             }
         } catch (Halt $exception) {
             return;
@@ -226,5 +226,18 @@ class EditPendaftaran extends Page implements HasForms
             ->success()
             ->title(__('filament-panels::resources/pages/edit-record.notifications.saved.title'))
             ->send();
+    }
+
+    public function getStatus(): bool
+    {
+        if (auth()->user()->pendaftaran) {
+            return true;
+        }
+        return false;
+    }
+
+    public function getIdPendaftaran(): int
+    {
+        return auth()->user()->pendaftaran->id;
     }
 }
