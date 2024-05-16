@@ -2,22 +2,21 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\PendaftaranResource\Pages;
-use App\Filament\Resources\PendaftaranResource\RelationManagers;
-use App\Models\Pendaftaran;
-use App\Models\User;
 use Filament\Forms;
-use Filament\Forms\Form;
-use Filament\Forms\Components\Wizard;
-use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Forms\Form;
 use Filament\Tables\Table;
+use App\Models\Pendaftaran;
+use Filament\Resources\Resource;
+use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use App\Filament\Resources\PendaftaranResource\Pages;
+use App\Filament\Resources\PendaftaranResource\RelationManagers;
 
 class PendaftaranResource extends Resource
 {
-    protected static ?string $pendaftaran = Pendaftaran::class;
+    protected static ?string $model = Pendaftaran::class;
     protected static ?string $user = User::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-document-duplicate';
@@ -29,24 +28,49 @@ class PendaftaranResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('no_registrasi')
-                    ->required()
+                Forms\Components\TextInput::make('no_pendaftaran_tes')
                     ->maxLength(255),
-                Forms\Components\Select::make('id_user')
+                Forms\Components\TextInput::make('no_pendaftaran_kampus')
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('no_pendaftaran_pwnu')
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('status_tes')
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('status_pwnu')
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('bukti_prestasi')
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('bukti_pendaftaran_tes')
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('bukti_pendaftaran_kampus')
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('surat_rekom_pondok')
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('surat_rekom_pcnu')
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('id_user')
                     ->required()
-                    ->relationship('user', 'name'),
-                Forms\Components\Select::make('id_jurusan')
-                    ->required()
-                    ->relationship('jurusan', 'nama'),
-                Forms\Components\Select::make('id_fakultas')
-                    ->required()
-                    ->relationship('fakultas', 'nama'),
-                Forms\Components\Select::make('id_kampus')
-                    ->required()
-                    ->relationship('kampus', 'nama'),
-                Forms\Components\Select::make('id_cluster_kampus')
-                    ->required()
-                    ->relationship('cluster_kampus', 'nama'),
+                    ->numeric(),
+                Forms\Components\TextInput::make('id_jurusan_1')
+                    ->numeric(),
+                Forms\Components\TextInput::make('id_fakultas_1')
+                    ->numeric(),
+                Forms\Components\TextInput::make('id_kampus_1')
+                    ->numeric(),
+                Forms\Components\TextInput::make('id_cluster_kampus_1')
+                    ->numeric(),
+                Forms\Components\TextInput::make('id_jurusan_2')
+                    ->numeric(),
+                Forms\Components\TextInput::make('id_fakultas_2')
+                    ->numeric(),
+                Forms\Components\TextInput::make('id_kampus_2')
+                    ->numeric(),
+                Forms\Components\TextInput::make('id_cluster_kampus_2')
+                    ->numeric(),
+                Forms\Components\TextInput::make('id_jalur_prestasi')
+                    ->numeric(),
+                Forms\Components\TextInput::make('id_jalur_tes')
+                    ->numeric(),
             ]);
     }
 
@@ -54,19 +78,73 @@ class PendaftaranResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('no_registrasi')
-                    ->searchable(),
+                // Tables\Columns\TextColumn::make('no_pendaftaran_tes')
+                //     ->label('No. Pendaftaran Tes')
+                //     ->searchable()
+                //     ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('no_pendaftaran_kampus')
+                    ->label('No. Pendaftaran Kampus')
+                    ->searchable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('id')
+                    ->label('No Pendaftaran Beasiswa PWNU')
+                    ->searchable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('status_tes')
+                    ->searchable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('status_pwnu')
+                    ->searchable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('bukti_prestasi')
+                    ->searchable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('bukti_pendaftaran_tes')
+                    ->searchable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('bukti_pendaftaran_kampus')
+                    ->label('Bukti Pendaftaran Kampus')
+                    ->url(fn ($record) => 'https://beasiswa.pwnujatim.or.id/storage/' . $record->bukti_pendaftaran_kampus, true)
+                    ->toggleable(isToggledHiddenByDefault:true),
+                Tables\Columns\TextColumn::make('surat_rekom_pondok')
+                    ->searchable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('surat_rekom_pcnu')
+                    ->searchable()
+                    ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('user.name')
-                    ->label('User')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('jurusan.nama')
+                    ->label('Nama Peserta')
                     ->sortable(),
-                Tables\Columns\TextColumn::make('fakultas.nama')
+                Tables\Columns\TextColumn::make('jurusan1.nama')
+                    ->label('Jurusan (Pilihan 1)')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('fakultas1.nama')
+                    ->label('Fakultas (Pilihan 1)')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('kampus1.nama')
+                    ->label('Kampus (Pilihan 1)')
+                    ->numeric()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('jurusan2.nama')
+                    ->label('Jurusan (Pilihan 2)')
+                    ->numeric()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('kampus.nama')
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('cluster_kampus.nama')
+                Tables\Columns\TextColumn::make('fakultas2.nama')
+                    ->label('Fakultas (Pilhan 2)')
+                    ->numeric()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('jalur_prestasi.nama')
+                    ->label('Jalur Prestasi')
+                    ->numeric()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('jalur_tes.nama')
+                    ->label('Jalur Tes')
+                    ->numeric()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('created_at')
