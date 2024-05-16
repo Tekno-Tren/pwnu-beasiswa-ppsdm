@@ -131,16 +131,14 @@ class EditPendaftaran extends Page implements HasForms
                                     ->pluck('nama', 'id'))
                                 ->searchable()
                                 ->live()
-                                ->afterStateUpdated(fn (Set $set) => $set('id_jurusan_2', null))
-                                ->required(),
+                                ->afterStateUpdated(fn (Set $set) => $set('id_jurusan_2', null)),
                             Forms\Components\Select::make('id_jurusan_2')
                                 ->label('Pilih Jurusan (pilihan 2)')
                                 ->options(fn (Get $get): Collection => Jurusan::query()
                                     ->where('id_fakultas', $get('id_fakultas_2'))
                                     ->pluck('nama', 'id'))
                                 ->searchable()
-                                ->live()
-                                ->required(),
+                                ->live(),
 
                             Forms\Components\TextInput::make('no_pendaftaran_kampus')
                                 ->label('Nomor Pendaftaran Kampus')
