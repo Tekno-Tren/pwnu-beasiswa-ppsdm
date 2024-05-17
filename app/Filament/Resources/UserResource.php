@@ -48,6 +48,12 @@ class UserResource extends Resource
                     ->dehydrateStateUsing(fn (string $state): string => Hash::make($state))
                     ->dehydrated(fn (?string $state): bool => filled($state))
                     ->required(fn (string $operation): bool => $operation === 'create'),
+                Select::make('jenis_kelamin')
+                    ->required()
+                    ->options([
+                        'L' => 'Laki-laki',
+                        'P' => 'Perempuan',
+                    ]),
                 TextInput::make('tempat_lahir')
                     ->maxLength(255),
                 DatePicker::make('tanggal_lahir'),
@@ -87,6 +93,10 @@ class UserResource extends Resource
                     ->label('Email Verified At')
                     ->dateTime()
                     ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                TextColumn::make('jenis_kelamin')
+                    ->label('Jenis Kelamin')
+                    ->searchable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 TextColumn::make('tempat_lahir')
                     ->label('Tempat Lahir')
