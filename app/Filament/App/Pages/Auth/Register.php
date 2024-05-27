@@ -35,6 +35,13 @@ class Register extends BaseRegister
                                     ->label('Profil')
                                     ->icon('heroicon-o-user-circle')
                                     ->schema([
+                                        Forms\Components\Select::make('jenis_kelamin')
+                                            ->label('Jenis Kelamin')
+                                            ->options([
+                                                'L' => 'Laki-laki',
+                                                'P' => 'Perempuan',
+                                            ])
+                                            ->required(),
                                         Forms\Components\TextInput::make('tempat_lahir')
                                             ->label('Tempat Lahir')
                                             ->required()

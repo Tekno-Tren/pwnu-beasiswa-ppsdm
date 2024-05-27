@@ -66,6 +66,13 @@ class EditProfile extends Page implements HasForms
                                             ->required()
                                             ->unique(ignoreRecord: true)
                                             ->maxLength(255),
+                                        Forms\Components\Select::make('jenis_kelamin')
+                                            ->label('Jenis Kelamin')
+                                            ->options([
+                                                'L' => 'Laki-laki',
+                                                'P' => 'Perempuan',
+                                            ])
+                                            ->required(),
                                         Forms\Components\TextInput::make('tempat_lahir')
                                             ->label('Tempat Lahir')
                                             ->required()

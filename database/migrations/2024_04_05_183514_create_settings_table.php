@@ -20,30 +20,6 @@ return new class extends Migration
             $table->string('type')->default('text');
             $table->timestamps();
         });
-
-        Setting::create([
-            'key' => 'site_name',
-            'label' => 'Judul Situs',
-            'value' => 'Laravel Filament',
-        ]);
-
-        Setting::create([
-            'key' => '_location',
-            'label' => 'Alamat kantor',
-            'value' => 'Sukolilo, Surabaya, Indonesia',
-        ]);
-
-        Setting::create([
-            'key' => '_instagram',
-            'label' => 'Alamat Ig',
-            'value' => 'Hehehuhu, Surabaya, Indonesia',
-        ]);
-
-        Setting::create([
-            'key' => '_site_description',
-            'label' => 'Site Description',
-            'value' => 'Website sederhana, dengan admin filament, untuk hidup sederhana',
-        ]);
     }
 
     /**
