@@ -74,6 +74,7 @@ class EditPendaftaran extends Page implements HasForms
                                 ->label('Pilih Kampus (pilihan 1)')
                                 ->options(fn (Get $get): Collection => Kampus::query()
                                     ->where('id_cluster_kampus', $get('id_cluster_kampus_1'))
+                                    ->where('id', '!=', 5) // hidden UNAIR
                                     ->pluck('nama', 'id'))
                                 ->searchable()
                                 ->live()
