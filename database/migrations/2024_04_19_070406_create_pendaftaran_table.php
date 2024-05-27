@@ -35,6 +35,7 @@ return new class extends Migration
             $table->unsignedBigInteger('id_kampus_2')->nullable();
             $table->unsignedBigInteger('id_cluster_kampus_2')->nullable();
             $table->unsignedBigInteger('id_jalur_prestasi')->nullable();
+            $table->string('deskripsi_prestasi')->nullable();
             $table->unsignedBigInteger('id_jalur_tes')->nullable();
             $table->foreign('id_user')->references('id')->on('users')->onDelete('cascade');
             $table->foreign('id_jurusan_1')->references('id')->on('jurusan')->onDelete('set null');

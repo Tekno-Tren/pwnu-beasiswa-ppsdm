@@ -33,6 +33,7 @@ class Pendaftaran extends Model
         'id_kampus_2',
         'id_cluster_kampus_2',
         'id_jalur_prestasi',
+        'deskripsi_prestasi',
         'id_jalur_tes',
     ];
 

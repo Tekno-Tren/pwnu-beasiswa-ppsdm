@@ -153,7 +153,12 @@ class EditPendaftaran extends Page implements HasForms
                                 ->options(fn () => JalurPrestasi::all()->pluck('nama', 'id'))
                                 ->placeholder('Pilih jalur')
                                 ->preload()
+                                ->live()
                                 ->visible(fn (Get $get): bool => $get('id_cluster_kampus_1') == 1),
+                            Forms\Components\TextInput::make('deskripsi_prestasi')
+                                ->label('Deskripsi MTQ (ex: Cabang Tilawah, Juara 1)')
+                                ->placeholder('Cabang MTQ, Juara ...')
+                                ->visible(fn (Get $get): bool => in_array($get('id_jalur_prestasi'), [5, 6, 7, 8])),
                             Forms\Components\FileUpload::make('bukti_prestasi')
                                 ->label('Bukti Prestasi')
                                 ->acceptedFileTypes(['application/pdf', 'image/*'])
