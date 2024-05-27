@@ -2,20 +2,21 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\PenilaianResource\Pages;
-use App\Filament\Resources\PenilaianResource\RelationManagers;
-use App\Models\Pendaftaran;
 use Filament\Forms;
-use Filament\Forms\Form;
-use Filament\Resources\Resource;
 use Filament\Tables;
+use Filament\Forms\Form;
+use App\Models\Penilaian;
 use Filament\Tables\Table;
+use App\Models\Pendaftaran;
+use Filament\Resources\Resource;
 use Illuminate\Database\Eloquent\Builder;
+use App\Filament\Resources\PenilaianResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use App\Filament\Resources\PenilaianResource\RelationManagers;
 
 class PenilaianResource extends Resource
 {
-    protected static ?string $model = Pendaftaran::class;
+    protected static ?string $model = Penilaian::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-document-text';
     protected static ?string $navigationLabel = 'Penilaian';
@@ -26,7 +27,13 @@ class PenilaianResource extends Resource
     {
         return $form
             ->schema([
-                //
+                Forms\Components\Select::make('id_pendaftaran')
+                    ->options(fn () => Pendaftaran::all()->pluck('id_user', 'id'))
+                    ->required(),
+                Forms\Components\TextInput::make('nilai_tes_tulis')
+                    ->numeric(),
+                Forms\Components\TextInput::make('niali_tes_praktek')
+                    ->numeric(),
             ]);
     }
 
@@ -34,7 +41,20 @@ class PenilaianResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('pendaftaran.id_user')
+                    ->label('No. Pendaftaran')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('pendaftaran.user.name')
+                    ->label('Nama Siswa')
+                    ->searchable(),
+                Tables\Columns\TextColumn::make('nilai_tes_tulis')
+                    ->label('Nilai Tes Tulis')
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('nilai_tes_praktek')
+                    ->label('Nilai Tes Praktek')
+                    ->searchable()
+                    ->sortable(),
             ])
             ->filters([
                 //
