@@ -140,14 +140,7 @@ class EditPendaftaran extends Page implements HasForms
                                     ->pluck('nama', 'id'))
                                 ->searchable()
                                 ->live(),
-
-                            Forms\Components\TextInput::make('no_pendaftaran_kampus')
-                                ->label('Nomor Pendaftaran Kampus')
-                                ->required(),
-                            Forms\Components\FileUpload::make('bukti_pendaftaran_kampus')
-                                ->label('Bukti Pendaftaran Kampus')
-                                ->acceptedFileTypes(['application/pdf', 'image/*'])
-                                ->downloadable(),
+                            
                             Forms\Components\Select::make('id_jalur_prestasi')
                                 ->label('Pilih Jalur Prestasi')
                                 ->options(fn () => JalurPrestasi::all()->pluck('nama', 'id'))
@@ -165,6 +158,23 @@ class EditPendaftaran extends Page implements HasForms
                                 ->downloadable()
                                 ->visible(fn (Get $get): bool => $get('id_cluster_kampus_1') == 1)
                                 ->openable(),
+
+                            Forms\Components\TextInput::make('no_kipk')
+                                ->label('Nomor KIPK')
+                                ->visible(fn (Get $get): bool => $get('id_kampus_1') == 16),
+                            Forms\Components\FileUpload::make('bukti_kipk')
+                                ->label('Bukti KIPK')
+                                ->acceptedFileTypes(['application/pdf', 'image/*'])
+                                ->downloadable()
+                                ->visible(fn (Get $get): bool => $get('id_kampus_1') == 16),
+                            
+                            Forms\Components\TextInput::make('no_pendaftaran_kampus')
+                                ->label('Nomor Pendaftaran Kampus')
+                                ->required(),
+                            Forms\Components\FileUpload::make('bukti_pendaftaran_kampus')
+                                ->label('Bukti Pendaftaran Kampus')
+                                ->acceptedFileTypes(['application/pdf', 'image/*'])
+                                ->downloadable(),
                         ]),
                     Wizard\Step::make('Jalur Tes yang Diikuti')
                         ->schema([
