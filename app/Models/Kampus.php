@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Fakultas;
+use App\Models\Pendaftaran;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -28,5 +29,10 @@ class Kampus extends Model
     public function cluster_kampus(): BelongsTo
     {
         return $this->belongsTo(ClusterKampus::class, 'id_cluster_kampus', 'id');
+    }
+
+    public function pendaftaran(): HasMany
+    {
+        return $this->hasMany(Pendaftaran::class, 'id_kampus_1', 'id');
     }
 }
