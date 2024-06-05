@@ -157,6 +157,9 @@ class EditPendaftaran extends Page implements HasForms
                                 ->acceptedFileTypes(['application/pdf', 'image/*'])
                                 ->downloadable()
                                 ->visible(fn (Get $get): bool => $get('id_cluster_kampus_1') == 1)
+                                ->getUploadedFileNameForStorageUsing(
+                                    //function to get id file from $id and concat with 'bukti-prestasi'
+                                    fn (Get $get): string => $get('id') . '_bukti-prestasi')
                                 ->openable(),
 
                             Forms\Components\TextInput::make('no_kipk')
@@ -166,7 +169,9 @@ class EditPendaftaran extends Page implements HasForms
                                 ->label('Bukti KIPK')
                                 ->acceptedFileTypes(['application/pdf', 'image/*'])
                                 ->downloadable()
-                                ->visible(fn (Get $get): bool => $get('id_kampus_1') == 16),
+                                ->visible(fn (Get $get): bool => $get('id_kampus_1') == 16)
+                                ->getUploadedFileNameForStorageUsing(
+                                    fn (Get $get): string => $get('id') . '_bukti-kipk'),
                             
                             Forms\Components\TextInput::make('no_pendaftaran_kampus')
                                 ->label('Nomor Pendaftaran Kampus')
@@ -174,7 +179,9 @@ class EditPendaftaran extends Page implements HasForms
                             Forms\Components\FileUpload::make('bukti_pendaftaran_kampus')
                                 ->label('Bukti Pendaftaran Kampus')
                                 ->acceptedFileTypes(['application/pdf', 'image/*'])
-                                ->downloadable(),
+                                ->downloadable()
+                                ->getUploadedFileNameForStorageUsing(
+                                    fn (Get $get): string => $get('id') . '_bukti-pendaftaran-kampus'),
                         ]),
                     Wizard\Step::make('Jalur Tes yang Diikuti')
                         ->schema([
@@ -192,7 +199,9 @@ class EditPendaftaran extends Page implements HasForms
                                 ->label('Bukti Pendaftaran Tes')
                                 ->acceptedFileTypes(['application/pdf'])
                                 ->downloadable()
-                                ->openable(),
+                                ->openable()
+                                ->getUploadedFileNameForStorageUsing(
+                                    fn (Get $get): string => $get('id') . '_bukti-pendaftaran-tes'),
                         ]),
                     Wizard\Step::make('Rekomendasi')
                         ->schema([
@@ -200,12 +209,16 @@ class EditPendaftaran extends Page implements HasForms
                                 ->label('Surat Rekomendasi Pondok')
                                 ->acceptedFileTypes(['application/pdf'])
                                 ->downloadable()
-                                ->openable(),
+                                ->openable()
+                                ->getUploadedFileNameForStorageUsing(
+                                    fn (Get $get): string => $get('id') . '_surat-rekom-pondok'),
                             Forms\Components\FileUpload::make('surat_rekom_pcnu')
                                 ->label('Surat Rekomendasi PCNU atau Lembaga Banom NU Jawa Timur')
                                 ->acceptedFileTypes(['application/pdf'])
                                 ->downloadable()
-                                ->openable(),
+                                ->openable()
+                                ->getUploadedFileNameForStorageUsing(
+                                    fn (Get $get): string => $get('id') . '_surat-rekom-pcnu'),
                         ]),
                 ])
                 ->submitAction(new HtmlString(Blade::render(<<<BLADE
