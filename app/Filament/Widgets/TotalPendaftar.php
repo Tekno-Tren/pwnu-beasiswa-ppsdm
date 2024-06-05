@@ -14,6 +14,7 @@ use Ramsey\Uuid\Codec\OrderedTimeCodec;
 class TotalPendaftar extends BaseWidget
 {
     protected int | string | array $columnSpan = 'full';
+    protected static ?int $sort = 2;
 
     public function table(Table $table): Table
     {

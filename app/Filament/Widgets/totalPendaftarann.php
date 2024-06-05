@@ -8,6 +8,7 @@ use StatsOverviewWidget\Stat;
 
 class totalPendaftarann extends StatsOverviewWidget
 {
+    protected static ?int $sort = 1;
     protected function getStats(): array
     {
         return [
