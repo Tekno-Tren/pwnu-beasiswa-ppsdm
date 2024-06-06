@@ -35,6 +35,8 @@ class Pendaftaran extends Model
         'id_jalur_prestasi',
         'deskripsi_prestasi',
         'id_jalur_tes',
+        'no_kipk',
+        'bukti_kipk',
     ];
 
     public function user(): BelongsTo

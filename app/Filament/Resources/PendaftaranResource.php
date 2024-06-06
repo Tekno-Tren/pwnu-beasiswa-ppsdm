@@ -37,9 +37,13 @@ class PendaftaranResource extends Resource
                     ->maxLength(255),
                 Forms\Components\TextInput::make('no_pendaftaran_pwnu')
                     ->maxLength(255),
+                Forms\Components\TextInput::make('no_kipk')
+                    ->maxLength(255),
                 Forms\Components\TextInput::make('status_tes')
                     ->maxLength(255),
                 Forms\Components\TextInput::make('status_pwnu')
+                    ->maxLength(255),
+                Forms\Components\TextInput::make('bukti_kipk')
                     ->maxLength(255),
                 Forms\Components\TextInput::make('bukti_prestasi')
                     ->maxLength(255),
@@ -138,6 +142,14 @@ class PendaftaranResource extends Resource
                     ->label('Bukti Pendaftaran Kampus')
                     ->url(fn ($record) => 'https://beasiswa.pwnujatim.or.id/storage/' . $record->bukti_pendaftaran_kampus, true)
                     ->toggleable(isToggledHiddenByDefault:true),
+                Tables\Columns\TextColumn::make('no_kipk')
+                    ->label('No. KIP-K')
+                    ->searchable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('bukti_kipk')
+                    ->label('Bukti KIP-K')
+                    ->url(fn ($record) => 'https://beasiswa.pwnujatim.or.id/storage/' . $record->bukti_kipk, true)
+                    ->toggleable(isToggledHiddenByDefault:true),
 
                 Tables\Columns\TextColumn::make('status_tes')
                     ->searchable()
@@ -145,7 +157,26 @@ class PendaftaranResource extends Resource
                 Tables\Columns\TextColumn::make('status_pwnu')
                     ->searchable()
                     ->toggleable(isToggledHiddenByDefault: true),
-                
+
+                Tables\Columns\TextColumn::make('jalur_prestasi.nama')
+                    ->label('Jalur Prestasi')
+                    ->searchable()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('deskripsi_prestasi')
+                    ->label('Deskripsi Prestasi (khusus MTQ)')
+                    ->searchable()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('bukti_prestasi')
+                    ->searchable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('jalur_tes.nama')
+                    ->label('Jalur Tes')
+                    ->searchable()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: false),
+
                 Tables\Columns\TextColumn::make('surat_rekom_pondok')
                     ->searchable()
                     ->placeholder('Belum Upload')
@@ -153,25 +184,6 @@ class PendaftaranResource extends Resource
                 Tables\Columns\TextColumn::make('surat_rekom_pcnu')
                     ->searchable()
                     ->placeholder('Belum Upload')
-                    ->toggleable(isToggledHiddenByDefault: false),
-
-                Tables\Columns\TextColumn::make('jalur_prestasi.nama')
-                    ->label('Jalur Prestasi')
-                    ->searchable()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: false),
-                Tables\Columns\TextColumn::make('deskripsi_prestasi')
-                    ->label('Deskripsi Prestasi (khusus MTQ)')
-                    ->searchable()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: false),
-                Tables\Columns\TextColumn::make('bukti_prestasi')
-                    ->searchable()
-                    ->toggleable(isToggledHiddenByDefault: false),
-                Tables\Columns\TextColumn::make('jalur_tes.nama')
-                    ->label('Jalur Tes')
-                    ->searchable()
-                    ->sortable()
                     ->toggleable(isToggledHiddenByDefault: false),
 
                 Tables\Columns\TextColumn::make('created_at')

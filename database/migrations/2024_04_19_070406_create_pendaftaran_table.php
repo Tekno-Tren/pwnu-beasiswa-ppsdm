@@ -16,12 +16,14 @@ return new class extends Migration
             $table->string('no_pendaftaran_tes')->nullable();
             $table->string('no_pendaftaran_kampus')->nullable();
             $table->string('no_pendaftaran_pwnu')->nullable();
+            $table->string('no_kipk')->nullable();
             $table->string('status_tes')->nullable();
             $table->string('status_pwnu')->nullable();
 
             $table->string('bukti_prestasi')->nullable();
             $table->string('bukti_pendaftaran_tes')->nullable();
             $table->string('bukti_pendaftaran_kampus')->nullable();
+            $table->string('bukti_kipk')->nullable();
             $table->string('surat_rekom_pondok')->nullable();
             $table->string('surat_rekom_pcnu')->nullable();
 
