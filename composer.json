@@ -12,7 +12,9 @@
         "barryvdh/laravel-dompdf": "^2.2",
         "filament/filament": "^3.2",
         "laravel/framework": "^11.0",
-        "laravel/tinker": "^2.9"
+        "laravel/tinker": "^2.9",
+        "psr/simple-cache": "^2.0",
+        "pxlrbt/filament-excel": "^2.3"
     },
     "require-dev": {
         "doctrine/dbal": "^4.0",

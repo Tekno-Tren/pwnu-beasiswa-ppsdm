@@ -5,12 +5,15 @@ namespace App\Filament\Resources;
 use Filament\Forms;
 use Filament\Tables;
 use Filament\Forms\Form;
+use Filament\Tables\Actions\ExportBulkAction;
 use Filament\Tables\Table;
 use App\Models\Pendaftaran;
 use Filament\Resources\Resource;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use pxlrbt\FilamentExcel\Actions\Tables\ExportAction;
+use pxlrbt\FilamentExcel\Exports\ExcelExport;
 use App\Filament\Resources\PendaftaranResource\Pages;
 use App\Filament\Resources\PendaftaranResource\RelationManagers;
 
@@ -77,76 +80,100 @@ class PendaftaranResource extends Resource
     public static function table(Table $table): Table
     {
         return $table
+            ->headerActions([
+                ExportAction::make() 
+                ->exports([
+                    ExcelExport::make()
+                        ->fromTable()
+                        ->withFilename(fn () =>  'Data Pendaftar - ' . date('Y-m-d'))
+                        ->withWriterType(\Maatwebsite\Excel\Excel::XLSX)
+                ]), 
+            ])
             ->columns([
-                // Tables\Columns\TextColumn::make('no_pendaftaran_tes')
-                //     ->label('No. Pendaftaran Tes')
-                //     ->searchable()
-                //     ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('no_pendaftaran_kampus')
-                    ->label('No. Pendaftaran Kampus')
-                    ->searchable()
-                    ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('id')
                     ->label('No Pendaftaran Beasiswa PWNU')
+                    ->alignment('center')
                     ->searchable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('status_tes')
+                    ->toggleable(isToggledHiddenByDefault: false),
+                Tables\Columns\TextColumn::make('user.name')
+                    ->label('Nama Peserta')
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('jurusan1.nama')
+                    ->label('Jurusan (Pilihan 1)')
                     ->searchable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('status_pwnu')
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('fakultas1.nama')
+                    ->label('Fakultas (Pilihan 1)')
                     ->searchable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('bukti_prestasi')
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('kampus1.nama')
+                    ->label('Kampus (Pilihan 1)')
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('jurusan2.nama')
+                    ->label('Jurusan (Pilihan 2)')
+                    ->searchable()
+                    ->sortable()
+                    ->placeholder('Tidak ada')
+                    ->toggleable(isToggledHiddenByDefault: false),
+                Tables\Columns\TextColumn::make('fakultas2.nama')
+                    ->label('Fakultas (Pilhan 2)')
+                    ->searchable()
+                    ->sortable()
+                    ->placeholder('Tidak ada')
+                    ->toggleable(isToggledHiddenByDefault: false),
+
+                Tables\Columns\TextColumn::make('no_pendaftaran_tes')
+                    ->label('No. Pendaftaran Tes')
                     ->searchable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('bukti_pendaftaran_tes')
+                    ->searchable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('no_pendaftaran_kampus')
+                    ->label('No. Pendaftaran Kampus')
                     ->searchable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('bukti_pendaftaran_kampus')
                     ->label('Bukti Pendaftaran Kampus')
                     ->url(fn ($record) => 'https://beasiswa.pwnujatim.or.id/storage/' . $record->bukti_pendaftaran_kampus, true)
                     ->toggleable(isToggledHiddenByDefault:true),
+
+                Tables\Columns\TextColumn::make('status_tes')
+                    ->searchable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('status_pwnu')
+                    ->searchable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                
                 Tables\Columns\TextColumn::make('surat_rekom_pondok')
                     ->searchable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                    ->placeholder('Belum Upload')
+                    ->toggleable(isToggledHiddenByDefault: false),
                 Tables\Columns\TextColumn::make('surat_rekom_pcnu')
                     ->searchable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('user.name')
-                    ->label('Nama Peserta')
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('jurusan1.nama')
-                    ->label('Jurusan (Pilihan 1)')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('fakultas1.nama')
-                    ->label('Fakultas (Pilihan 1)')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('kampus1.nama')
-                    ->label('Kampus (Pilihan 1)')
-                    ->numeric()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('jurusan2.nama')
-                    ->label('Jurusan (Pilihan 2)')
-                    ->numeric()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('fakultas2.nama')
-                    ->label('Fakultas (Pilhan 2)')
-                    ->numeric()
-                    ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                    ->placeholder('Belum Upload')
+                    ->toggleable(isToggledHiddenByDefault: false),
+
                 Tables\Columns\TextColumn::make('jalur_prestasi.nama')
                     ->label('Jalur Prestasi')
-                    ->numeric()
+                    ->searchable()
                     ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                    ->toggleable(isToggledHiddenByDefault: false),
+                Tables\Columns\TextColumn::make('deskripsi_prestasi')
+                    ->label('Deskripsi Prestasi (khusus MTQ)')
+                    ->searchable()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: false),
+                Tables\Columns\TextColumn::make('bukti_prestasi')
+                    ->searchable()
+                    ->toggleable(isToggledHiddenByDefault: false),
                 Tables\Columns\TextColumn::make('jalur_tes.nama')
                     ->label('Jalur Tes')
-                    ->numeric()
+                    ->searchable()
                     ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                    ->toggleable(isToggledHiddenByDefault: false),
+
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -163,6 +190,7 @@ class PendaftaranResource extends Resource
                 Tables\Actions\EditAction::make(),
             ])
             ->bulkActions([
+                ExportBulkAction::make(),
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
                 ]),
