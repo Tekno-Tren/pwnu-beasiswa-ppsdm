@@ -27,16 +27,16 @@ class FakultasResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('nama')
-                    ->label('Nama Fakultas')
-                    ->required()
-                    ->maxLength(255),
                 Forms\Components\Select::make('id_kampus')
                     ->label('Nama Kampus')
                     ->required()
                     ->searchable()
                     ->relationship('kampus', 'nama')
                     ->preload(),
+                Forms\Components\TextInput::make('nama')
+                    ->label('Nama Fakultas')
+                    ->required()
+                    ->maxLength(255),
             ]);
     }
 

@@ -4,11 +4,15 @@ namespace App\Filament\Resources;
 
 use Filament\Forms;
 use Filament\Tables;
+use App\Models\Kampus;
 use App\Models\Jurusan;
+use Filament\Forms\Get;
+use Filament\Forms\Set;
 use App\Models\Fakultas;
 use Filament\Forms\Form;
 use Filament\Tables\Table;
 use Filament\Resources\Resource;
+use Illuminate\Support\Collection;
 use Illuminate\Database\Eloquent\Builder;
 use App\Filament\Resources\JurusanResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
@@ -27,16 +31,30 @@ class JurusanResource extends Resource
     {
         return $form
             ->schema([
+                Forms\Components\Select::make('id_kampus')
+                    ->label('Nama Kampus')
+                    ->options(fn (Get $get): Collection => Kampus::query()
+                        ->pluck('nama', 'id'))
+                    ->searchable()
+                    ->live()
+                    ->afterStateUpdated(function (Set $set) {
+                        $set('id_fakultas', null);
+                    })
+                    ->required(),
+                Forms\Components\Select::make('id_fakultas')
+                    ->label('Nama Fakultas')
+                    ->options(fn (Get $get): Collection => Fakultas::query()
+                        ->where('id_kampus', $get('id_kampus'))
+                        ->pluck('nama', 'id'))
+                    ->searchable()
+                    ->live()
+
+                    ->required(),
                 Forms\Components\TextInput::make('nama')
                     ->required()
                     ->label('Nama Jurusan')
                     ->maxLength(255),
-                Forms\Components\Select::make('id_fakultas')
-                    ->label('Nama Fakultas')
-                    ->searchable()
-                    ->required()
-                    ->relationship('fakultas', 'nama')
-                    ->preload(),
+                
             ]);
     }
 
