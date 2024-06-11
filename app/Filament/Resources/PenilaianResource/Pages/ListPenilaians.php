@@ -2,9 +2,11 @@
 
 namespace App\Filament\Resources\PenilaianResource\Pages;
 
-use App\Filament\Resources\PenilaianResource;
+use App\Filament\Imports\PenilaianImporter;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
+use App\Filament\Resources\PenilaianResource;
+use EightyNine\ExcelImport\ExcelImportAction;
 
 class ListPenilaians extends ListRecords
 {
@@ -13,7 +15,11 @@ class ListPenilaians extends ListRecords
     protected function getHeaderActions(): array
     {
         return [
-            Actions\CreateAction::make(),
+            ExcelImportAction::make('Import Penilaian')
+                ->slideOver()
+                ->color("primary"),
+            Actions\CreateAction::make('Tambah Penilaian')
+                ->icon('heroicon-o-plus-circle'),
         ];
     }
 }

@@ -41,7 +41,7 @@ class PenilaianResource extends Resource
     {
         return $table
             ->columns([
-                Tables\Columns\TextColumn::make('pendaftaran.id_user')
+                Tables\Columns\TextColumn::make('id_pendaftaran')
                     ->label('No. Pendaftaran')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('pendaftaran.user.name')
