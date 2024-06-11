@@ -22,6 +22,10 @@ class EvaluasiResource extends Resource
     protected static ?string $navigationGroup = 'Beasiswa';
     protected static ?int $navigationSort = 4;
 
+    //Hidden
+    protected static bool $shouldRegisterNavigation = false;
+
+
     public static function form(Form $form): Form
     {
         return $form

@@ -21,6 +21,8 @@ class PenetapanResource extends Resource
     protected static ?string $navigationLabel = 'Penetapan';
     protected static ?string $navigationGroup = 'Beasiswa';
     protected static ?int $navigationSort = 5;
+    //Hidden
+    protected static bool $shouldRegisterNavigation = false;
 
     public static function form(Form $form): Form
     {
