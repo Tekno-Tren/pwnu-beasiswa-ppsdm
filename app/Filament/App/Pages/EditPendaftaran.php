@@ -157,9 +157,8 @@ class EditPendaftaran extends Page implements HasForms
                                 ->acceptedFileTypes(['application/pdf', 'image/*'])
                                 ->downloadable()
                                 ->visible(fn (Get $get): bool => $get('id_cluster_kampus_1') == 1)
-                                ->getUploadedFileNameForStorageUsing(
-                                    //function to get id file from $id and concat with 'bukti-prestasi'
-                                    fn (Get $get): string => $get('id') . '_bukti-prestasi')
+                                // ->getUploadedFileNameForStorageUsing(
+                                //     fn (Get $get): string => dd($get('id')) . '_bukti-prestasi')
                                 ->openable(),
 
                             Forms\Components\TextInput::make('no_kipk')
@@ -168,10 +167,10 @@ class EditPendaftaran extends Page implements HasForms
                             Forms\Components\FileUpload::make('bukti_kipk')
                                 ->label('Bukti KIPK')
                                 ->acceptedFileTypes(['application/pdf', 'image/*'])
-                                ->downloadable()
                                 ->visible(fn (Get $get): bool => $get('id_kampus_1') == 16)
-                                ->getUploadedFileNameForStorageUsing(
-                                    fn (Get $get): string => $get('id') . '_bukti-kipk'),
+                                // ->getUploadedFileNameForStorageUsing(
+                                    //     fn (Get $get): string => $get('id') . '_bukti-kipk')
+                                ->downloadable(),
                             
                             Forms\Components\TextInput::make('no_pendaftaran_kampus')
                                 ->label('Nomor Pendaftaran Kampus')
@@ -179,9 +178,9 @@ class EditPendaftaran extends Page implements HasForms
                             Forms\Components\FileUpload::make('bukti_pendaftaran_kampus')
                                 ->label('Bukti Pendaftaran Kampus')
                                 ->acceptedFileTypes(['application/pdf', 'image/*'])
-                                ->downloadable()
-                                ->getUploadedFileNameForStorageUsing(
-                                    fn (Get $get): string => $get('id') . '_bukti-pendaftaran-kampus'),
+                                // ->getUploadedFileNameForStorageUsing(
+                                //     fn (Get $get): string => $get('id') . '_bukti-pendaftaran-kampus')
+                                ->downloadable(),
                         ]),
                     Wizard\Step::make('Jalur Tes yang Diikuti')
                         ->schema([
@@ -198,27 +197,27 @@ class EditPendaftaran extends Page implements HasForms
                             Forms\Components\FileUpload::make('bukti_pendaftaran_tes')
                                 ->label('Bukti Pendaftaran Tes')
                                 ->acceptedFileTypes(['application/pdf'])
+                                // ->getUploadedFileNameForStorageUsing(
+                                //     fn (Get $get): string => $get('id') . '_bukti-pendaftaran-tes')
                                 ->downloadable()
-                                ->openable()
-                                ->getUploadedFileNameForStorageUsing(
-                                    fn (Get $get): string => $get('id') . '_bukti-pendaftaran-tes'),
+                                ->openable(),
                         ]),
                     Wizard\Step::make('Rekomendasi')
                         ->schema([
                             Forms\Components\FileUpload::make('surat_rekom_pondok')
                                 ->label('Surat Rekomendasi Pondok')
                                 ->acceptedFileTypes(['application/pdf'])
+                                // ->getUploadedFileNameForStorageUsing(
+                                //     fn (Get $get): string => $get('id') . '_surat-rekom-pondok')
                                 ->downloadable()
-                                ->openable()
-                                ->getUploadedFileNameForStorageUsing(
-                                    fn (Get $get): string => $get('id') . '_surat-rekom-pondok'),
+                                ->openable(),
                             Forms\Components\FileUpload::make('surat_rekom_pcnu')
                                 ->label('Surat Rekomendasi PCNU atau Lembaga Banom NU Jawa Timur')
                                 ->acceptedFileTypes(['application/pdf'])
+                                // ->getUploadedFileNameForStorageUsing(
+                                //     fn (Get $get): string => $get('id') . '_surat-rekom-pcnu')
                                 ->downloadable()
-                                ->openable()
-                                ->getUploadedFileNameForStorageUsing(
-                                    fn (Get $get): string => $get('id') . '_surat-rekom-pcnu'),
+                                ->openable(),
                         ]),
                 ])
                 ->submitAction(new HtmlString(Blade::render(<<<BLADE
@@ -266,5 +265,11 @@ class EditPendaftaran extends Page implements HasForms
     public function getIdPendaftaran(): int
     {
         return auth()->user()->pendaftaran->id;
+    }
+
+    protected function afterCreate(): void {
+        // rename file bukti_prestasi
+        $pendaftaran = Pendaftaran::find($this->getIdPendaftaran());
+        $pendaftaran->bukti_prestasi->storeAs($pendaftaran->id . '_bukti-prestasi');
     }
 }
