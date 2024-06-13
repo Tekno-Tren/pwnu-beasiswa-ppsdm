@@ -241,7 +241,7 @@ class EditPendaftaran extends Page implements HasForms
             $data = $this->form->getState();
 
             if (! auth()->user()->pendaftaran) {
-                Pendaftaran::create($data + ['id_user' => auth()->id()]);
+                Pendaftaran::create($data + ['id_user' => auth()->id(), 'status_daftar_ulang' => 'Belum Daftar Ulang']);
                 redirect()->route('filament.app.pages.edit-pendaftaran');
             } else {
                 auth()->user()->pendaftaran->update($data);
@@ -274,6 +274,21 @@ class EditPendaftaran extends Page implements HasForms
     {
         if (auth()->user()->pendaftaran->id_jalur_tes == 1) {
             if (auth()->user()->pendaftaran->status_tes == null) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public function getStatusDaftarUlang(): bool
+    {
+        if (!(auth()->user()->pendaftaran->status_daftar_ulang == 'Sudah Daftar Ulang')) {
+            if (auth()->user()->pendaftaran->id_jalur_tes == 1) {
+                if (auth()->user()->pendaftaran->status_tes == 'Tidak Lulus UTBK') {
+                    return true;
+                }
+            }
+            elseif (auth()->user()->pendaftaran->id_jalur_tes == 99) {
                 return true;
             }
         }

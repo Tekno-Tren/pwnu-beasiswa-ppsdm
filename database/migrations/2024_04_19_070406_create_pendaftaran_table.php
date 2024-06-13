@@ -27,6 +27,9 @@ return new class extends Migration
             $table->string('surat_rekom_pondok')->nullable();
             $table->string('surat_rekom_pcnu')->nullable();
 
+            $table->string('status_daftar_ulang')->nullable();
+            $table->string('bukti_daftar_ulang')->nullable();
+
             $table->unsignedBigInteger('id_user');
             $table->unsignedBigInteger('id_jurusan_1')->nullable();
             $table->unsignedBigInteger('id_fakultas_1')->nullable();

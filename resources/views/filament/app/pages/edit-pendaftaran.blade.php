@@ -7,14 +7,24 @@
                 style="background-color: #4c74af; color: white; margin-top: 7px; padding: 5px 9px; text-align: center; text-decoration: none; display: inline-block; border-radius: 4px; border: none; cursor: pointer; font-size: 13px;">Cetak</a>
         </div>
 
-        {{-- Also create notif/alert for reminder to Update Status Test --}}
+        {{-- notif/alert for reminder to Update Status Test --}}
         @if ($this->getJalurUTBK())
             <div class="bg-yellow-100 border-t border-b border-yellow-500 text-yellow-700 px-4 py-3" role="alert">
                 <p class="font-bold">Apakah Lolos seleksi SNBT?</p>
                 <p class="text-sm">Silahkan Update Status Test Anda</p>
                 <a href="{{ route('filament.app.pages.update-status-utbk') }}" class="text-sm"
-                    style="background-color: #f6e05e; color: white; margin-top: 7px; padding: 5px 9px; text-align: center; text-decoration: none; display: inline-block; border-radius: 4px; border: none; cursor: pointer; font-size: 13px;">Update</a>
+                    style="background-color: #f6e05e; color: white; margin-top: 7px; padding: 5px 9px; text-align: center; text-decoration: none; display: inline-block; border-radius: 4px; border: none; cursor: pointer; font-size: 13px;">Update SNBT</a>
             </div>
+        @endif
+            
+        {{-- notif/alert for reminder to Update Status Daftar Ulang --}}
+        @if ($this->getStatusDaftarUlang())
+        <div class="bg-yellow-100 border-t border-b border-yellow-500 text-yellow-700 px-4 py-3" role="alert">
+            <p class="font-bold">Apakah Sudah Daftar Ulang?</p>
+            <p class="text-sm">Silahkan Masukkan Bukti Daftar Ulang Anda</p>
+            <a href="{{ route('filament.app.pages.update-status-daftar-ulang') }}" class="text-sm"
+                style="background-color: #e9cb21; color: white; margin-top: 7px; padding: 5px 9px; text-align: center; text-decoration: none; display: inline-block; border-radius: 4px; border: none; cursor: pointer; font-size: 13px;">Update Daftar Ulang</a>
+        </div>
         @endif
     @endif
     <x-filament-panels::form wire:submit="save">
