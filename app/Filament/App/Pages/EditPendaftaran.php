@@ -34,7 +34,7 @@ class EditPendaftaran extends Page implements HasForms
 
     public ?array $data = [];
 
-    protected static ?string $navigationIcon = 'heroicon-o-document-text';
+    protected static ?string $navigationIcon = 'heroicon-o-academic-cap';
 
     protected static string $view = 'filament.app.pages.edit-pendaftaran';
     protected static ?string $title = 'Pendaftaran';
@@ -186,6 +186,7 @@ class EditPendaftaran extends Page implements HasForms
                         ->schema([
                             Forms\Components\Select::make('id_jalur_tes')
                                 ->label('Pilih Jalur Tes')
+                                ->live()
                                 ->options(fn () => JalurTes::all()->pluck('nama', 'id'))
                                 ->placeholder('Pilih jalur')
                                 ->afterStateUpdated(function (Set $set) {
@@ -193,9 +194,11 @@ class EditPendaftaran extends Page implements HasForms
                                 })
                                 ->required(),
                             Forms\Components\TextInput::make('no_pendaftaran_tes')
-                                ->label('Nomor Pendaftaran Tes'),
+                                ->label('Nomor Pendaftaran Tes')
+                                ->visible(fn (Get $get): bool => $get('id_jalur_tes') == 1),
                             Forms\Components\FileUpload::make('bukti_pendaftaran_tes')
                                 ->label('Bukti Pendaftaran Tes')
+                                ->visible(fn (Get $get): bool => $get('id_jalur_tes') == 1)
                                 ->acceptedFileTypes(['application/pdf'])
                                 // ->getUploadedFileNameForStorageUsing(
                                 //     fn (Get $get): string => $get('id') . '_bukti-pendaftaran-tes')
@@ -239,10 +242,10 @@ class EditPendaftaran extends Page implements HasForms
 
             if (! auth()->user()->pendaftaran) {
                 Pendaftaran::create($data + ['id_user' => auth()->id()]);
-                redirect();
+                redirect()->route('filament.app.pages.edit-pendaftaran');
             } else {
                 auth()->user()->pendaftaran->update($data);
-                redirect();
+                redirect()->route('filament.app.pages.edit-pendaftaran');
             }
         } catch (Halt $exception) {
             return;
@@ -265,6 +268,16 @@ class EditPendaftaran extends Page implements HasForms
     public function getIdPendaftaran(): int
     {
         return auth()->user()->pendaftaran->id;
+    }
+
+    public function getJalurUTBK(): bool
+    {
+        if (auth()->user()->pendaftaran->id_jalur_tes == 1) {
+            if (auth()->user()->pendaftaran->status_tes == null) {
+                return true;
+            }
+        }
+        return false;
     }
 
     protected function afterCreate(): void {
