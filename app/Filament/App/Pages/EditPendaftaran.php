@@ -140,6 +140,16 @@ class EditPendaftaran extends Page implements HasForms
                                     ->pluck('nama', 'id'))
                                 ->searchable()
                                 ->live(),
+
+                            Forms\Components\TextInput::make('no_pendaftaran_kampus')
+                                ->label('Nomor Pendaftaran Kampus')
+                                ->required(),
+                            Forms\Components\FileUpload::make('bukti_pendaftaran_kampus')
+                                ->label('Bukti Pendaftaran Kampus')
+                                ->acceptedFileTypes(['application/pdf', 'image/*'])
+                                // ->getUploadedFileNameForStorageUsing(
+                                //     fn (Get $get): string => $get('id') . '_bukti-pendaftaran-kampus')
+                                ->downloadable(),
                             
                             Forms\Components\Select::make('id_jalur_prestasi')
                                 ->label('Pilih Jalur Prestasi')
@@ -170,16 +180,6 @@ class EditPendaftaran extends Page implements HasForms
                                 ->visible(fn (Get $get): bool => $get('id_kampus_1') == 16)
                                 // ->getUploadedFileNameForStorageUsing(
                                     //     fn (Get $get): string => $get('id') . '_bukti-kipk')
-                                ->downloadable(),
-                            
-                            Forms\Components\TextInput::make('no_pendaftaran_kampus')
-                                ->label('Nomor Pendaftaran Kampus')
-                                ->required(),
-                            Forms\Components\FileUpload::make('bukti_pendaftaran_kampus')
-                                ->label('Bukti Pendaftaran Kampus')
-                                ->acceptedFileTypes(['application/pdf', 'image/*'])
-                                // ->getUploadedFileNameForStorageUsing(
-                                //     fn (Get $get): string => $get('id') . '_bukti-pendaftaran-kampus')
                                 ->downloadable(),
                         ]),
                     Wizard\Step::make('Jalur Tes yang Diikuti')

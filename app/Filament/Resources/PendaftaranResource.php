@@ -4,17 +4,26 @@ namespace App\Filament\Resources;
 
 use Filament\Forms;
 use Filament\Tables;
+use App\Models\Kampus;
+use App\Models\Jurusan;
+use Filament\Forms\Get;
+use Filament\Forms\Set;
+use App\Models\Fakultas;
+use App\Models\JalurTes;
 use Filament\Forms\Form;
-use Filament\Tables\Actions\ExportBulkAction;
 use Filament\Tables\Table;
 use App\Models\Pendaftaran;
+use App\Models\ClusterKampus;
+use App\Models\JalurPrestasi;
 use Filament\Resources\Resource;
+use Illuminate\Support\Collection;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
-use pxlrbt\FilamentExcel\Actions\Tables\ExportAction;
+use Filament\Tables\Actions\ExportBulkAction;
 use pxlrbt\FilamentExcel\Exports\ExcelExport;
+use Illuminate\Database\Eloquent\SoftDeletingScope;
 use App\Filament\Resources\PendaftaranResource\Pages;
+use pxlrbt\FilamentExcel\Actions\Tables\ExportAction;
 use App\Filament\Resources\PendaftaranResource\RelationManagers;
 
 class PendaftaranResource extends Resource
@@ -31,53 +40,109 @@ class PendaftaranResource extends Resource
     {
         return $form
             ->schema([
-                Forms\Components\TextInput::make('no_pendaftaran_tes')
-                    ->maxLength(255),
+                // Comment for attribute not changeable
+                // ...
+                    
+                Forms\Components\Select::make('id_cluster_kampus_1')
+                    ->label('Pilih Cluster Kampus (pilihan 1)')
+                    ->options(ClusterKampus::all()->pluck('nama', 'id'))
+                    ->live()
+                    ->afterStateUpdated(function (Set $set) {
+                        $set('id_kampus_1', null);
+                        $set('id_fakultas_1', null);
+                        $set('id_jurusan_1', null);
+                        $set('id_jalur_prestasi', null);
+                        $set('bukti_prestasi', null);
+                    }),
+                Forms\Components\Select::make('id_kampus_1')
+                    ->label('Pilih Kampus (pilihan 1)')
+                    ->options(fn (Get $get): Collection => Kampus::query()
+                        ->where('id_cluster_kampus', $get('id_cluster_kampus_1'))
+                        ->where('id', '!=', 5) // hidden UNAIR
+                        ->pluck('nama', 'id'))
+                    ->searchable()
+                    ->live()
+                    ->afterStateUpdated(function (Set $set) {
+                        $set('id_fakultas_1', null);
+                        $set('id_jurusan_1', null);
+                    }),
+                Forms\Components\Select::make('id_fakultas_1')
+                    ->label('Pilih Fakultas (pilihan 1)')
+                    ->options(fn (Get $get): Collection => Fakultas::query()
+                        ->where('id_kampus', $get('id_kampus_1'))
+                        ->pluck('nama', 'id'))
+                    ->searchable()
+                    ->live()
+                    ->afterStateUpdated(fn (Set $set) => $set('id_jurusan_1', null)),
+                Forms\Components\Select::make('id_jurusan_1')
+                    ->label('Pilih Jurusan (pilihan 1)')
+                    ->options(fn (Get $get): Collection => Jurusan::query()
+                        ->where('id_fakultas', $get('id_fakultas_1'))
+                        ->pluck('nama', 'id'))
+                    ->searchable()
+                    ->live(),
+                Forms\Components\Select::make('id_fakultas_2')
+                    ->label('Pilih Fakultas (pilihan 2)')
+                    ->options(fn (Get $get): Collection => Fakultas::query()
+                        ->where('id_kampus', $get('id_kampus_1'))
+                        ->pluck('nama', 'id'))
+                    ->searchable()
+                    ->live()
+                    ->afterStateUpdated(fn (Set $set) => $set('id_jurusan_2', null)),
+                Forms\Components\Select::make('id_jurusan_2')
+                    ->label('Pilih Jurusan (pilihan 2)')
+                    ->options(fn (Get $get): Collection => Jurusan::query()
+                        ->where('id_fakultas', $get('id_fakultas_2'))
+                        ->pluck('nama', 'id'))
+                    ->searchable()
+                    ->live(),
+                
                 Forms\Components\TextInput::make('no_pendaftaran_kampus')
+                    ->label('Nomor Pendaftaran Kampus')
                     ->maxLength(255),
-                Forms\Components\TextInput::make('no_pendaftaran_pwnu')
-                    ->maxLength(255),
+
+                Forms\Components\Select::make('id_jalur_prestasi')
+                    ->label('Pilih Jalur Prestasi')
+                    ->options(fn () => JalurPrestasi::all()->pluck('nama', 'id'))
+                    ->placeholder('Pilih jalur')
+                    ->preload()
+                    ->live()
+                    ->visible(fn (Get $get): bool => $get('id_cluster_kampus_1') == 1),
+                Forms\Components\TextInput::make('deskripsi_prestasi')
+                    ->label('Deskripsi MTQ (ex: Cabang Tilawah, Juara 1)')
+                    ->placeholder('Cabang MTQ, Juara ...')
+                    ->visible(fn (Get $get): bool => in_array($get('id_jalur_prestasi'), [5, 6, 7, 8])),
+
                 Forms\Components\TextInput::make('no_kipk')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('status_tes')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('status_pwnu')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('bukti_kipk')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('bukti_prestasi')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('bukti_pendaftaran_tes')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('bukti_pendaftaran_kampus')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('surat_rekom_pondok')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('surat_rekom_pcnu')
-                    ->maxLength(255),
-                Forms\Components\TextInput::make('id_user')
-                    ->required()
-                    ->numeric(),
-                Forms\Components\TextInput::make('id_jurusan_1')
-                    ->numeric(),
-                Forms\Components\TextInput::make('id_fakultas_1')
-                    ->numeric(),
-                Forms\Components\TextInput::make('id_kampus_1')
-                    ->numeric(),
-                Forms\Components\TextInput::make('id_cluster_kampus_1')
-                    ->numeric(),
-                Forms\Components\TextInput::make('id_jurusan_2')
-                    ->numeric(),
-                Forms\Components\TextInput::make('id_fakultas_2')
-                    ->numeric(),
-                Forms\Components\TextInput::make('id_kampus_2')
-                    ->numeric(),
-                Forms\Components\TextInput::make('id_cluster_kampus_2')
-                    ->numeric(),
-                Forms\Components\TextInput::make('id_jalur_prestasi')
-                    ->numeric(),
-                Forms\Components\TextInput::make('id_jalur_tes')
-                    ->numeric(),
+                    ->label('Nomor KIPK')
+                    ->visible(fn (Get $get): bool => $get('id_kampus_1') == 16),
+                
+                
+                Forms\Components\Select::make('id_jalur_tes')
+                    ->label('Pilih Jalur Tes')
+                    ->live()
+                    ->options(fn () => JalurTes::all()->pluck('nama', 'id'))
+                    ->placeholder('Pilih jalur')
+                    ->afterStateUpdated(function (Set $set) {
+                        $set('no_pendaftaran_tes', null);
+                    })
+                    ->required(),
+                Forms\Components\TextInput::make('no_pendaftaran_tes')
+                    ->label('Nomor Pendaftaran Tes')
+                    ->visible(fn (Get $get): bool => $get('id_jalur_tes') == 1),
+                Forms\Components\Select::make('status_tes')
+                    ->label('Status UTBK')
+                    ->options([
+                        'Lulus UTBK' => 'Lulus',
+                        'Tidak Lulus UTBK' => 'Tidak Lulus',
+                    ]),
+
+                Forms\Components\Select::make('status_daftar_ulang')
+                    ->label('Status Daftar Ulang')
+                    ->options([
+                        'Sudah Daftar Ulang' => 'Sudah Daftar Ulang',
+                        'Belum Daftar Ulang' => 'Belum Daftar Ulang',
+                    ]),
             ]);
     }
 
