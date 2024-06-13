@@ -166,62 +166,43 @@ class PendaftaranResource extends Resource
                     ->toggleable(isToggledHiddenByDefault: false),
                 Tables\Columns\TextColumn::make('user.name')
                     ->label('Nama Peserta')
+                    ->searchable()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('jurusan1.nama')
-                    ->label('Jurusan (Pilihan 1)')
+
+                Tables\Columns\TextColumn::make('kampus1.nama')
+                    ->label('Kampus (Pilihan 1)')
                     ->searchable()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('fakultas1.nama')
                     ->label('Fakultas (Pilihan 1)')
                     ->searchable()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('kampus1.nama')
-                    ->label('Kampus (Pilihan 1)')
+                Tables\Columns\TextColumn::make('jurusan1.nama')
+                    ->label('Jurusan (Pilihan 1)')
                     ->searchable()
                     ->sortable(),
-                Tables\Columns\TextColumn::make('jurusan2.nama')
-                    ->label('Jurusan (Pilihan 2)')
-                    ->searchable()
-                    ->sortable()
-                    ->placeholder('Tidak ada')
-                    ->toggleable(isToggledHiddenByDefault: false),
                 Tables\Columns\TextColumn::make('fakultas2.nama')
                     ->label('Fakultas (Pilhan 2)')
                     ->searchable()
                     ->sortable()
                     ->placeholder('Tidak ada')
                     ->toggleable(isToggledHiddenByDefault: false),
+                Tables\Columns\TextColumn::make('jurusan2.nama')
+                    ->label('Jurusan (Pilihan 2)')
+                    ->searchable()
+                    ->sortable()
+                    ->placeholder('Tidak ada')
+                    ->toggleable(isToggledHiddenByDefault: false),
 
-                Tables\Columns\TextColumn::make('no_pendaftaran_tes')
-                    ->label('No. Pendaftaran Tes')
-                    ->searchable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('bukti_pendaftaran_tes')
-                    ->searchable()
-                    ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('no_pendaftaran_kampus')
                     ->label('No. Pendaftaran Kampus')
                     ->searchable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                    ->toggleable(isToggledHiddenByDefault: false),
                 Tables\Columns\TextColumn::make('bukti_pendaftaran_kampus')
                     ->label('Bukti Pendaftaran Kampus')
-                    ->url(fn ($record) => 'https://beasiswa.pwnujatim.or.id/storage/' . $record->bukti_pendaftaran_kampus, true)
-                    ->toggleable(isToggledHiddenByDefault:true),
-                Tables\Columns\TextColumn::make('no_kipk')
-                    ->label('No. KIP-K')
-                    ->searchable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('bukti_kipk')
-                    ->label('Bukti KIP-K')
-                    ->url(fn ($record) => 'https://beasiswa.pwnujatim.or.id/storage/' . $record->bukti_kipk, true)
-                    ->toggleable(isToggledHiddenByDefault:true),
-
-                Tables\Columns\TextColumn::make('status_tes')
-                    ->searchable()
-                    ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('status_pwnu')
-                    ->searchable()
-                    ->toggleable(isToggledHiddenByDefault: true),
+                    ->url(fn ($record) => 'https://beasiswa.pwnujatim.or.id/public/storage/' . $record->bukti_pendaftaran_kampus, true)
+                    ->prefix('https://beasiswa.pwnujatim.or.id/public/storage/')
+                    ->toggleable(isToggledHiddenByDefault: false),
 
                 Tables\Columns\TextColumn::make('jalur_prestasi.nama')
                     ->label('Jalur Prestasi')
@@ -234,21 +215,50 @@ class PendaftaranResource extends Resource
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('bukti_prestasi')
+                    ->label('Bukti Prestasi')
+                    ->url(fn ($record) => 'https://beasiswa.pwnujatim.or.id/public/storage/' . $record->bukti_prestasi, true)
+                    ->prefix('https://beasiswa.pwnujatim.or.id/public/storage/')
+                    ->toggleable(isToggledHiddenByDefault: true),
+
+                Tables\Columns\TextColumn::make('no_kipk')
+                    ->label('No. KIP-K')
                     ->searchable()
                     ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('bukti_kipk')
+                    ->label('Bukti KIP-K')
+                    ->url(fn ($record) => 'https://beasiswa.pwnujatim.or.id/public/storage/' . $record->bukti_kipk, true)
+                    ->prefix('https://beasiswa.pwnujatim.or.id/public/storage/')
+                    ->toggleable(isToggledHiddenByDefault:true),
+
                 Tables\Columns\TextColumn::make('jalur_tes.nama')
                     ->label('Jalur Tes')
                     ->searchable()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: false),
-
-                Tables\Columns\TextColumn::make('surat_rekom_pondok')
+                Tables\Columns\TextColumn::make('status_tes')
                     ->searchable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('no_pendaftaran_tes')
+                    ->label('No. Pendaftaran Tes')
+                    ->searchable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('bukti_pendaftaran_tes')
+                    ->label('Bukti Pendaftaran Tes')
+                    ->url(fn ($record) => 'https://beasiswa.pwnujatim.or.id/public/storage/' . $record->bukti_pendaftaran_tes, true)
+                    ->prefix('https://beasiswa.pwnujatim.or.id/public/storage/')
+                    ->toggleable(isToggledHiddenByDefault: true),
+                
+                Tables\Columns\TextColumn::make('surat_rekom_pondok')
+                    ->label('Surat Rekomendasi Pondok')
                     ->placeholder('Belum Upload')
+                    ->url(fn ($record) => 'https://beasiswa.pwnujatim.or.id/public/storage/' . $record->surat_rekom_pondok, true)
+                    ->prefix('https://beasiswa.pwnujatim.or.id/public/storage/')
                     ->toggleable(isToggledHiddenByDefault: false),
                 Tables\Columns\TextColumn::make('surat_rekom_pcnu')
-                    ->searchable()
+                    ->label('Surat Rekomendasi PCNU')
                     ->placeholder('Belum Upload')
+                    ->url(fn ($record) => 'https://beasiswa.pwnujatim.or.id/public/storage/' . $record->surat_rekom_pcnu, true)
+                    ->prefix('https://beasiswa.pwnujatim.or.id/public/storage/')
                     ->toggleable(isToggledHiddenByDefault: false),
 
                 Tables\Columns\TextColumn::make('created_at')
