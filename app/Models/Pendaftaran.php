@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasOne;
 
 class Pendaftaran extends Model
 {
@@ -85,5 +86,10 @@ class Pendaftaran extends Model
     public function jalur_tes(): BelongsTo
     {
         return $this->belongsTo(JalurTes::class, 'id_jalur_tes');
+    }
+
+    public function penilaian(): HasOne
+    {
+        return $this->hasOne(Penilaian::class, 'id_pendaftaran', 'id');
     }
 }

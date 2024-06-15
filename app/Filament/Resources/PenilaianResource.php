@@ -44,9 +44,11 @@ class PenilaianResource extends Resource
             ->columns([
                 Tables\Columns\TextColumn::make('id_pendaftaran')
                     ->label('No. Pendaftaran')
+                    ->sortable()
                     ->searchable(),
                 Tables\Columns\TextColumn::make('pendaftaran.user.name')
                     ->label('Nama Siswa')
+                    ->sortable()
                     ->searchable(),
                 Tables\Columns\TextColumn::make('nilai_tes_tulis')
                     ->label('Nilai Tes Tulis')
@@ -58,11 +60,11 @@ class PenilaianResource extends Resource
                     ->sortable(),
                 Tables\Columns\TextColumn::make('sum_nilai')
                     ->label('Total Nilai')
-                    ->searchable()
+                    // ->searchable()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('average_nilai')
                     ->label('Rata-rata Nilai')
-                    ->searchable()
+                    // ->searchable()
                     ->sortable(),
             ])
             ->filters([

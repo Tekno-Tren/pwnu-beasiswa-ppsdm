@@ -263,6 +263,17 @@ class PendaftaranResource extends Resource
                     ->prefix('https://beasiswa.pwnujatim.or.id/public/storage/')
                     ->toggleable(),
 
+                Tables\Columns\TextColumn::make('penilaian.nilai_tes_tulis')
+                    ->label('Nilai Tes Tulis')
+                    ->searchable()
+                    ->sortable()
+                    ->toggleable(),
+                Tables\Columns\TextColumn::make('penilaian.nilai_tes_praktek')
+                    ->label('Nilai Tes Praktek')
+                    ->searchable()
+                    ->sortable()
+                    ->toggleable(),
+
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
