@@ -21,7 +21,9 @@ class PenilaianResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-o-document-text';
     protected static ?string $navigationLabel = 'Penilaian';
     protected static ?string $navigationGroup = 'Beasiswa';
+
     protected static ?int $navigationSort = 3;
+    protected static ?string $title = 'Penilaian';
 
     public static function form(Form $form): Form
     {

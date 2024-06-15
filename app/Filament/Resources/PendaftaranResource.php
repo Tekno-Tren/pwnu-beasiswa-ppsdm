@@ -29,20 +29,18 @@ use App\Filament\Resources\PendaftaranResource\RelationManagers;
 class PendaftaranResource extends Resource
 {
     protected static ?string $model = Pendaftaran::class;
-    protected static ?string $user = User::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-document-duplicate';
     protected static ?string $navigationLabel = 'Pendaftaran';
     protected static ?string $navigationGroup = 'Beasiswa';
+
     protected static ?int $navigationSort = 1;
+    protected static ?string $title = 'Pendaftaran';
 
     public static function form(Form $form): Form
     {
         return $form
             ->schema([
-                // Comment for attribute not changeable
-                // ...
-                    
                 Forms\Components\Select::make('id_cluster_kampus_1')
                     ->label('Pilih Cluster Kampus (pilihan 1)')
                     ->options(ClusterKampus::all()->pluck('nama', 'id'))
@@ -96,7 +94,7 @@ class PendaftaranResource extends Resource
                         ->pluck('nama', 'id'))
                     ->searchable()
                     ->live(),
-                
+
                 Forms\Components\TextInput::make('no_pendaftaran_kampus')
                     ->label('Nomor Pendaftaran Kampus')
                     ->maxLength(255),
@@ -116,8 +114,8 @@ class PendaftaranResource extends Resource
                 Forms\Components\TextInput::make('no_kipk')
                     ->label('Nomor KIPK')
                     ->visible(fn (Get $get): bool => $get('id_kampus_1') == 16),
-                
-                
+
+
                 Forms\Components\Select::make('id_jalur_tes')
                     ->label('Pilih Jalur Tes')
                     ->live()
@@ -150,59 +148,63 @@ class PendaftaranResource extends Resource
     {
         return $table
             ->headerActions([
-                ExportAction::make() 
-                ->exports([
-                    ExcelExport::make()
-                        ->fromTable()
-                        ->withFilename(fn () =>  'Data Pendaftar - ' . date('Y-m-d'))
-                        ->withWriterType(\Maatwebsite\Excel\Excel::XLSX)
-                ]), 
+                ExportAction::make()
+                    ->exports([
+                        ExcelExport::make()
+                            ->fromTable()
+                            ->withFilename(fn () =>  'Data Pendaftar - ' . date('Y-m-d_h-i-s'))
+                            ->withWriterType(\Maatwebsite\Excel\Excel::XLSX)
+                    ]),
             ])
             ->columns([
                 Tables\Columns\TextColumn::make('id')
                     ->label('No Pendaftaran Beasiswa PWNU')
                     ->alignment('center')
                     ->searchable()
-                    ->toggleable(isToggledHiddenByDefault: false),
+                    ->toggleable(),
                 Tables\Columns\TextColumn::make('user.name')
                     ->label('Nama Peserta')
                     ->searchable()
-                    ->sortable(),
+                    ->sortable()
+                    ->toggleable(),
 
                 Tables\Columns\TextColumn::make('kampus1.nama')
                     ->label('Kampus (Pilihan 1)')
                     ->searchable()
-                    ->sortable(),
+                    ->sortable()
+                    ->toggleable(),
                 Tables\Columns\TextColumn::make('fakultas1.nama')
                     ->label('Fakultas (Pilihan 1)')
                     ->searchable()
-                    ->sortable(),
+                    ->sortable()
+                    ->toggleable(),
                 Tables\Columns\TextColumn::make('jurusan1.nama')
                     ->label('Jurusan (Pilihan 1)')
                     ->searchable()
-                    ->sortable(),
+                    ->sortable()
+                    ->toggleable(),
                 Tables\Columns\TextColumn::make('fakultas2.nama')
                     ->label('Fakultas (Pilhan 2)')
                     ->searchable()
                     ->sortable()
                     ->placeholder('Tidak ada')
-                    ->toggleable(isToggledHiddenByDefault: false),
+                    ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('jurusan2.nama')
                     ->label('Jurusan (Pilihan 2)')
                     ->searchable()
                     ->sortable()
                     ->placeholder('Tidak ada')
-                    ->toggleable(isToggledHiddenByDefault: false),
+                    ->toggleable(isToggledHiddenByDefault: true),
 
                 Tables\Columns\TextColumn::make('no_pendaftaran_kampus')
                     ->label('No. Pendaftaran Kampus')
                     ->searchable()
-                    ->toggleable(isToggledHiddenByDefault: false),
+                    ->toggleable(),
                 Tables\Columns\TextColumn::make('bukti_pendaftaran_kampus')
                     ->label('Bukti Pendaftaran Kampus')
                     ->url(fn ($record) => 'https://beasiswa.pwnujatim.or.id/public/storage/' . $record->bukti_pendaftaran_kampus, true)
                     ->prefix('https://beasiswa.pwnujatim.or.id/public/storage/')
-                    ->toggleable(isToggledHiddenByDefault: false),
+                    ->toggleable(),
 
                 Tables\Columns\TextColumn::make('jalur_prestasi.nama')
                     ->label('Jalur Prestasi')
@@ -228,13 +230,13 @@ class PendaftaranResource extends Resource
                     ->label('Bukti KIP-K')
                     ->url(fn ($record) => 'https://beasiswa.pwnujatim.or.id/public/storage/' . $record->bukti_kipk, true)
                     ->prefix('https://beasiswa.pwnujatim.or.id/public/storage/')
-                    ->toggleable(isToggledHiddenByDefault:true),
+                    ->toggleable(isToggledHiddenByDefault: true),
 
                 Tables\Columns\TextColumn::make('jalur_tes.nama')
                     ->label('Jalur Tes')
                     ->searchable()
                     ->sortable()
-                    ->toggleable(isToggledHiddenByDefault: false),
+                    ->toggleable(),
                 Tables\Columns\TextColumn::make('status_tes')
                     ->searchable()
                     ->toggleable(isToggledHiddenByDefault: true),
@@ -247,19 +249,19 @@ class PendaftaranResource extends Resource
                     ->url(fn ($record) => 'https://beasiswa.pwnujatim.or.id/public/storage/' . $record->bukti_pendaftaran_tes, true)
                     ->prefix('https://beasiswa.pwnujatim.or.id/public/storage/')
                     ->toggleable(isToggledHiddenByDefault: true),
-                
+
                 Tables\Columns\TextColumn::make('surat_rekom_pondok')
                     ->label('Surat Rekomendasi Pondok')
                     ->placeholder('Belum Upload')
                     ->url(fn ($record) => 'https://beasiswa.pwnujatim.or.id/public/storage/' . $record->surat_rekom_pondok, true)
                     ->prefix('https://beasiswa.pwnujatim.or.id/public/storage/')
-                    ->toggleable(isToggledHiddenByDefault: false),
+                    ->toggleable(),
                 Tables\Columns\TextColumn::make('surat_rekom_pcnu')
                     ->label('Surat Rekomendasi PCNU')
                     ->placeholder('Belum Upload')
                     ->url(fn ($record) => 'https://beasiswa.pwnujatim.or.id/public/storage/' . $record->surat_rekom_pcnu, true)
                     ->prefix('https://beasiswa.pwnujatim.or.id/public/storage/')
-                    ->toggleable(isToggledHiddenByDefault: false),
+                    ->toggleable(),
 
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()

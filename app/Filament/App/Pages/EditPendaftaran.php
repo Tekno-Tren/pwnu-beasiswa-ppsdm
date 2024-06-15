@@ -35,12 +35,12 @@ class EditPendaftaran extends Page implements HasForms
     public ?array $data = [];
 
     protected static ?string $navigationIcon = 'heroicon-o-academic-cap';
+    protected static ?string $navigationLabel = 'Pendaftaran';
+    protected static ?string $navigationGroup = 'Beasiswa';
 
     protected static string $view = 'filament.app.pages.edit-pendaftaran';
     protected static ?string $title = 'Pendaftaran';
     protected static ?string $model = Pendaftaran::class;
-    protected static ?string $navigationLabel = 'Pendaftaran';
-    protected static ?string $navigationGroup = 'Beasiswa';
 
     public function mount(): void
     {
@@ -100,7 +100,7 @@ class EditPendaftaran extends Page implements HasForms
                                 ->searchable()
                                 ->live()
                                 ->required(),
-                            
+
                             // Forms\Components\Select::make('id_cluster_kampus_2')
                             //     ->label('Pilih Cluster Kampus (pilihan 2)')
                             //     ->options(ClusterKampus::all()->pluck('nama', 'id'))
@@ -150,7 +150,7 @@ class EditPendaftaran extends Page implements HasForms
                                 // ->getUploadedFileNameForStorageUsing(
                                 //     fn (Get $get): string => $get('id') . '_bukti-pendaftaran-kampus')
                                 ->downloadable(),
-                            
+
                             Forms\Components\Select::make('id_jalur_prestasi')
                                 ->label('Pilih Jalur Prestasi')
                                 ->options(fn () => JalurPrestasi::all()->pluck('nama', 'id'))
