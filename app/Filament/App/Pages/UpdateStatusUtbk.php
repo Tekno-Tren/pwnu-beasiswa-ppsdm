@@ -22,20 +22,18 @@ class UpdateStatusUtbk extends Page implements HasForms
     public ?array $data = [];
 
     protected static ?string $navigationIcon = 'heroicon-o-check-badge';
-
+    protected static ?string $navigationLabel = 'Update Status UTBK';
+    protected static ?string $navigationGroup = 'Beasiswa';
     protected static string $view = 'filament.app.pages.update-status-utbk';
     protected static ?string $title = 'Update Status UTBK';
     protected static ?string $model = Pendaftaran::class;
-    protected static ?string $navigationLabel = 'Update Status UTBK';
-    protected static ?string $navigationGroup = 'Beasiswa';
+    
 
     public static function canAccess(): bool
     {
         if (auth()->user()->pendaftaran != null) {
             if (auth()->user()->pendaftaran->id_jalur_tes == 1) {
-                if (auth()->user()->pendaftaran->status_tes == null) {
-                    return true;
-                }
+                return true;
             }
         }
         return false;
