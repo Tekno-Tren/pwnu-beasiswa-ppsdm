@@ -42,6 +42,15 @@ class EditPendaftaran extends Page implements HasForms
     protected static ?string $title = 'Pendaftaran';
     protected static ?string $model = Pendaftaran::class;
 
+    public static function canAccess(): bool
+    {
+        if (auth()->user()->isAdmin())
+        {
+            return true;
+        }
+        return false;
+    }
+
     public function mount(): void
     {
         if (! auth()->user()->pendaftaran) {
