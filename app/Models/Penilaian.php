@@ -24,4 +24,13 @@ class Penilaian extends Model
         return $this->belongsTo(Pendaftaran::class, 'id_pendaftaran');
     }
 
+    public function getSumNilaiAttribute(): int
+    {
+        return intval($this->nilai_tes_tulis) + intval($this->nilai_tes_praktek);
+    }
+
+    public function getAverageNilaiAttribute(): float
+    {
+        return (floatval($this->nilai_tes_tulis) + floatval($this->nilai_tes_praktek)) / 2;
+    }
 }

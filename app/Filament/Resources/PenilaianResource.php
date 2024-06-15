@@ -21,7 +21,6 @@ class PenilaianResource extends Resource
     protected static ?string $navigationIcon = 'heroicon-o-document-text';
     protected static ?string $navigationLabel = 'Penilaian';
     protected static ?string $navigationGroup = 'Beasiswa';
-
     protected static ?int $navigationSort = 3;
     protected static ?string $title = 'Penilaian';
 
@@ -55,6 +54,14 @@ class PenilaianResource extends Resource
                     ->sortable(),
                 Tables\Columns\TextColumn::make('nilai_tes_praktek')
                     ->label('Nilai Tes Praktek')
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('sum_nilai')
+                    ->label('Total Nilai')
+                    ->searchable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('average_nilai')
+                    ->label('Rata-rata Nilai')
                     ->searchable()
                     ->sortable(),
             ])
