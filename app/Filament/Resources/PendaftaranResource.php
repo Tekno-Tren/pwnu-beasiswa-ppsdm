@@ -172,16 +172,41 @@ class PendaftaranResource extends Resource
                     ->searchable()
                     ->sortable()
                     ->toggleable(),
+                Tables\Columns\TextColumn::make('user.no_hp_2')
+                    ->label('No. HP (cadangan)')
+                    ->searchable()
+                    ->sortable()
+                    ->toggleable(),
+                Tables\Columns\TextColumn::make('user.tempat_lahir')
+                    ->label('Tempat Lahir')
+                    ->searchable()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('user.tanggal_lahir')
+                    ->label('Tanggal Lahir')
+                    ->searchable()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('user.jenis_kelamin')
+                    ->label('Jenis Kelamin')
+                    ->searchable()
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
+                Tables\Columns\TextColumn::make('user.alamat')
+                        ->label('Alamat')
+                        ->searchable()
+                        ->sortable()
+                        ->toggleable(),
                 Tables\Columns\TextColumn::make('user.pondok.nama')
                     ->label('Asal Pondok')
                     ->searchable()
                     ->sortable()
                     ->toggleable(),
-                Tables\Columns\TextColumn::make('user.alamat')
-                    ->label('Alamat')
+                Tables\Columns\TextColumn::make('user.sekolah.nama')
+                    ->label('Asal Sekolah')
                     ->searchable()
                     ->sortable()
-                    ->toggleable(),
+                    ->toggleable(isToggledHiddenByDefault: true),
 
                 Tables\Columns\TextColumn::make('kampus1.nama')
                     ->label('Kampus (Pilihan 1)')
