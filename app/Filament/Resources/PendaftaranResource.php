@@ -167,6 +167,21 @@ class PendaftaranResource extends Resource
                     ->searchable()
                     ->sortable()
                     ->toggleable(),
+                Tables\Columns\TextColumn::make('user.no_hp_1')
+                    ->label('No. HP')
+                    ->searchable()
+                    ->sortable()
+                    ->toggleable(),
+                Tables\Columns\TextColumn::make('user.pondok.nama')
+                    ->label('Asal Pondok')
+                    ->searchable()
+                    ->sortable()
+                    ->toggleable(),
+                Tables\Columns\TextColumn::make('user.alamat')
+                    ->label('Alamat')
+                    ->searchable()
+                    ->sortable()
+                    ->toggleable(),
 
                 Tables\Columns\TextColumn::make('kampus1.nama')
                     ->label('Kampus (Pilihan 1)')
