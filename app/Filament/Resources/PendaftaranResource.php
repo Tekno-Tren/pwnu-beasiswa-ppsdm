@@ -57,6 +57,14 @@ class PendaftaranResource extends Resource
                     ->options(fn (Get $get): Collection => Kampus::query()
                         ->where('id_cluster_kampus', $get('id_cluster_kampus_1'))
                         ->where('id', '!=', 5) // hidden UNAIR
+                        ->where('id', '!=', 6) // hidden UM
+                        ->where('id', '!=', 9) // hidden UNIRA
+                        ->where('id', '!=', 10) // hidden UNUSIDA
+                        ->where('id', '!=', 11) // hidden UNWAHA
+                        ->where('id', '!=', 12) // hidden UNU Pasuruan
+                        ->where('id', '!=', 13) // hidden STAI
+                        ->where('id', '!=', 14) // hidden STAI
+                        ->where('id', '!=', 15) // hidden STAI
                         ->pluck('nama', 'id'))
                     ->searchable()
                     ->live()
@@ -68,6 +76,15 @@ class PendaftaranResource extends Resource
                     ->label('Pilih Fakultas (pilihan 1)')
                     ->options(fn (Get $get): Collection => Fakultas::query()
                         ->where('id_kampus', $get('id_kampus_1'))
+                        ->where('id', '!=', 9) // hidden FKK ITS
+                        ->where('id', '!=', 62) // hidden Kedokteran UNAIR
+                        ->where('id', '!=', 64) // hidden Kedokteran UNAIR
+                        ->where('id', '!=', 65) // hidden Kedokteran UNAIR
+                        ->where('id', '!=', 66) // hidden Kedokteran UNAIR
+                        ->where('id', '!=', 80) // hidden Kedokteran UPN
+                        ->where('id', '!=', 89) // hidden Kedokteran UB
+                        ->where('id', '!=', 95) // hidden Kedokteran UB
+                        ->where('id', '!=', 97) // hidden Kedokteran UB
                         ->pluck('nama', 'id'))
                     ->searchable()
                     ->live()
@@ -83,6 +100,15 @@ class PendaftaranResource extends Resource
                     ->label('Pilih Fakultas (pilihan 2)')
                     ->options(fn (Get $get): Collection => Fakultas::query()
                         ->where('id_kampus', $get('id_kampus_1'))
+                        ->where('id', '!=', 9) // hidden FKK ITS
+                        ->where('id', '!=', 62) // hidden Kedokteran UNAIR
+                        ->where('id', '!=', 64) // hidden Kedokteran UNAIR
+                        ->where('id', '!=', 65) // hidden Kedokteran UNAIR
+                        ->where('id', '!=', 66) // hidden Kedokteran UNAIR
+                        ->where('id', '!=', 80) // hidden Kedokteran UPN
+                        ->where('id', '!=', 89) // hidden Kedokteran UB
+                        ->where('id', '!=', 95) // hidden Kedokteran UB
+                        ->where('id', '!=', 97) // hidden Kedokteran UB
                         ->pluck('nama', 'id'))
                     ->searchable()
                     ->live()
