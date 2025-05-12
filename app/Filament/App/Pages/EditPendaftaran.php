@@ -200,6 +200,7 @@ class EditPendaftaran extends Page implements HasForms
                             Forms\Components\FileUpload::make('bukti_prestasi')
                                 ->label('Bukti Prestasi')
                                 ->acceptedFileTypes(['application/pdf', 'image/*'])
+                                ->multiple()
                                 ->downloadable()
                                 ->visible(fn (Get $get): bool => $get('id_cluster_kampus_1') == 1)
                                 // ->getUploadedFileNameForStorageUsing(
