@@ -180,7 +180,7 @@ class EditPendaftaran extends Page implements HasForms
                                 ->label('Nomor Pendaftaran Kampus')
                                 ->required(),
                             Forms\Components\FileUpload::make('bukti_pendaftaran_kampus')
-                                ->label('Bukti Pendaftaran Kampus')
+                                ->label('Bukti Pendaftaran Kampus / Kartu Peserta')
                                 ->acceptedFileTypes(['application/pdf', 'image/*'])
                                 // ->getUploadedFileNameForStorageUsing(
                                 //     fn (Get $get): string => $get('id') . '_bukti-pendaftaran-kampus')
@@ -208,11 +208,11 @@ class EditPendaftaran extends Page implements HasForms
 
                             Forms\Components\TextInput::make('no_kipk')
                                 ->label('Nomor KIPK')
-                                ->visible(fn (Get $get): bool => $get('id_kampus_1') == 16),
+                                ->visible(fn (Get $get): bool => $get('id_cluster_kampus_1') == 3),
                             Forms\Components\FileUpload::make('bukti_kipk')
                                 ->label('Bukti KIPK')
                                 ->acceptedFileTypes(['application/pdf', 'image/*'])
-                                ->visible(fn (Get $get): bool => $get('id_kampus_1') == 16)
+                                ->visible(fn (Get $get): bool => $get('id_cluster_kampus_1') == 3)
                                 // ->getUploadedFileNameForStorageUsing(
                                     //     fn (Get $get): string => $get('id') . '_bukti-kipk')
                                 ->downloadable(),
@@ -230,10 +230,10 @@ class EditPendaftaran extends Page implements HasForms
                                 ->required(),
                             Forms\Components\TextInput::make('no_pendaftaran_tes')
                                 ->label('Nomor Pendaftaran Tes')
-                                ->visible(fn (Get $get): bool => $get('id_jalur_tes') == 1),
+                                ->visible(fn (Get $get): bool => $get('id_jalur_tes') != 99), // 99 = Tidak Ikut Tes
                             Forms\Components\FileUpload::make('bukti_pendaftaran_tes')
-                                ->label('Bukti Pendaftaran Tes')
-                                ->visible(fn (Get $get): bool => $get('id_jalur_tes') == 1)
+                                ->label('Bukti Pendaftaran Tes / Kartu Peserta')
+                                ->visible(fn (Get $get): bool => $get('id_jalur_tes') != 99)
                                 ->acceptedFileTypes(['application/pdf'])
                                 // ->getUploadedFileNameForStorageUsing(
                                 //     fn (Get $get): string => $get('id') . '_bukti-pendaftaran-tes')
@@ -251,6 +251,13 @@ class EditPendaftaran extends Page implements HasForms
                                 ->openable(),
                             Forms\Components\FileUpload::make('surat_rekom_pcnu')
                                 ->label('Surat Rekomendasi PCNU atau Lembaga Banom NU Jawa Timur')
+                                ->acceptedFileTypes(['application/pdf'])
+                                // ->getUploadedFileNameForStorageUsing(
+                                //     fn (Get $get): string => $get('id') . '_surat-rekom-pcnu')
+                                ->downloadable()
+                                ->openable(),
+                            Forms\Components\FileUpload::make('surat_pernyataan')
+                                ->label('Surat Pernyataan')
                                 ->acceptedFileTypes(['application/pdf'])
                                 // ->getUploadedFileNameForStorageUsing(
                                 //     fn (Get $get): string => $get('id') . '_surat-rekom-pcnu')
@@ -307,7 +314,7 @@ class EditPendaftaran extends Page implements HasForms
 
     public function getJalurUTBK(): bool
     {
-        if (auth()->user()->pendaftaran->id_jalur_tes == 1) {
+        if (auth()->user()->pendaftaran->id_jalur_tes != 99) {
             if (auth()->user()->pendaftaran->status_tes == null) {
                 return true;
             }
@@ -318,7 +325,7 @@ class EditPendaftaran extends Page implements HasForms
     public function getStatusDaftarUlang(): bool
     {
         if (!(auth()->user()->pendaftaran->status_daftar_ulang == 'Sudah Daftar Ulang')) {
-            if (auth()->user()->pendaftaran->id_jalur_tes == 1) {
+            if (auth()->user()->pendaftaran->id_jalur_tes != 99) {
                 if (auth()->user()->pendaftaran->status_tes == 'Tidak Lulus UTBK') {
                     return true;
                 }

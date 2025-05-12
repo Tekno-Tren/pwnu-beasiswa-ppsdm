@@ -139,7 +139,7 @@ class PendaftaranResource extends Resource
 
                 Forms\Components\TextInput::make('no_kipk')
                     ->label('Nomor KIPK')
-                    ->visible(fn (Get $get): bool => $get('id_kampus_1') == 16),
+                    ->visible(fn (Get $get): bool => $get('id_cluster_kampus_1') == 3),
 
 
                 Forms\Components\Select::make('id_jalur_tes')
@@ -153,7 +153,7 @@ class PendaftaranResource extends Resource
                     ->required(),
                 Forms\Components\TextInput::make('no_pendaftaran_tes')
                     ->label('Nomor Pendaftaran Tes')
-                    ->visible(fn (Get $get): bool => $get('id_jalur_tes') == 1),
+                    ->visible(fn (Get $get): bool => $get('id_jalur_tes') != 99),
                 Forms\Components\Select::make('status_tes')
                     ->label('Status UTBK')
                     ->options([
@@ -326,6 +326,12 @@ class PendaftaranResource extends Resource
                     ->label('Surat Rekomendasi PCNU')
                     ->placeholder('Belum Upload')
                     ->url(fn ($record) => 'https://beasiswa.pwnujatim.or.id/public/storage/' . $record->surat_rekom_pcnu, true)
+                    ->prefix('https://beasiswa.pwnujatim.or.id/public/storage/')
+                    ->toggleable(),
+                Tables\Columns\TextColumn::make('surat_pernyataan')
+                    ->label('Surat Pernyataan')
+                    ->placeholder('Belum Upload')
+                    ->url(fn ($record) => 'https://beasiswa.pwnujatim.or.id/public/storage/' . $record->surat_pernyataan, true)
                     ->prefix('https://beasiswa.pwnujatim.or.id/public/storage/')
                     ->toggleable(),
 

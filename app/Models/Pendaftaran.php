@@ -24,6 +24,7 @@ class Pendaftaran extends Model
         'bukti_pendaftaran_kampus',
         'surat_rekom_pondok',
         'surat_rekom_pcnu',
+        'surat_pernyataan',
         'id_user',
         'id_jurusan_1',
         'id_fakultas_1',
