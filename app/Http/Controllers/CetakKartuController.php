@@ -10,6 +10,8 @@ class CetakKartuController extends Controller
 {
     public function cetakKartu($id)
     {
+        $id_cluster_kampus = Pendaftaran::find($id)->id_cluster_kampus_1;
+
         // $no_peserta = str_pad((string)$id, 4, '0', STR_PAD_LEFT);id_cluster_kampus_1
         $tahun = date('Y'); // atau tulis langsung: 2025
         $no_peserta = substr($tahun, 2, 2) . '-' . $id_cluster_kampus . '-' . $id;
