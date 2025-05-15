@@ -10,7 +10,7 @@
     </p>
     <hr>
     <p style="text-align: center;background: transparent;margin-bottom: 0.11in;line-height: 108%; border-style:solid; border-width:1.5px; padding: 10px;">
-        <span style="color: rgb(0, 0, 0);">PESERTA SELEKSI BEASISWA PWNU JAWA TIMUR 2024</span>
+        <span style="color: rgb(0, 0, 0);">PESERTA SELEKSI BEASISWA PWNU JAWA TIMUR 2025</span>
     </p>
     <br>
     <table>
