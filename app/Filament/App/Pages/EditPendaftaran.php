@@ -282,6 +282,9 @@ class EditPendaftaran extends Page implements HasForms
     {
         try {
             $data = $this->form->getState();
+            $data['bukti_prestasi'] = is_array($data['bukti_prestasi'] ?? null) 
+                ? implode(',', $data['bukti_prestasi']) 
+                : ($data['bukti_prestasi'] ?? '');
 
             if (! auth()->user()->pendaftaran) {
                 Pendaftaran::create($data + ['id_user' => auth()->id(), 'status_daftar_ulang' => 'Belum Daftar Ulang']);

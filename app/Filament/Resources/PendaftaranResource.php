@@ -282,10 +282,9 @@ class PendaftaranResource extends Resource
                     ->searchable()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),
-                Tables\Columns\TextColumn::make('bukti_prestasi')
+                Tables\Columns\ViewColumn::make('bukti_prestasi')
                     ->label('Bukti Prestasi')
-                    ->url(fn ($record) => 'https://beasiswa.pwnujatim.or.id/public/storage/' . $record->bukti_prestasi, true)
-                    ->prefix('https://beasiswa.pwnujatim.or.id/public/storage/')
+                    ->view('bukti-prestasi')
                     ->toggleable(isToggledHiddenByDefault: true),
 
                 Tables\Columns\TextColumn::make('no_kipk')

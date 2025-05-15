@@ -19,7 +19,7 @@ class ClusterKampusResource extends Resource
     protected static ?string $model = ClusterKampus::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-inbox-stack';
-    protected static ?string $navigationLabel = 'Cluster Beasiswa';
+    protected static ?string $navigationLabel = 'Cluster Kampus';
     protected static ?string $navigationGroup = 'Administrasi';
     protected static ?int $navigationSort = 1;
 
