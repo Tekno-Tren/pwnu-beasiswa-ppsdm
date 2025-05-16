@@ -191,8 +191,8 @@ class EditPendaftaran extends Page implements HasForms
                                 ->options(fn () => JalurPrestasi::all()->pluck('nama', 'id'))
                                 ->placeholder('Pilih jalur')
                                 ->preload()
-                                ->live()
-                                ->visible(fn (Get $get): bool => $get('id_cluster_kampus_1') == 1),
+                                ->live(),
+                                // ->visible(fn (Get $get): bool => $get('id_cluster_kampus_1') == 1),
                             Forms\Components\TextInput::make('deskripsi_prestasi')
                                 ->label('Deskripsi MTQ (ex: Cabang Tilawah, Juara 1)')
                                 ->placeholder('Cabang MTQ, Juara ...')
@@ -202,7 +202,7 @@ class EditPendaftaran extends Page implements HasForms
                                 ->acceptedFileTypes(['application/pdf', 'image/*'])
                                 ->multiple()
                                 ->downloadable()
-                                ->visible(fn (Get $get): bool => $get('id_cluster_kampus_1') == 1)
+                                // ->visible(fn (Get $get): bool => $get('id_cluster_kampus_1') == 1)
                                 // ->getUploadedFileNameForStorageUsing(
                                 //     fn (Get $get): string => dd($get('id')) . '_bukti-prestasi')
                                 ->openable(),
