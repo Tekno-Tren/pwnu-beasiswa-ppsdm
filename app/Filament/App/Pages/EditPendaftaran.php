@@ -228,6 +228,7 @@ class EditPendaftaran extends Page implements HasForms
                                 ->afterStateUpdated(function (Set $set) {
                                     $set('no_pendaftaran_tes', null);
                                 })
+                                ->searchable()
                                 ->required(),
                             Forms\Components\TextInput::make('no_pendaftaran_tes')
                                 ->label('Nomor Pendaftaran Tes')
