@@ -124,8 +124,8 @@ class Register extends BaseRegister
                                                     ->label('No. Handphone')
                                                     ->required()
                                                     ->rule(['numeric']),
-                                            ])
-                                            ->required(),
+                                            ]),
+                                            // ->required(),
                                     ]),
                             ]),
                     ])
