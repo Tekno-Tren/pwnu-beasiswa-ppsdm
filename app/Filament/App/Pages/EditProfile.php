@@ -153,8 +153,8 @@ class EditProfile extends Page implements HasForms
                                                     ->label('No. Handphone')
                                                     ->required()
                                                     ->rule(['numeric']),
-                                            ])
-                                            ->required(),
+                                            ]),
+                                            // ->required(),
                                     ]),
                             ]),
             ]),
