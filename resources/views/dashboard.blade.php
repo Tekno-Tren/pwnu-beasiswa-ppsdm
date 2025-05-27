@@ -14,7 +14,7 @@
             <div class="carousel-content animate__animated animate__fadeInUp">
               <h2>Welcome to <span>PPSDM PWNU Jatim</span></h2>
               <p>Koordinatorat Bidang PPSDM (Pengembangan dan Pendidikan Sumber Daya Manusia) PWNU Jawa Timur</p>
-              <div class="text-center"><a href="" class="btn-get-started">Read More</a></div>
+              <div class="text-center"><a href={{ route('filament.app.auth.login') }} class="btn-get-started">LOGIN</a></div>
             </div>
           </div>
         </div>
