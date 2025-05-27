@@ -247,6 +247,7 @@ class EditPendaftaran extends Page implements HasForms
                             Forms\Components\FileUpload::make('surat_rekom_pondok')
                                 ->label('Surat Rekomendasi Pondok')
                                 ->acceptedFileTypes(['application/pdf'])
+                                ->visible(fn (Get $get): bool => $get('id_cluster_kampus_1') != 2)
                                 // ->getUploadedFileNameForStorageUsing(
                                 //     fn (Get $get): string => $get('id') . '_surat-rekom-pondok')
                                 ->downloadable()
