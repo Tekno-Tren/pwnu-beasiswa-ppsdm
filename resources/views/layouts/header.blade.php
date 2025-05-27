@@ -8,13 +8,14 @@
 
       <nav id="navbar" class="navbar order-last order-lg-0">
         <ul>
-          <li><a href="route('landing')">Beranda</a></li>
+          <li><a href={{ route('landing') }}>Beranda</a></li>
 
           <li class="dropdown"><a href="#"><span>Tentang</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
-              <li><a href="#">Tentang Kami</a></li>
-              <li><a href="#">Galeri</a></li>
-              <li><a href="#">Testimoni</a></li>
+              <li><a href="#about-us">Tentang Kami</a></li>
+              <li><a href="#dokumentasi">Dokumentasi</a></li>
+              <li><a href="#mitra">Kampus Mitra</a></li>
+              <li><a href="#footer">Kontak</a></li>
             </ul>
           </li>
 

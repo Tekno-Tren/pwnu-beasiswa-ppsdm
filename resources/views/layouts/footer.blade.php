@@ -12,8 +12,8 @@
               Kantor PWNU Jawa Timur <br>
               Jalan Masjid Al-Akbar Timur No. 9<br>
               Surabaya <br><br>
-              <strong>Phone:</strong> 082338899646<br>
-              <strong>Email:</strong> info@example.com<br>
+              <strong>Phone:</strong> 087848684979<br>
+              <strong>Email:</strong> ppsdmpwnujatim@gmail.com<br>
             </p>
           </div>
 

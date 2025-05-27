@@ -42,22 +42,32 @@
         <div class="row content">
           <div class="col">
             <h2 class="text-center fs-2">Latar Belakang</h2>
-            <p class="text-justify">Jauh sebelum bangsa ini merdeka, tak dapat dipungkiri bahwa Nahdlatul Ulama adalah organisasi yang paling konsisten dalam melayani dan mengangkat harkat martabat masyarakat menengah ke bawah. Salah satu yang paling dapat dilihat adalah peran Lembaga Pendidikan di NU baik berupa pesantren, madrasah, maupun Lembaga Pendidikan pada umumnya yang selama ini mampu mengakomodir kebutuhan masyarakat akan pendidikan.</p>
-            <p class="text-justify">Memasuki abad kedua, NU harus memiliki alternatif strategi yang lebih luas. Sudah saatnya NU memiliki kader kader professional yang mampu menguasai berbagai sektor agar khidmad gerakan yang dilakukan oleh organisasi keagamaan yang bersifat kultural ini memiliki nilai lebih dan sesuai dengan tantangan zaman. Hal ini dapat diwujudkan dengan melalukan akselerasi program peningkatan kualitas SDM melalui fasilitasi akses layanan pendidikan yang berkualitas.</p>
+            <p class="text-justify">Nahdlatul sebagai organisasi kemasyarakatan jenis keagamaan Islam terbesar di Indonesia dan tersebar di berbagai negara memiliki tanggung jawab moral dan strategis dalam mencetak generasi muda yang tidak hanya berilmu, tetapi juga berakhlak mulia dan berjiwa kebangsaan. Dinamika zaman yang semakin kompleks, tantangan dalam dunia pendidikan pun kian meningkat, baik dari sisi biaya, akses, maupun kualitas. Indonesia Emas tahun 2045 adalah sebuah visi besar bangsa yang perlu diwujudkan bersama sama dan NU mengambil peran strategis guna memenangkan Indonesia Emas 20245. Salah satu ikhtiyar yang dilakukan oleh Nahdlatul Ulama adalah merawat jagad dan membangun peradaban yang dimulai dengan pengembangan dan penyiapan sumber daya manusia yang berdaya saing global.</p>
+            <p class="text-justify">Provinsi Jawa Timur sebagai basis terbesar warga Nahdliyin masih menemukan bahwa banyak generasi muda NU yang memiliki potensi besar namun terhambat oleh keterbatasan ekonomi untuk melanjutkan pendidikan ke jenjang yang lebih tinggi. Lain daripada itu, kemajuan teknologi dan arus globalisasi menuntut hadirnya generasi muda NU yang kompeten, berpikiran terbuka, berdaya saing global dan tetap berpegang pada nilai-nilai Ahlussunnah wal Jama’ah An Nahdliyah. Atas dasar tersebut, Pengurus Wilayah Nahdlatul Ulama (PWNU) Jawa Timur melalui Tim Program Pengembangan Sumber Daya Manusia dan Pengabdian Masyarakat (PPSDM) memandang perlu untuk menghadirkan solusi konkret yang diwujudkan dalam bentuk Program Beasiswa PWNU Jawa Timur yang bekerjasama dengan Perguruan Tinggi Negeri (PTN), Perguruan Tinggi Keagamaan Islam Negeri (PTKIN) dan Perguruan Tinggi Nahdlatul Ulama di Jawa Timur.</p>
+            <p class="text-justify">Program ini tidak hanya bertujuan untuk memberikan bantuan finansial, tetapi juga menjadi sarana kaderisasi dan pembinaan karakter bagi generasi muda NU agar dapat menjadi pemimpin masa depan yang berilmu, berintegritas, dan siap berkhidmat untuk umat, bangsa, dan jam’iyah. Program ini merupakan bagian dari ikhtiar besar PWNU Jawa Timur dalam memajukan pendidikan, memperluas kesempatan belajar, serta menyiapkan SDM unggul yang siap menjawab tantangan zaman tanpa kehilangan akar tradisi dan spiritualitasnya.</p>
           </div>
+          <p></p>
         </div>
 
         <div class="row content">
           <div class="col-lg-6" data-aos="fade-right">
             <h2 class="text-center fs-2">Tujuan</h2>
             <ul>
-              <li><i class="ri-check-double-line"></i> NU hadir membantu masyarakat untuk mewujudkan cita-citanya</li>
+              <li><i class="ri-check-double-line"></i> Memberikan akses pendidikan yang lebih luas bagi kader muda Nahdlatul Ulama di Jawa Timur yang memiliki potensi akademik namun terbatas secara ekonomi.</li>
+              <li><i class="ri-check-double-line"></i> Mencetak generasi muda NU yang unggul, baik dalam bidang akademik, kepemimpinan, maupun akhlak, sebagai bagian dari upaya menciptakan sumber daya manusia yang berkualitas dan berdaya saing tinggi.</li>
+              <li><i class="ri-check-double-line"></i> Menumbuhkan semangat belajar, profesionalisme, dan tanggung jawab sosial di mahasiswa NU sebagai modal utama dalam membangun masyarakat dan bangsa.</li>
+              <li><i class="ri-check-double-line"></i> Membangun kaderisasi berkelanjutan di lingkungan NU, melalui pembinaan, pelatihan, dan pendampingan terhadap penerima beasiswa agar menjadi pemimpin masa depan yang berlandaskan nilai-nilai Ahlussunnah wal Jama’ah An Nahdliyah.</li>
+              <li><i class="ri-check-double-line"></i> Memperkuat peran PWNU Jawa Timur dalam bidang pendidikan dan pengembangan SDM, sebagai bentuk kontribusi nyata terhadap umat, negara, agama dan jam’iyah.</li>
             </ul>
           </div>
           <div class="col-lg-6 pt-4 pt-lg-0" data-aos="fade-right">
             <h2 class="text-center fs-2">Manfaat</h2>
             <ul>
-              <li><i class="ri-check-double-line"></i> NU hadir membantu masyarakat untuk mewujudkan cita-citanya</li>
+              <li><i class="ri-check-double-line"></i> Meningkatkan akses dan pemerataan pendidikan bagi mahasiswa dari kalangan warga Nahdlatul Ulama yang memiliki keterbatasan ekonomi namun berprestasi yang nantinya disiapkan sebagai generasi muda NU yang cerdas, berkarakter, kompeten dan berkontribusi, baik di tingkat lokal, nasional, maupun global.</li>
+              <li><i class="ri-check-double-line"></i> Menjadi media kaderisasi bagi NU dalam menyiapkan calon-calon pemimpin masa depan yang memiliki kapasitas keilmuan dan komitmen keorganisasian.</li>
+              <li><i class="ri-check-double-line"></i> Memperkuat loyalitas dan identitas ke-NU-an di kalangan generasi muda melalui pembinaan spiritual, ideologis, sosial dan sikap profesional selama masa penerimaan beasiswa.</li>
+              <li><i class="ri-check-double-line"></i> Meningkatkan kualitas sumber daya manusia Nahdliyin, sehingga lebih siap menghadapi tantangan zaman di berbagai bidang, termasuk pendidikan, ekonomi, teknologi, dan sosial budaya.</li>
+              <li><i class="ri-check-double-line"></i> Membangun jejaring alumni penerima beasiswa yang dapat menjadi kekuatan strategis NU dalam berbagai sektor kehidupan masyarakat baik pada masa sekarang maupun di masa yang mendatang.</li>
             </ul>
           </div>
         </div>
@@ -138,12 +148,26 @@
               <p>2023-2024</p>
             </div>
           </div>
+
+          <div class="col-lg-4 col-md-6 d-flex align-items-stretch p-0" data-aos="zoom-in" data-aos-delay="500">
+            <div class="m-3 icon-box iconbox-blue w-100">
+              <div class="icon">
+                <svg width="100" height="100" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+                  <path stroke="none" stroke-width="0" fill="#f5f5f5" d="M300,532.3542879108572C369.38199826031484,532.3153073249985,429.10787420159085,491.63046689027357,474.5244479745417,439.17860296908856C522.8885846962883,383.3225815378663,569.1668002868075,314.3205725914397,550.7432151929288,242.7694973846089C532.6665558377875,172.5657663291529,456.2379748765914,142.6223662098291,390.3689995646985,112.34683881706744C326.66090330228417,83.06452184765237,258.84405631176094,53.51806209861945,193.32584062364296,78.48882559362697C121.61183558270385,105.82097193414197,62.805066853699245,167.19869350419734,48.57481801355237,242.6138429142374C34.843463184063346,315.3850353017275,76.69343916112496,383.4422959591041,125.22947124332185,439.3748458443577C170.7312796277747,491.8107796887764,230.57421082200815,532.3932930995766,300,532.3542879108572"></path>
+                </svg>
+                <i class='bx  bx-pencil'></i> 
+              </div>
+              <h4><a href="">398 Penerima</a></h4>
+              <p>2024-2025</p>
+            </div>
+          </div>
         </div>
 
       </div>
     </section><!-- End Services Section -->
 
     <!-- ======= Portfolio Section ======= -->
+    <div id="dokumentasi"></div>
     <section id="portfolio" class="portfolio">
       <div class="container">
 
@@ -160,80 +184,80 @@
           <div class="col-lg-4 col-md-6 portfolio-item filter-app">
             <img src="assets/img/portfolio/Picture1.jpg" class="img-fluid" alt="">
             <div class="portfolio-info">
-              <h4>App 1</h4>
-              <p>App</p>
-              <a href="assets/img/portfolio/Picture1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 1"><i class="bx bx-plus"></i></a>
-              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+              <h4>Dokumentasi Kegiatan</h4>
+              {{-- <p>App</p> --}}
+              {{-- <a href="assets/img/portfolio/Picture1.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 1"><i class="bx bx-plus"></i></a> --}}
+              {{-- <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a> --}}
             </div>
           </div>
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-web">
             <img src="assets/img/portfolio/Picture2.jpg" class="img-fluid" alt="">
             <div class="portfolio-info">
-              <h4>Web 3</h4>
-              <p>Web</p>
-              <a href="assets/img/portfolio/Picture2.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Web 3"><i class="bx bx-plus"></i></a>
-              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+              <h4>Dokumentasi Kegiatan</h4>
+              {{-- <p>Web</p> --}}
+              {{-- <a href="assets/img/portfolio/Picture2.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Web 3"><i class="bx bx-plus"></i></a> --}}
+              {{-- <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a> --}}
             </div>
           </div>
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-app">
             <img src="assets/img/portfolio/Picture3.jpg" class="img-fluid" alt="">
             <div class="portfolio-info">
-              <h4>App 2</h4>
-              <p>App</p>
-              <a href="assets/img/portfolio/Picture3.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 2"><i class="bx bx-plus"></i></a>
-              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+              <h4>Dokumentasi Kegiatan</h4>
+              {{-- <p>App</p> --}}
+              {{-- <a href="assets/img/portfolio/Picture3.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 2"><i class="bx bx-plus"></i></a> --}}
+              {{-- <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a> --}}
             </div>
           </div>
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-card">
             <img src="assets/img/portfolio/Picture4.jpg" class="img-fluid" alt="">
             <div class="portfolio-info">
-              <h4>Card 2</h4>
-              <p>Card</p>
-              <a href="assets/img/portfolio/Picture4.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Card 2"><i class="bx bx-plus"></i></a>
-              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+              <h4>Dokumentasi Kegiatan</h4>
+              {{-- <p>Card</p> --}}
+              {{-- <a href="assets/img/portfolio/Picture4.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Card 2"><i class="bx bx-plus"></i></a> --}}
+              {{-- <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a> --}}
             </div>
           </div>
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-web">
             <img src="assets/img/portfolio/Picture5.jpg" class="img-fluid" alt="">
             <div class="portfolio-info">
-              <h4>Web 2</h4>
-              <p>Web</p>
-              <a href="assets/img/portfolio/Picture5.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Web 2"><i class="bx bx-plus"></i></a>
-              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+              <h4>Dokumentasi Kegiatan</h4>
+              {{-- <p>Web</p> --}}
+              {{-- <a href="assets/img/portfolio/Picture5.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Web 2"><i class="bx bx-plus"></i></a> --}}
+              {{-- <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a> --}}
             </div>
           </div>
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-app">
             <img src="assets/img/portfolio/Picture6.jpg" class="img-fluid" alt="">
             <div class="portfolio-info">
-              <h4>App 3</h4>
-              <p>App</p>
-              <a href="assets/img/portfolio/Picture6.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 3"><i class="bx bx-plus"></i></a>
-              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+              <h4>Dokumentasi Kegiatan</h4>
+              {{-- <p>App</p> --}}
+              {{-- <a href="assets/img/portfolio/Picture6.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="App 3"><i class="bx bx-plus"></i></a> --}}
+              {{-- <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a> --}}
             </div>
           </div>
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-card">
             <img src="assets/img/portfolio/Picture7.jpg" class="img-fluid" alt="">
             <div class="portfolio-info">
-              <h4>Card 1</h4>
-              <p>Card</p>
-              <a href="assets/img/portfolio/Picture7.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Card 1"><i class="bx bx-plus"></i></a>
-              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+              <h4>Dokumentasi Kegiatan</h4>
+              {{-- <p>Card</p> --}}
+              {{-- <a href="assets/img/portfolio/Picture7.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Card 1"><i class="bx bx-plus"></i></a> --}}
+              {{-- <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a> --}}
             </div>
           </div>
 
           <div class="col-lg-4 col-md-6 portfolio-item filter-card">
             <img src="assets/img/portfolio/Picture8.jpg" class="img-fluid" alt="">
             <div class="portfolio-info">
-              <h4>Card 3</h4>
-              <p>Card</p>
-              <a href="assets/img/portfolio/Picture8.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Card 3"><i class="bx bx-plus"></i></a>
-              <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a>
+              <h4>Dokumentasi Kegiatan</h4>
+              {{-- <p>Card</p> --}}
+              {{-- <a href="assets/img/portfolio/Picture8.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Card 3"><i class="bx bx-plus"></i></a> --}}
+              {{-- <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a> --}}
             </div>
           </div>
 
@@ -243,6 +267,7 @@
     </section><!-- End Portfolio Section -->
 
     <!-- ======= Our Clients Section ======= -->
+    <div id="mitra"></div>
     <section id="clients" class="clients">
       <div class="container" data-aos="fade-up">
 
@@ -252,51 +277,94 @@
 
         <div class="row no-gutters clients-wrap clearfix" data-aos="fade-up">
 
+          {{-- UNISMA --}}
           <div class="col-lg-3 col-md-4 col-6">
             <div class="client-logo">
               <img src="assets/img/logo-univ-mitra/Unisma.png" class="img-fluid" style="width: 40%; height: auto;" alt="">
             </div>
           </div>
 
+          {{-- UNUSA --}}
           <div class="col-lg-3 col-md-4 col-6">
             <div class="client-logo">
               <img src="assets/img/logo-univ-mitra/Unusa.png" class="img-fluid" style="width: 25%; height: auto;" alt="">
             </div>
           </div>
 
+          {{-- UPN --}}
           <div class="col-lg-3 col-md-4 col-6">
             <div class="client-logo">
               <img src="assets/img/logo-univ-mitra/UPN-Veteran.png" class="img-fluid" style="width: 25%; height: auto;" alt="">
             </div>
           </div>
 
+          {{-- UTM --}}
           <div class="col-lg-3 col-md-4 col-6">
             <div class="client-logo">
               <img src="assets/img/logo-univ-mitra/UTM.png" class="img-fluid" style="width: 25%; height: auto;" alt="">
             </div>
           </div>
 
+          {{-- UNESA --}}
           <div class="col-lg-3 col-md-4 col-6">
             <div class="client-logo">
               <img src="assets/img/logo-univ-mitra/Unesa.png" class="img-fluid" style="width: 25%; height: auto;" alt="">
             </div>
           </div>
 
+          {{-- UB --}}
           <div class="col-lg-3 col-md-4 col-6">
             <div class="client-logo">
               <img src="assets/img/logo-univ-mitra/UB.png" class="img-fluid w" style="width: 25%; height: auto;" alt="">
             </div>
           </div>
 
+          {{-- UINSA --}}
           <div class="col-lg-3 col-md-4 col-6">
             <div class="client-logo">
-              <img src="assets/img/logo-univ-mitra/UM.png" class="img-fluid" style="width: 25%; height: auto;" alt="">
+              <img src="assets/img/logo-univ-mitra/Uinsa.png" class="img-fluid" style="width: 25%; height: auto;" alt="">
             </div>
           </div>
 
+          {{-- UINMA --}}
           <div class="col-lg-3 col-md-4 col-6">
             <div class="client-logo">
               <img src="assets/img/logo-univ-mitra/UIN-Malang.png" class="img-fluid" style="width: 28%; height: auto;" alt="">
+            </div>
+          </div>
+
+          {{-- POLINEMA --}}
+          <div class="col-lg-3 col-md-4 col-6">
+            <div class="client-logo">
+              <img src="assets/img/logo-univ-mitra/Polinema.png" class="img-fluid" style="width: 25%; height: auto;" alt="">
+            </div>
+          </div>
+
+          {{-- UINKHAS --}}
+          <div class="col-lg-3 col-md-4 col-6">
+            <div class="client-logo">
+              <img src="assets/img/logo-univ-mitra/Uinkhas.png" class="img-fluid" style="width: 25%; height: auto;" alt="">
+            </div>
+          </div>
+
+          {{-- ITS --}}
+          <div class="col-lg-3 col-md-4 col-6">
+            <div class="client-logo">
+              <img src="assets/img/logo-univ-mitra/ITS.png" class="img-fluid" style="width: 25%; height: auto;" alt="">
+            </div>
+          </div>
+
+          {{-- POLTERA --}}
+          <div class="col-lg-3 col-md-4 col-6">
+            <div class="client-logo">
+              <img src="assets/img/logo-univ-mitra/Poltera.png" class="img-fluid" style="width: 25%; height: auto;" alt="">
+            </div>
+          </div>
+
+          {{-- IAINMadura --}}
+          <div class="col-lg-3 col-md-4 col-6">
+            <div class="client-logo">
+              <img src="assets/img/logo-univ-mitra/IAINMadura.png" class="img-fluid" style="width: 25%; height: auto;" alt="">
             </div>
           </div>
 
