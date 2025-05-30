@@ -261,6 +261,16 @@
             </div>
           </div>
 
+          <div class="col-lg-4 col-md-6 portfolio-item filter-card">
+            <img src="assets/img/portfolio/Picture9.jpg" class="img-fluid" alt="">
+            <div class="portfolio-info">
+              <h4>Dokumentasi Kegiatan</h4>
+              {{-- <p>Card</p> --}}
+              {{-- <a href="assets/img/portfolio/Picture9.jpg" data-gallery="portfolioGallery" class="portfolio-lightbox preview-link" title="Card 3"><i class="bx bx-plus"></i></a> --}}
+              {{-- <a href="portfolio-details.html" class="details-link" title="More Details"><i class="bx bx-link"></i></a> --}}
+            </div>
+          </div>
+
         </div>
 
       </div>
