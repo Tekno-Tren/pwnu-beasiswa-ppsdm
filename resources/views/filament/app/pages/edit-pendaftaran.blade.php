@@ -28,6 +28,18 @@
         @endif
     @endif
     <x-filament-panels::form wire:submit="save">
-        {{ $this->form }}
+        {{-- Buat Pemberitahuan bahwa Pendaftaran Telah Ditutup --}}
+        @if (!$this->getIdPendaftaran())
+            <div class="bg-red-100 border-t border-b border-red-500 text-red-700 px-4 py-3" role="alert">
+                <p class="font-bold">Pendaftaran Telah Ditutup</p>
+                <p class="text-sm">Mohon maaf, pendaftaran saat ini telah ditutup. Hubungi kontak untuk informasi lebih lanjut.</p>
+            </div>
+        @else
+            <div class="mb-4">
+                {{-- <h2 class="text-lg font-semibold">Formulir Pendaftaran</h2>
+                <p class="text-sm text-gray-600">Silakan lengkapi formulir berikut untuk mendaftar.</p> --}}
+            </div>
+            {{ $this->form }}
+        @endif
     </x-filament-panels::form>
 </x-filament-panels::page>

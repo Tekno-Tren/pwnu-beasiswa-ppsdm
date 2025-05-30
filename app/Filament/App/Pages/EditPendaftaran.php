@@ -315,7 +315,7 @@ class EditPendaftaran extends Page implements HasForms
 
     public function getIdPendaftaran(): int
     {
-        return auth()->user()->pendaftaran->id;
+        return auth()->user()->pendaftaran->id ?? 0;
     }
 
     public function getJalurUTBK(): bool
