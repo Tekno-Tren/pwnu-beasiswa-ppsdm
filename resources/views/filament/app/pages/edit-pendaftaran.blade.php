@@ -32,7 +32,7 @@
         @if (!$this->getIdPendaftaran())
             <div class="bg-red-100 border-t border-b border-red-500 text-red-700 px-4 py-3" role="alert">
                 <p class="font-bold">Pendaftaran Telah Ditutup</p>
-                <p class="text-sm">Mohon maaf, pendaftaran saat ini telah ditutup. Hubungi kontak untuk informasi lebih lanjut.</p>
+                <p class="text-sm">Mohon maaf, pendaftaran saat ini telah ditutup. Hubungi <a href="https://beasiswa.pwnujatim.or.id/#footer">kontak</a> untuk informasi lebih lanjut.</p>
             </div>
         @else
             <div class="mb-4">
