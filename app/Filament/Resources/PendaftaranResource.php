@@ -344,6 +344,14 @@ class PendaftaranResource extends Resource
                     ->searchable()
                     ->sortable()
                     ->toggleable(),
+                Tables\Columns\TextColumn::make('penilaian.sum_nilai')
+                    ->label('Total Nilai')
+                    // ->searchable()
+                    ->sortable(),
+                Tables\Columns\TextColumn::make('penilaian.average_nilai')
+                    ->label('Rata-rata Nilai')
+                    // ->searchable()
+                    ->sortable(),
 
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
