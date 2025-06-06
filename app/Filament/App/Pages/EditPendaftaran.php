@@ -92,6 +92,16 @@ class EditPendaftaran extends Page implements HasForms
                                     ->where('id', '!=', 13) // hidden STAI
                                     ->where('id', '!=', 14) // hidden STAI
                                     ->where('id', '!=', 15) // hidden STAI
+                                    // UIN KHAS 21
+                                    ->where('id', '!=', 1) // hidden UNESA
+                                    ->where('id', '!=', 2) // hidden UTM
+                                    ->where('id', '!=', 17) // hidden UINSA
+                                    // UPN 3
+                                    ->where('id', '!=', 4) // hidden ITS
+                                    ->where('id', '!=', 7) // hidden UB
+                                    // UNISMA 8, POLINEMA 19, POLTERA 20, IAIN MADURA 22
+                                    ->where('id', '!=', 16) // hidden UNUSA
+                                    ->where('id', '!=', 18) // hidden UINMA
                                     ->pluck('nama', 'id'))
                                 ->searchable()
                                 ->live()
